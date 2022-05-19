@@ -77,7 +77,7 @@ public class Busqueda extends JFrame {
 		btnEditar.setBounds(587, 416, 54, 41);
 		contentPane.add(btnEditar);
 		
-		JLabel lblNewLabel_4 = new JLabel("Sistema de Búsqueda");
+		JLabel lblNewLabel_4 = new JLabel("Sistema de Busca");
 		lblNewLabel_4.setForeground(new Color(12, 138, 199));
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 24));
 		lblNewLabel_4.setBounds(155, 42, 258, 42);
@@ -103,7 +103,7 @@ public class Busqueda extends JFrame {
 		
 		tbHuespedes = new JTable();
 		tbHuespedes.setFont(new Font("Arial", Font.PLAIN, 14));
-		panel.addTab("Huéspedes", new ImageIcon("C:\\Users\\Genesys\\Downloads\\persona.png"), tbHuespedes, null);
+		panel.addTab("Hóspedes", new ImageIcon("C:\\Users\\Genesys\\Downloads\\persona.png"), tbHuespedes, null);
 		
 		JTable tbReservas = new JTable();
 		tbReservas.setFont(new Font("Arial", Font.PLAIN, 14));

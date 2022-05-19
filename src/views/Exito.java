@@ -38,7 +38,7 @@ public class Exito extends JDialog {
 	 */
 	public Exito() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\aH-40px.png"));
-		setBounds(100, 100, 376, 226);
+		setBounds(100, 100, 394, 226);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(SystemColor.control);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,10 +52,10 @@ public class Exito extends JDialog {
 			contentPanel.add(lblNewLabel);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Registro Guardado Exitosamente");
+			JLabel lblNewLabel_1 = new JLabel("Datos guardados satisfactoriamente");
 			lblNewLabel_1.setForeground(new Color (12, 138, 199));
-			lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 16));
-			lblNewLabel_1.setBounds(60, 122, 258, 14);
+			lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
+			lblNewLabel_1.setBounds(27, 122, 322, 21);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{
@@ -67,6 +67,8 @@ public class Exito extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();
+						MenuUsuario usuario = new MenuUsuario();
+						usuario.setVisible(true);
 					}
 				});
 				okButton.setActionCommand("OK");

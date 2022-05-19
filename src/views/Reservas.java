@@ -116,27 +116,20 @@ public class Reservas extends JFrame {
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
 		panel.add(lblNewLabel_4);
 		
-		JButton btnReservar = new JButton("Reservar");
+		JButton btnReservar = new JButton("Continuar");
+		btnReservar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroHuesped huesped = new RegistroHuesped();
+				huesped.setVisible(true);
+				dispose();
+			}
+		});
 		btnReservar.setForeground(Color.WHITE);
-		btnReservar.setBounds(201, 436, 122, 33);
+		btnReservar.setBounds(183, 436, 140, 33);
 		btnReservar.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\calendario.png"));
 		btnReservar.setBackground(new Color(65,105,225));
 		btnReservar.setFont(new Font("Arial", Font.PLAIN, 14));
 		panel.add(btnReservar);
-		
-		JButton btnSalir = new JButton("");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MenuUsuario usuario = new MenuUsuario();
-				usuario.setVisible(true);
-				dispose();
-			}
-		});
-		btnSalir.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\cerrar-sesion 32-px.png"));
-		btnSalir.setForeground(Color.WHITE);
-		btnSalir.setBackground(Color.WHITE);
-		btnSalir.setBounds(820, 442, 44, 39);
-		panel.add(btnSalir);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);

@@ -51,7 +51,7 @@ public class MenuUsuario extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\menu-img.png"));
-		lblNewLabel.setBounds(-46, 0, 707, 471);
+		lblNewLabel.setBounds(-56, 0, 741, 471);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
@@ -70,7 +70,7 @@ public class MenuUsuario extends JFrame {
 		});
 		btnReserva.setForeground(Color.WHITE);
 		btnReserva.setBackground(Color.WHITE);
-		btnReserva.setBounds(793, 189, 71, 73);
+		btnReserva.setBounds(741, 186, 71, 73);
 		contentPane.add(btnReserva);
 		
 		JPanel panel_1 = new JPanel();
@@ -82,20 +82,6 @@ public class MenuUsuario extends JFrame {
 		lblNewLabel_3.setForeground(new Color(12, 138, 199));
 		lblNewLabel_3.setFont(new Font("Arial", Font.PLAIN, 13));
 		panel_1.add(lblNewLabel_3);
-		
-		JButton btnRegistro = new JButton("");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				RegistroHuesped huesped = new RegistroHuesped();
-				huesped.setVisible(true);
-				dispose();
-			}
-		});
-		btnRegistro.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\3.png"));
-		btnRegistro.setForeground(Color.WHITE);
-		btnRegistro.setBackground(Color.WHITE);
-		btnRegistro.setBounds(691, 190, 71, 73);
-		contentPane.add(btnRegistro);
 		
 		JButton btnSalir = new JButton("");
 		btnSalir.addActionListener(new ActionListener() {
@@ -111,16 +97,10 @@ public class MenuUsuario extends JFrame {
 		btnSalir.setBounds(823, 411, 50, 47);
 		contentPane.add(btnSalir);
 		
-		JLabel lblNewLabel_1 = new JLabel("Registro");
-		lblNewLabel_1.setForeground(new Color(12, 138, 199));
-		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(691, 166, 71, 17);
-		contentPane.add(lblNewLabel_1);
-		
 		JLabel lblNewLabel_1_1 = new JLabel("Reservas");
 		lblNewLabel_1_1.setForeground(new Color(12, 138, 199));
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 16));
-		lblNewLabel_1_1.setBounds(793, 166, 80, 17);
+		lblNewLabel_1_1.setBounds(741, 163, 80, 17);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Búsqueda");
