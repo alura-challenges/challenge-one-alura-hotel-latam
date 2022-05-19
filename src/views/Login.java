@@ -81,6 +81,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MenuUsuario usuario = new MenuUsuario();
 				usuario.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton.setBounds(409, 322, 103, 33);

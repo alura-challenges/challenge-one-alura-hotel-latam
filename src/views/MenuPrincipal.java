@@ -73,6 +73,7 @@ public class MenuPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login login = new Login();
 				login.setVisible(true);
+				dispose();
 			}
 		});
 		btnLogin.setBounds(763, 241, 71, 73);
