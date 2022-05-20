@@ -77,6 +77,18 @@ Para instalar, se necesita descangar el paquete a través de ese enlace:
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169592420-7ea798d4-b7d2-4fd6-a03c-75f0fbc2e4bc.png">
 </p>
 
+El siguiente paso es extraer los archivos a una carpeta e importar los archivos desde la carpeta lib para el Eclipse. Haz clic con el botón derecho encima del proyecto y elige la opción <em>Build Path.</em>
+
+<p align="center" >
+     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169595799-f4fa1e4a-2f25-40a5-848c-254e77330ebb.png">
+</p>
+
+La ventana presentará dos opciones, y para importar el <strong>Jcalendar</strong>, pulse en ClassPath y luego en <em>Add External JARS</em>.
+
+<p align="center" >
+     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169596029-a9fa21ef-8d90-45a6-8aa2-be2d911d4074.png">
+</p>
+
 #### Al clonar o descargar el proyecto base y tener instalado el JCalendar, tendrás esta presentación al ejecutar el proyecto en Eclipse:
 
 <p align="center" >
