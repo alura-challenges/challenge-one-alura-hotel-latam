@@ -11,6 +11,8 @@
 #### 🔹Sigue las orientaciones que tenemos en este repositorio. 📚
 #### 🔹¡Visita la página del desafío haciendo clic aquí! [Link do Challenge](https://www.aluracursos.com/challenges/oracle-one-java) 📃
 
+### ¡Importante!
+⚠️ Utilizar la versión 8 de Java para que tenga compatibilidad.
 
 ### ¡Analizando nuestro repositorio!
 ---
@@ -66,7 +68,7 @@ Luego haz clic en el botón <strong>Browse</strong> y busca el proyecto en el di
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169432246-a769555c-daf9-490e-a0c7-908f7e5de967.png">
 </p>
 
-Luego que haga la importación a su editor, es necesario instalar la librería <strong>JCalendar</strong>, de lo contrário, el proyecto presentará un error. </br>
+Tras realizar la importación a su editor, es necesario instalar la librería <strong>JCalendar</strong>, de lo contrário, el proyecto presentará un error. </br>
 
 Para instalar, se necesita descangar el paquete a través de ese enlace: 
 🔹 [Link para o JCalendar](https://toedter.com/jcalendar/)
