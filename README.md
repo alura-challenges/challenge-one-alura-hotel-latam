@@ -9,7 +9,7 @@
 ---
 #### 🔹Etiqueta este proyecto con una ⭐
 #### 🔹Sigue los lineamientos de lo que tenemos en este repositorio. 📚
-#### 🔹¡Visita la página del desafío haciendo clic aquí! [Link do Challenge](https://www.alura.com.br/challenges/oracle-one-java) 📃
+#### 🔹¡Visita la página del desafío haciendo clic aquí! [Link do Challenge](https://www.aluracursos.com/challenges/oracle-one-java) 📃
 
 
 ### ¡Analizando nuestro repositorio!
@@ -83,7 +83,7 @@ Luego haga clic en el botón <strong>Browse</strong> y busca el proyecto en el d
 ---
 1) Tenga el <strong>Fork</strong> del proyecto en tu repositorio en Github.
 2) Utilize el topico **#challengeonehotelaluralatam** </br>
-3) Vaya a la pestaña izquierda de su proyecto y haga clic en el engranaje de configuración, seleccione el campo **topics** e inserte la etiqueta **#**
+3) Vaya a la pestaña izquierda de su proyecto y haga clic en el engranaje de configuración, seleccione el campo **topics** e inserte la etiqueta **#challengeonehotelaluralatam**
 
 
 ## ¿Cómo hago la entrega final de mi Proyecto?
