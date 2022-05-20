@@ -51,7 +51,7 @@ public class Reservas extends JFrame {
 	 * Create the frame.
 	 */
 	public Reservas() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\calendario.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Reservas.class.getResource("/imagenes/calendario.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 540);
 		setResizable(false);
@@ -126,7 +126,7 @@ public class Reservas extends JFrame {
 		});
 		btnReservar.setForeground(Color.WHITE);
 		btnReservar.setBounds(183, 436, 140, 33);
-		btnReservar.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\calendario.png"));
+		btnReservar.setIcon(new ImageIcon(Reservas.class.getResource("/imagenes/calendario.png")));
 		btnReservar.setBackground(new Color(65,105,225));
 		btnReservar.setFont(new Font("Arial", Font.PLAIN, 14));
 		panel.add(btnReservar);
@@ -141,10 +141,10 @@ public class Reservas extends JFrame {
 		lblNewLabel.setBounds(0, -16, 500, 539);
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\reservas-img-2.png"));
+		lblNewLabel.setIcon(new ImageIcon(Reservas.class.getResource("/imagenes/reservas-img-2.png")));
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\Ha-100px.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(Reservas.class.getResource("/imagenes/Ha-100px.png")));
 		lblNewLabel_2.setBounds(15, 6, 104, 107);
 		panel.add(lblNewLabel_2);
 	}

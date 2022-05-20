@@ -48,7 +48,7 @@ public class RegistroHuesped extends JFrame {
 	 * Create the frame.
 	 */
 	public RegistroHuesped() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\persona.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroHuesped.class.getResource("/imagenes/persona.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 634);
 		contentPane = new JPanel();
@@ -100,12 +100,12 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(lblNewLabel_1_1_1_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\registro.png"));
+		lblNewLabel.setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/registro.png")));
 		lblNewLabel.setBounds(0, 0, 502, 556);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnCancelar = new JButton("");
-		btnCancelar.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\cancelar.png"));
+		btnCancelar.setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/cancelar.png")));
 		btnCancelar.setBackground(SystemColor.menu);
 		btnCancelar.setBounds(764, 543, 54, 41);
 		contentPane.add(btnCancelar);
@@ -118,7 +118,7 @@ public class RegistroHuesped extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar_1.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\disquete.png"));
+		btnCancelar_1.setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/disquete.png")));
 		btnCancelar_1.setBackground(SystemColor.menu);
 		btnCancelar_1.setBounds(700, 543, 54, 41);
 		contentPane.add(btnCancelar_1);
@@ -131,7 +131,7 @@ public class RegistroHuesped extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar_2.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\cerrar-sesion 32-px.png"));
+		btnCancelar_2.setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/cerrar-sesion 32-px.png")));
 		btnCancelar_2.setBackground(SystemColor.menu);
 		btnCancelar_2.setBounds(828, 543, 54, 41);
 		contentPane.add(btnCancelar_2);
@@ -148,7 +148,7 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(textField_2);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\Ha-100px.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/Ha-100px.png")));
 		lblNewLabel_2.setBounds(780, 11, 104, 107);
 		contentPane.add(lblNewLabel_2);
 		

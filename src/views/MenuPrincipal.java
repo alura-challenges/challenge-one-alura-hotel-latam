@@ -43,7 +43,7 @@ public class MenuPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public MenuPrincipal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\Ha-100px.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenuPrincipal.class.getResource("/imagenes/aH-40px.png")));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 910, 537);
 		contentPane = new JPanel();
@@ -62,13 +62,13 @@ public class MenuPrincipal extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-49, 0, 746, 471);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\menu-img.png"));
+		lblNewLabel.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/menu-img.png")));
 		panel.add(lblNewLabel);
 		
 		JButton btnLogin = new JButton("");
 		btnLogin.setForeground(SystemColor.text);
 		btnLogin.setBackground(Color.white);
-		btnLogin.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\login.png"));
+		btnLogin.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/login.png")));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login login = new Login();
@@ -86,7 +86,7 @@ public class MenuPrincipal extends JFrame {
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\aH-150px.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/aH-150px.png")));
 		lblNewLabel_2.setBounds(723, 33, 150, 156);
 		panel.add(lblNewLabel_2);
 		
@@ -114,7 +114,7 @@ public class MenuPrincipal extends JFrame {
 				 }
 			}
 		});
-		btnSalir.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\cerrar-sesion 32-px.png"));
+		btnSalir.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/cerrar-sesion 32-px.png")));
 		btnSalir.setForeground(Color.WHITE);
 		btnSalir.setBackground(Color.WHITE);
 		btnSalir.setBounds(832, 420, 44, 39);

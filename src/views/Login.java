@@ -42,7 +42,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\perfil-del-usuario.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/imagenes/perfil-del-usuario.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 538);
 		contentPane = new JPanel();
@@ -52,7 +52,7 @@ public class Login extends JFrame {
 		setLocationRelativeTo(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\hotel.png"));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/hotel.png")));
 		lblNewLabel.setBounds(-53, 0, 422, 499);
 		contentPane.add(lblNewLabel);
 		
@@ -76,7 +76,7 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel_1_1_1_1);
 		
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\perfil-del-usuario.png"));
+		btnNewButton.setIcon(new ImageIcon(Login.class.getResource("/imagenes/perfil-del-usuario.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuUsuario usuario = new MenuUsuario();
@@ -88,7 +88,7 @@ public class Login extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\cerrar-24px.png"));
+		btnNewButton_1.setIcon(new ImageIcon(Login.class.getResource("/imagenes/cerrar-24px.png")));
 		btnNewButton_1.setBounds(540, 322, 103, 33);
 		contentPane.add(btnNewButton_1);
 		
