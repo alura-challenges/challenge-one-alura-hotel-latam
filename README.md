@@ -44,17 +44,17 @@
 
 ## ¿Cómo importar mi proyecto a Eclipse?
 
-Una vez dentro del Editor en el lado derecho, haz clic en el<strong>Project Explorer</strong> con el botón derecho del mouse o en <strong>Files</strong> en el menú que está en la parte superior, elige la opción <strong>Import</strong>.
+Una vez dentro del Editor al lado derecho, haz clic en el <strong>Files</strong> que está en el menú en la parte superior, elige la opción <em>Open Projects from File System</em> o en <strong>Import</strong>. Otra opción es en la parte del <strong>Project Explorer</strong> hacer clic con el botón derecho del mouse y eleigir el <strong>Import</strong>.
+
+<p align="center" >
+     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169589417-ce957746-dca9-43ab-9261-3772ffee140b.png">
+</p>
 
 <p align="center" >
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431325-23a2e3cb-85a3-4298-8e60-64dfa58e2e6f.png">
 </p>
 
-<p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431266-ce978900-fa14-4421-86f9-aa78db549612.png">
-</p>
-
-La ventana del <strong>Import</strong> se abrirá, haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <strong>Next</strong>.
+Si elegir por el <strong>Import</strong>, su ventana se abrirá. Haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <strong>Next</strong>.
 
 <p align="center" >
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431890-27f40955-27d8-4b4d-82df-d3507f85de6c.png">
@@ -66,7 +66,16 @@ Luego haz clic en el botón <strong>Browse</strong> y busca el proyecto en el di
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169432246-a769555c-daf9-490e-a0c7-908f7e5de967.png">
 </p>
 
-#### Al clonar o descargar el proyecto base, tendrás esta presentación al ejecutar el proyecto en Eclipse:
+Luego que haga la importación a su editor, es necesario instalar la librería <strong>JCalendar</strong>, de lo contrário, el proyecto presentará un error. </br>
+
+Para instalar, se necesita descangar el paquete a través de ese enlace: 
+🔹 [Link para o JCalendar](https://toedter.com/jcalendar/)
+
+<p align="center" >
+     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169592420-7ea798d4-b7d2-4fd6-a03c-75f0fbc2e4bc.png">
+</p>
+
+#### Al clonar o descargar el proyecto base y tener instalado el JCalendar, tendrás esta presentación al ejecutar el proyecto en Eclipse:
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/169432388-35fdcea3-98ba-4e6c-9f0f-9b3f577b4011.png">
