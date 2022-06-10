@@ -19,8 +19,8 @@ import java.awt.Toolkit;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField txtUsuario;
+	private JPasswordField txtContrasena;
 
 	/**
 	 * Launch the application.
@@ -56,41 +56,41 @@ public class Login extends JFrame {
 		lblNewLabel.setBounds(-53, 0, 422, 499);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(409, 181, 234, 33);
-		contentPane.add(textField);
+		txtUsuario = new JTextField();
+		txtUsuario.setColumns(10);
+		txtUsuario.setBounds(409, 181, 234, 33);
+		contentPane.add(txtUsuario);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Usuário");
 		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblNewLabel_1_1_1.setBounds(409, 156, 57, 14);
 		contentPane.add(lblNewLabel_1_1_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(409, 261, 234, 33);
-		contentPane.add(passwordField);
+		txtContrasena = new JPasswordField();
+		txtContrasena.setBounds(409, 261, 234, 33);
+		contentPane.add(txtContrasena);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Contraseña");
 		lblNewLabel_1_1_1_1.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblNewLabel_1_1_1_1.setBounds(409, 236, 133, 14);
 		contentPane.add(lblNewLabel_1_1_1_1);
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setIcon(new ImageIcon(Login.class.getResource("/imagenes/perfil-del-usuario.png")));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/imagenes/perfil-del-usuario.png")));
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MenuUsuario usuario = new MenuUsuario();
 				usuario.setVisible(true);
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(409, 322, 103, 33);
-		contentPane.add(btnNewButton);
+		btnLogin.setBounds(409, 322, 103, 33);
+		contentPane.add(btnLogin);
 		
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.setIcon(new ImageIcon(Login.class.getResource("/imagenes/cerrar-24px.png")));
-		btnNewButton_1.setBounds(540, 322, 103, 33);
-		contentPane.add(btnNewButton_1);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setIcon(new ImageIcon(Login.class.getResource("/imagenes/cerrar-24px.png")));
+		btnCancelar.setBounds(540, 322, 103, 33);
+		contentPane.add(btnCancelar);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Genesys\\Documents\\imagenesAluraHotel\\Ha-100px.png"));

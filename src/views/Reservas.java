@@ -29,7 +29,7 @@ import java.awt.Toolkit;
 public class Reservas extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField Valor;
+	private JTextField txtValor;
 
 	/**
 	 * Launch the application.
@@ -69,9 +69,9 @@ public class Reservas extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JDateChooser FechaE = new JDateChooser();
-		FechaE.setBounds(88, 166, 235, 33);
-		panel.add(FechaE);
+		JDateChooser txtFechaE = new JDateChooser();
+		txtFechaE.setBounds(88, 166, 235, 33);
+		panel.add(txtFechaE);
 		
 		JLabel lblNewLabel_1 = new JLabel("Fecha de Check In");
 		lblNewLabel_1.setBounds(88, 142, 133, 14);
@@ -83,27 +83,27 @@ public class Reservas extends JFrame {
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.PLAIN, 14));
 		panel.add(lblNewLabel_1_1);
 		
-		JDateChooser FechaS = new JDateChooser();
-		FechaS.setBounds(88, 234, 235, 33);
-		FechaS.getCalendarButton().setBackground(Color.WHITE);
-		panel.add(FechaS);
+		JDateChooser txtFechaS = new JDateChooser();
+		txtFechaS.setBounds(88, 234, 235, 33);
+		txtFechaS.getCalendarButton().setBackground(Color.WHITE);
+		panel.add(txtFechaS);
 		
-		Valor = new JTextField();
-		Valor.setBounds(88, 303, 235, 33);
-		Valor.setEnabled(false);
-		panel.add(Valor);
-		Valor.setColumns(10);
+		txtValor = new JTextField();
+		txtValor.setBounds(88, 303, 235, 33);
+		txtValor.setEnabled(false);
+		panel.add(txtValor);
+		txtValor.setColumns(10);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Valor de la Reserva");
 		lblNewLabel_1_1_1.setBounds(88, 278, 133, 14);
 		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 14));
 		panel.add(lblNewLabel_1_1_1);
 		
-		JComboBox FormaPago = new JComboBox();
-		FormaPago.setBounds(88, 373, 235, 33);
-		FormaPago.setFont(new Font("Arial", Font.PLAIN, 14));
-		FormaPago.setModel(new DefaultComboBoxModel(new String[] {"Tarjeta de Crédito", "Tarjeta de Débito", "Dinero en efectivo"}));
-		panel.add(FormaPago);
+		JComboBox txtFormaPago = new JComboBox();
+		txtFormaPago.setBounds(88, 373, 235, 33);
+		txtFormaPago.setFont(new Font("Arial", Font.PLAIN, 14));
+		txtFormaPago.setModel(new DefaultComboBoxModel(new String[] {"Tarjeta de Crédito", "Tarjeta de Débito", "Dinero en efectivo"}));
+		panel.add(txtFormaPago);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Forma de pago");
 		lblNewLabel_1_1_1_1.setBounds(88, 347, 133, 24);

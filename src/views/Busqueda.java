@@ -77,7 +77,7 @@ public class Busqueda extends JFrame {
 		btnEditar.setBounds(587, 416, 54, 41);
 		contentPane.add(btnEditar);
 		
-		JLabel lblNewLabel_4 = new JLabel("Sistema de Busca");
+		JLabel lblNewLabel_4 = new JLabel("Sistema de Búsqueda");
 		lblNewLabel_4.setForeground(new Color(12, 138, 199));
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 24));
 		lblNewLabel_4.setBounds(155, 42, 258, 42);
@@ -103,7 +103,7 @@ public class Busqueda extends JFrame {
 		
 		tbHuespedes = new JTable();
 		tbHuespedes.setFont(new Font("Arial", Font.PLAIN, 14));
-		panel.addTab("Hóspedes", new ImageIcon(Busqueda.class.getResource("/imagenes/persona.png")), tbHuespedes, null);
+		panel.addTab("Huéspedes", new ImageIcon(Busqueda.class.getResource("/imagenes/persona.png")), tbHuespedes, null);
 		
 		JTable tbReservas = new JTable();
 		tbReservas.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -115,11 +115,11 @@ public class Busqueda extends JFrame {
 		btnEliminar.setBounds(651, 416, 54, 41);
 		contentPane.add(btnEliminar);
 		
-		JButton btnEliminar_1 = new JButton("");
-		btnEliminar_1.setIcon(new ImageIcon(Busqueda.class.getResource("/imagenes/cancelar.png")));
-		btnEliminar_1.setBackground(SystemColor.menu);
-		btnEliminar_1.setBounds(713, 416, 54, 41);
-		contentPane.add(btnEliminar_1);
+		JButton btnCancelar = new JButton("");
+		btnCancelar.setIcon(new ImageIcon(Busqueda.class.getResource("/imagenes/cancelar.png")));
+		btnCancelar.setBackground(SystemColor.menu);
+		btnCancelar.setBounds(713, 416, 54, 41);
+		contentPane.add(btnCancelar);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(Busqueda.class.getResource("/imagenes/Ha-100px.png")));

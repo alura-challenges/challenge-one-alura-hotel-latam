@@ -66,8 +66,8 @@ public class Exito extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();
-						MenuUsuario usuario = new MenuUsuario();
+						dispose();//sirve para cerrar el Frame actual
+						MenuUsuario usuario = new MenuUsuario(); 
 						usuario.setVisible(true);
 					}
 				});
