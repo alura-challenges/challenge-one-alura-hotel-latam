@@ -57,11 +57,11 @@
      <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173256272-6dd3eaba-b52e-42ec-b307-17ed785f9110.png">
 </p>
 
-3 - Haz clic en la opción <strong>Code</strong>. Se msotrarán tres formas de instalar el repositorio en su máquina, y destacamos dos:
+3 - Haz clic en la opción <strong>Code</strong>. Se mostrarán tres formas de instalar el repositorio en su máquina, y destacamos dos:
 
 <p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169426870-85eece56-744d-4888-8467-181703c7d644.png">
-</p>
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173166461-e62d9704-98d5-4773-a60e-57d5729575ae.png">
+</p></br>
 
 #### 🔹 Clonar o descargar el ZIP
 
@@ -242,11 +242,11 @@ Haz clic en la opción para aceptar los Términos de Uso, y para finalizar haz c
 
 ### ¿Cómo hago la entrega final de mi Proyecto?
 
-4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio.
+4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-lp-entrega-de-challenge-one-esp)
 
-🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-lp-entrega-de-challenge-one-esp)
-![formulario-entrega](https://user-images.githubusercontent.com/101413385/169529176-ebe296b9-aa12-4790-b873-d534efd8d057.png)
-)
+<p align="center" >
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/101413385/169529176-ebe296b9-aa12-4790-b873-d534efd8d057.png">
+</p>
 
 5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
 
