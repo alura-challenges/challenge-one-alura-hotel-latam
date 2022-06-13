@@ -84,7 +84,7 @@
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/173164237-1db32d79-2b35-433f-817c-ec3fa30899fc.png">
 </p>
 
-Luego haga clic en <em>Directory</em> y ubique el directorio del proyecto "clonado" o "extraído" en su computadora. Haz click en <em>Finish</em> para completar la importación.
+Luego haz click en <em>Directory</em> y ubica el directorio del proyecto "clonado" o "extraído" en tu computadora. Haz click en <em>Finish</em> para completar la importación.
 
 <p align="center" >
      <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173110215-f9451a5e-a9eb-4056-aec8-6eb3e3601e53.png">
@@ -100,7 +100,7 @@ Luego haga clic en <em>Directory</em> y ubique el directorio del proyecto "clona
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431325-23a2e3cb-85a3-4298-8e60-64dfa58e2e6f.png">
 </p>
 
-Si elegir por el <strong>Import</strong>, abrirá la ventana correspondiente. Haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <em>Next</em>.
+Si te decides por el <strong>Import</strong>, se abrirá la ventana correspondiente. Haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <em>Next</em>.
 
 <p align="center" >
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431890-27f40955-27d8-4b4d-82df-d3507f85de6c.png">
@@ -114,9 +114,9 @@ Luego haz clic en el botón <em>Browse</em> y busca el proyecto en el directorio
 
 ## 📅 JCalendar
 
-Tras realizar la importación a su editor, es necesario instalar la librería <strong>JCalendar</strong>, de lo contrário, el proyecto presentará un error y no será posible abrir la ventana de <strong>Reservas</strong>. </br>
+Tras realizar la importación a tu editor, es necesario instalar la librería <strong>JCalendar</strong>, de lo contrário, el proyecto presentará un error y no será posible abrir la ventana de <strong>Reservas</strong>. </br>
 
-Para instalar, se necesita descangar el paquete a través de ese enlace: 
+Para instalar, se necesita descargar el paquete a través de ese enlace: 
 🔹 [Link para el JCalendar](https://toedter.com/jcalendar/)
 
 <p align="center" >
@@ -135,19 +135,19 @@ Archivos de carpeta <strong>lib</strong>:
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167517-ed6edd9e-7d56-486f-8d47-f50e7ee2c786.png">
 </p>
 
-Haz clic con el botón derecho encima del proyecto ubicado en el <strong>Package Explorer</strong>, elijas la opción <em>Build Path</em> y <em>Configure Build Path</em>.
+Haz click con el botón derecho encima del proyecto ubicado en el <strong>Package Explorer</strong>, elijas la opción <em>Build Path</em> y <em>Configure Build Path</em>.
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167991-44b111ca-c2d6-4d83-b225-33eb2657448f.png">
 </p>
 
-El proyecto tendrá un mensaje de error que indica que la ruta de la biblioteca no existe en su computadora. Haz clic en <em>Libraries</em>, luego en <em>Classpath</em> seleccione el archivo JCalendar, elijas la opción <em>Remove</em> y <em>Apply and Close</em>.
+El proyecto tendrá un mensaje de error que indica que la ruta de la biblioteca no existe en tu computadora. Haz click en <em>Libraries</em>, luego en <em>Classpath</em> seleccione el archivo JCalendar, elije la opción <em>Remove</em> y <em>Apply and Close</em>.
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167817-ddbdedc5-c4a6-4f6d-bd86-f86a153d6b88.png">
 </p>
 
-Para importar el <strong>Jcalendar</strong> de su computadora, después de haber "extraído" los archivos de la descarga, pulse en <em>ClassPath</em> y luego en <em>Add External JARS</em> agregue uno por uno y haz clic en <em>Apply and Close</em>.
+Para importar el <strong>Jcalendar</strong> desde tu computadora, después de haber "extraído" los archivos de la descarga, pulsa en <em>ClassPath</em> y luego en <em>Add External JARS</em> agrega uno por uno y haz click en <em>Apply and Close</em>.
 
 <p align="center" >
      <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169596029-a9fa21ef-8d90-45a6-8aa2-be2d911d4074.png">
@@ -202,7 +202,7 @@ Para este reto te proponemos dos tablas: <strong>Reservas</strong> y <strong>Hu�
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/169529338-09a4d4c2-1b5a-41dc-b305-38498ebc29a8.png">
 </p>
 <p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/169537707-0ec35f65-306e-439c-9f2b-db467fcf6adc.png">
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/91544872/173358015-a252c5cf-48a2-4285-907d-a69239e7c5a5.png">
 </p>
 
 ## 🗔 Plugin WindowBuilder
@@ -213,19 +213,19 @@ En el menú de <strong>Eclipse</strong>, ir a la pestaña <em>Help</em> y selecc
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173254683-a4d27b04-3994-4c7b-bf70-6e1b665a5452.png">
 </p>
 
-En la barra de búsqueda, ingreses <strong>window builder</strong> y haz clic en <em>Go</em>. Después de la búsqueda, seleccione la primera opción y haz clic en <em>Install</em>.
+En la barra de búsqueda, ingresa <strong>window builder</strong> y haz click en <em>Go</em>. Después de la búsqueda, selecciona la primera opción y haz click en <em>Install</em>.
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173254936-b1ed41ba-af1b-47ae-bf75-00de4a22ff19.png">
 </p>
 
-En la siguiente ventana, seleccione el botón <em>Confirm</em>.
+En la siguiente ventana, selecciona el botón <em>Confirm</em>.
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173255237-94789460-0544-4dd3-b00d-2738b83bd575.png">
 </p>
 
-Haz clic en la opción para aceptar los Términos de Uso, y para finalizar haz clic en <em>Finish</em>.
+Haz click en la opción para aceptar los Términos de Uso, y para finalizar haz clic en <em>Finish</em>.
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173255298-05ac80f1-3e93-4097-90af-7fc8a4fa1611.png">
@@ -250,12 +250,7 @@ Haz clic en la opción para aceptar los Términos de Uso, y para finalizar haz c
 
 5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
 
-<p align="center" >
-     <img width="300" heigth="300" src="https://user-images.githubusercontent.com/101413385/173115011-e109db51-da61-4157-8ca8-6c213e646ed2.png">
-</p>
-
 6) ¡No olvides poner un enlace o video de tu proyecto en Linkedin! Etiqueta a #Oracle y #AluraLatam 🏁
-
 
 🧡 <strong>Oracle</strong></br>
 <a href="https://www.linkedin.com/company/oracle/" target="_blank">
