@@ -235,7 +235,7 @@ Después de la instalación, el <strong>Eclipse</strong> será necesario reinici
 
 ### ¿Cómo abrir cada ventana de diseño?
 
-Una vez que completes el desafío, si quieres explorar el <em>Window Builder</em> y agreguar nuevas ventanas, o cambiar el diseño de las existentes, haz clic en el archivo<strong>.java</strong>, y luego en <em>Open With</em> y finalmente en <em>Window Builder Editor</em>.
+Una vez que completes el desafío, si quieres explorar el <em>Window Builder</em> y agreguar nuevas ventanas, o cambiar el diseño de las existentes, haz clic en el archivo <strong>.java</strong>, y luego en <em>Open With</em> y finalmente en <em>Window Builder Editor</em>.
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173681973-5699a164-b66d-49f5-87c1-5436dd425457.png">
