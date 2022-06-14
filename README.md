@@ -231,6 +231,22 @@ Haz click en la opción para aceptar los Términos de Uso, y para finalizar haz 
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173255298-05ac80f1-3e93-4097-90af-7fc8a4fa1611.png">
 </p>
 
+Después de la instalación, el <strong>Eclipse</strong> será necesario reiniciar.
+
+### ¿Cómo abrir cada ventana de diseño?
+
+Una vez que completes el desafío, si quieres explorar el <em>Window Builder</em> y agreguar nuevas ventanas, o cambiar el diseño de las existentes, haz clic en el archivo<strong>.java</strong>, y luego en <em>Open With</em> y finalmente en <em>Window Builder Editor</em>.
+
+<p align="center" >
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173681973-5699a164-b66d-49f5-87c1-5436dd425457.png">
+</p>
+
+La pestaña de <em>Design</em> se abrirá por encima de la zona de la <em>Console</em>. ¡Aquí puedes liberar al artista que llevas dentro de ti!
+
+<p align="center" >
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173682648-4c371224-fe4b-4e57-a3ee-9298a4d44554.png">
+</p>
+
 ## 📬 Entrega
 
 ### ¿Cómo incluir mi proyecto con el "#" del desafío?
