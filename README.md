@@ -16,8 +16,8 @@
 
 - Java
 - Eclipse
-- MySql
 - Biblioteca JCalendar
+- MySql
 - Plugin WindowBuilder </br>
 
 ---
@@ -103,13 +103,13 @@ Luego haz click en <em>Directory</em> y ubica el directorio del proyecto "clonad
 Si te decides por el <strong>Import</strong>, se abrirá la ventana correspondiente. Haz clic en la opción <em>Existing Projects Into Workspace</em> y en el botón <em>Next</em>.
 
 <p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169431890-27f40955-27d8-4b4d-82df-d3507f85de6c.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169431890-27f40955-27d8-4b4d-82df-d3507f85de6c.png">
 </p>
 
 Luego haz clic en el botón <em>Browse</em> y busca el proyecto en el directorio local.
 
 <p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169432246-a769555c-daf9-490e-a0c7-908f7e5de967.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169432246-a769555c-daf9-490e-a0c7-908f7e5de967.png">
 </p>
 
 ## 📅 JCalendar
@@ -120,7 +120,7 @@ Para instalar, se necesita descargar el paquete a través de ese enlace:
 🔹 [Link para el JCalendar](https://toedter.com/jcalendar/)
 
 <p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169592420-7ea798d4-b7d2-4fd6-a03c-75f0fbc2e4bc.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169592420-7ea798d4-b7d2-4fd6-a03c-75f0fbc2e4bc.png">
 </p>
 
 El siguiente paso es extraer los archivos a una carpeta e importar los archivos desde la carpeta <strong>lib</strong> a una carpeta local e importar los archivos a Eclipse.
@@ -132,7 +132,7 @@ El siguiente paso es extraer los archivos a una carpeta e importar los archivos 
 Archivos de carpeta <strong>lib</strong>:
 
 <p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167517-ed6edd9e-7d56-486f-8d47-f50e7ee2c786.png">
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173699122-00cc4055-2098-4bba-8d3b-3bd252013116.png">
 </p>
 
 Haz click con el botón derecho encima del proyecto ubicado en el <strong>Package Explorer</strong>, elijas la opción <em>Build Path</em> y <em>Configure Build Path</em>.
@@ -144,27 +144,48 @@ Haz click con el botón derecho encima del proyecto ubicado en el <strong>Packag
 El proyecto tendrá un mensaje de error que indica que la ruta de la biblioteca no existe en tu computadora. Haz click en <em>Libraries</em>, luego en <em>Classpath</em> seleccione el archivo JCalendar, elije la opción <em>Remove</em> y <em>Apply and Close</em>.
 
 <p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173167817-ddbdedc5-c4a6-4f6d-bd86-f86a153d6b88.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173167817-ddbdedc5-c4a6-4f6d-bd86-f86a153d6b88.png">
 </p>
 
-Para importar el <strong>Jcalendar</strong> desde tu computadora, después de haber "extraído" los archivos de la descarga, pulsa en <em>ClassPath</em> y luego en <em>Add External JARS</em> agrega uno por uno y haz click en <em>Apply and Close</em>.
+Para importar el <strong>Jcalendar</strong> desde tu computadora, después de haber "extraído" los archivos de la descarga, pulsa en <em>ClassPath</em> y luego en <em>Add External JARS</em> agrega uno por uno  o selecciona todos de una vez y haz click en <em>Apply and Close</em>.
 
 <p align="center" >
-     <img width="400" heigth="400" src="https://user-images.githubusercontent.com/101413385/169596029-a9fa21ef-8d90-45a6-8aa2-be2d911d4074.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/169596029-a9fa21ef-8d90-45a6-8aa2-be2d911d4074.png">
 </p>
 
 Por lo tanto, el proyecto debe contener los siguientes archivos después de las importaciones:
 
 <p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173168583-f6352510-d639-40ef-8339-c161688e78a3.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173695620-7a4893e9-b9a1-44d6-8b70-c94a85ea891e.png">
 </p>
+
 
 ## 🚧 Proyecto
 
 #### Al clonar o descargar el proyecto base y tener instalado el JCalendar, tendrás esta presentación al ejecutar el proyecto en Eclipse:
 
 <p align="center" >
-     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/169432388-35fdcea3-98ba-4e6c-9f0f-9b3f577b4011.png">
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/101413385/169432388-35fdcea3-98ba-4e6c-9f0f-9b3f577b4011.png">
+</p>
+
+### ⚠️ Descargué el proyecto pero los caracteres especiales no funcionan:
+
+Si tu proyecto tiene errores como los de la imagen, siga los pasos a continuación:
+
+<p align="center" >
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173694166-189f3bce-070d-4f33-9a1d-7a9f1de95bb8.png">
+</p>
+
+Ve a <em>Window</em> y haz clic en <em>Preferences</em>.
+
+<p align="center" >
+     <img width="200" heigth="200" src="https://user-images.githubusercontent.com/101413385/173693126-8e2fec8b-91b1-4007-bbc5-010bb454f440.png">
+</p>
+
+Luego haz clic en <em>General</em> y en <em>Workspace</em>. Si tu <em>Text File Enconding</em> no está con el <strong>Default (UTF-8)</strong>, haz clic en <em>Other</em>, y eliges la opción <strong>UTF-8</strong>, y finaliza haciendo clic <em>Apply and Close</em>.
+
+<p align="center" >
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173691963-1e3d966e-5162-4393-9232-d5d395d5440f.png">
 </p>
 
 ## 📊 Banco de Dados
@@ -229,6 +250,22 @@ Haz click en la opción para aceptar los Términos de Uso, y para finalizar haz 
 
 <p align="center" >
      <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173255298-05ac80f1-3e93-4097-90af-7fc8a4fa1611.png">
+</p>
+
+Después de la instalación, será necesario reiniciar el <strong>Eclipse</strong>.
+
+### ¿Cómo abrir cada ventana de diseño?
+
+Una vez que completes el desafío, si quieres explorar el <em>Window Builder</em> y agregar nuevas ventanas, o cambiar el diseño de las existentes, haz clic en el archivo <strong>.java</strong>, y luego en <em>Open With</em> y finalmente en <em>Window Builder Editor</em>.
+
+<p align="center" >
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173681973-5699a164-b66d-49f5-87c1-5436dd425457.png">
+</p>
+
+La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console</em>. ¡Aquí puedes liberar al artista que llevas dentro de ti!
+
+<p align="center" >
+     <img width="500" heigth="500" src="https://user-images.githubusercontent.com/101413385/173682648-4c371224-fe4b-4e57-a3ee-9298a4d44554.png">
 </p>
 
 ## 📬 Entrega
