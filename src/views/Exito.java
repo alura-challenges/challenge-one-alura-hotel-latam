@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
+@SuppressWarnings("serial")
 public class Exito extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -66,7 +67,7 @@ public class Exito extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();//sirve para cerrar el Frame actual
+						dispose();//sirve para cerrar la ventana actual
 						MenuUsuario usuario = new MenuUsuario(); 
 						usuario.setVisible(true);
 					}
