@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -80,9 +81,7 @@ public class Login extends JFrame {
 		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/imagenes/perfil-del-usuario.png")));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuUsuario usuario = new MenuUsuario();
-				usuario.setVisible(true);
-				dispose();
+				Logar();
 			}
 		});
 		btnLogin.setBounds(409, 322, 103, 33);
@@ -98,4 +97,46 @@ public class Login extends JFrame {
 		lblNewLabel_1.setBounds(470, 30, 103, 94);
 		contentPane.add(lblNewLabel_1);
 	}
+	
+	private void Logar() {
+		 String Usuario= "admin";
+	     String Contraseña="admin";
+
+
+	        String contrase=new String (txtContrasena.getPassword());
+
+	        if(txtUsuario.getText().equals(Usuario) && contrase.equals(Contraseña)){
+	            MenuUsuario menu = new MenuUsuario();
+	            menu.setVisible(true);
+	            dispose();	 
+	        }else {
+	            JOptionPane.showMessageDialog(this, "Usuario o Contraseña no válidos");
+	        }
+	}
+//        try {
+//            String nome_usuario;
+//            String senha_usuario;
+//
+//            nome_usuario = txtusuario.getText();
+//            senha_usuario = new String(txtSenha.getPassword());  //solução
+//
+//            Usuario usuarioDTO = new Usuario();
+//            usuarioDTO.setNome_usuario(nome_usuario);
+//            usuarioDTO.setSenha_usuario(senha_usuario);
+//
+//            UsuarioDAO usuario = new UsuarioDAO();
+//            ResultSet resultadoUsuario = usuario.autenticarUsuario(usuarioDTO);
+//
+//            if (resultadoUsuario.next()) {
+//                MenuUsuario menuusuarioview = new MenuUsuario();
+//                menuusuarioview.setVisible(true);
+//                dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
+//            }
+//
+//        } catch (SQLException e2) {
+//            JOptionPane.showMessageDialog(null, "Login View" + e2);
+//        }
+//    }
 }

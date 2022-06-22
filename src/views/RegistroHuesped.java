@@ -154,7 +154,7 @@ public class RegistroHuesped extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Registro de Huésped");
 		lblNewLabel_4.setForeground(new Color(12, 138, 199));
 		lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 20));
-		lblNewLabel_4.setBounds(576, 74, 198, 42);
+		lblNewLabel_4.setBounds(541, 73, 229, 42);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_1_2_1 = new JLabel("Número de Reserva");
