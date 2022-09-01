@@ -282,7 +282,7 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-lp-entrega-de-challenge-one-esp)
 
 <p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/101413385/169529176-ebe296b9-aa12-4790-b873-d534efd8d057.png">
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/187992671-c8f26030-76da-48ed-ad6b-1ec4582e0072.png">
 </p>
 
 5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
