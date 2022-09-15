@@ -1,7 +1,7 @@
-# Challenge ONE | Oracle | Back-end | Hotel Alura
+# Challenge ONE | Back-end | Hotel Alura
 
 <p align="center" >
-     <img width="300" heigth="300" src="https://user-images.githubusercontent.com/101413385/173164615-192ca98a-1a44-480e-9229-9f82f456eec8.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173164615-192ca98a-1a44-480e-9229-9f82f456eec8.png">
 </p>
 
 ---
@@ -23,7 +23,7 @@
 ---
 ## ⚠️ Importante! ⚠️
 
-☕ Use Java versión 8 para compatibilidad. </br></br>
+☕ Use Java versión 8 o superior para compatibilidad. </br></br>
 📝 Recomendamos usar el editor de Eclipse para compatibilidad con la Interfaz Gráfica. </br></br>
 🎨 La interfaz contiene dos métodos importantes:
 - setResizable(false): determina el tamaño de la ventana, y a través del parámetro <strong>false</strong>, la pantalla no se puede maximizar;

@@ -164,7 +164,7 @@ public class MenuPrincipal extends JFrame {
 		lblTitulo.setFont(new Font("Roboto Light", Font.PLAIN, 20));
 	}
 	
-	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"
+	//Código que permite movimentar a janela pela tela seguindo a posição de "x" e "y"	
 	private void headerMousePressed(java.awt.event.MouseEvent evt) {
         xMouse = evt.getX();
         yMouse = evt.getY();
