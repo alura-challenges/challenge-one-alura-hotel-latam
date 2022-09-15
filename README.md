@@ -1,11 +1,12 @@
-# Challenge ONE | Back-end | Hotel Alura
+# Challenge ONE | Java | Back-end | Hotel Alura
 
 <p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173164615-192ca98a-1a44-480e-9229-9f82f456eec8.png">
+     <img width="300" heigth="300" src="https://user-images.githubusercontent.com/91544872/189419040-c093db78-c970-4960-8aca-ffcc11f7ffaf.png">
 </p>
 
 ---
 ##  Primeros Pasos:
+
 
 #### 🔹 Marca este proyecto con una ⭐
 #### 🔹 Sigue las orientaciones que tenemos en este repositorio. 📚
@@ -165,7 +166,7 @@ Por lo tanto, el proyecto debe contener los siguientes archivos después de las 
 #### Al clonar o descargar el proyecto base y tener instalado el JCalendar, tendrás esta presentación al ejecutar el proyecto en Eclipse:
 
 <p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/101413385/169432388-35fdcea3-98ba-4e6c-9f0f-9b3f577b4011.png">
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/189419249-06b539da-7cf2-4d40-a711-618a5c872096.png">
 </p>
 
 ### ⚠️ Descargué el proyecto pero los caracteres especiales no funcionan:
@@ -173,7 +174,7 @@ Por lo tanto, el proyecto debe contener los siguientes archivos después de las 
 Si tu proyecto tiene errores como los de la imagen, siga los pasos a continuación:
 
 <p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/173694166-189f3bce-070d-4f33-9a1d-7a9f1de95bb8.png">
+     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/91544872/189419556-20b67f67-003c-47ac-a0ae-02cf814a6ccb.png">
 </p>
 
 Ve a <em>Window</em> y haz clic en <em>Preferences</em>.
@@ -273,8 +274,8 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 ### ¿Cómo incluir mi proyecto con el "#" del desafío?
 
 1) Ten el <strong>Fork</strong> del proyecto en tu repositorio en Github.
-2) Utilize el topico **#challengeonehotelaluralatam** </br>
-3) Ve a la pestaña derecha de tu proyecto y haz clic en el engranaje de configuración en la sección <em>About</em>, seleccione el campo **topics** e inserte la etiqueta **challengeonehotelaluralatam**
+2) Utilize el topico **#challengeonehotelaluralatam2** </br>
+3) Ve a la pestaña derecha de tu proyecto y haz clic en el engranaje de configuración en la sección <em>About</em>, seleccione el campo **topics** e inserte la etiqueta **challengeonehotelaluralatam2**
 
 
 ### ¿Cómo hago la entrega final de mi Proyecto?
@@ -282,7 +283,7 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-lp-entrega-de-challenge-one-esp)
 
 <p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/187992671-c8f26030-76da-48ed-ad6b-1ec4582e0072.png">
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/189419937-e71f7b5d-9f79-48c3-8806-81f8ba291ca1.png">
 </p>
 
 5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
