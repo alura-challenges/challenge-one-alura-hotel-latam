@@ -275,7 +275,7 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 
 1) Ten el <strong>Fork</strong> del proyecto en tu repositorio en Github.
 2) Utilize el topico **#challengeonehotelaluralatam2** </br>
-3) Ve a la pestaña derecha de tu proyecto y haz clic en el engranaje de configuración en la sección <em>About</em>, seleccione el campo **topics** e inserte la etiqueta **challengeonehotelaluralatam2**
+3) Ve a la pestaña derecha de tu proyecto y haz clic en el engranaje de configuración en la sección <em>About</em>, seleccione el campo **topics** e inserte la etiqueta **challengeonehotelaluralatam3**
 
 
 ### ¿Cómo hago la entrega final de mi Proyecto?
@@ -283,7 +283,7 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-lp-entrega-de-challenge-one-esp)
 
 <p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/189419937-e71f7b5d-9f79-48c3-8806-81f8ba291ca1.png">
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/179625558-4dda7e69-bdaf-4a79-9ca9-82cf8fede9de.png">
 </p>
 
 5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
