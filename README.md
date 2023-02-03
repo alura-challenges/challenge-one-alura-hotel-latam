@@ -280,10 +280,10 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 
 ### ¿Cómo hago la entrega final de mi Proyecto?
 
-4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link para o formulário](https://lp.alura.com.br/alura-latam-lp-entrega-de-challenge-one-esp)
+4) Rellena el siguiente formulario con tus datos personales, junto con el enlace de tu repositorio. 🔹 [Link del formulário](https://lp.alura.com.br/alura-latam-entrega-challenge-one-esp-back-end)
 
-<p align="center" >
-     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/179625558-4dda7e69-bdaf-4a79-9ca9-82cf8fede9de.png">
+   <p align="center" >
+     <img width="700" heigth="700" src="https://user-images.githubusercontent.com/91544872/216698915-e0d26701-44e6-4e81-8c33-211790c52f27.png">
 </p>
 
 5) Ve a tu correo electrónico y canjea tu insignia obtenida al completar otro desafío del Proyecto ONE! 🏆
