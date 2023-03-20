@@ -272,6 +272,10 @@ La pestaña de <em>Design</em> se abrirá por encima de la zona del <em>Console<
 ### ¿Cómo incluir mi proyecto con el "#" del desafío?
 
 1) Ten el <strong>Fork</strong> del proyecto en tu repositorio en Github.
+<<<<<<< HEAD
+=======
+
+>>>>>>> a622d9964c50ce8ef201469ac2746a9233df2149
 2) Utilize el topico **challengeonehotelaluralatam4** </br>
 3) Ve a la pestaña derecha de tu proyecto y haz clic en el engranaje de configuración en la sección <em>About</em>, seleccione el campo **topics** e inserte la etiqueta **challengeonehotelaluralatam4**
 
