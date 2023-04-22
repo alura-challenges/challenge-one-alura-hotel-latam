@@ -1,0 +1,5 @@
+package com.alurahotel.controller;
+
+public class UserController {
+
+}

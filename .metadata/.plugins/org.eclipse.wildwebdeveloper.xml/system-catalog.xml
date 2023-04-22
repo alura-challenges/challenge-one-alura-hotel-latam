@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+<system systemId="http://maven.apache.org/maven-v4_0_0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/maven-v4_0_0.xsd"/>
+<system systemId="http://maven.apache.org/xsd/maven-4.0.0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/maven-v4_0_0.xsd"/>
+<system systemId="http://maven.apache.org/xsd/settings-1.0.0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/settings-v1_0_0.xsd"/>
+<system systemId="http://maven.apache.org/xsd/profiles-1.0.0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/profiles-v1_0_0.xsd"/>
+<system systemId="http://maven.apache.org/xsd/archetype-1.0.0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/archetype-1.0.0.xsd"/>
+<system systemId="http://maven.apache.org/xsd/archetype-catalog-1.0.0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/archetype-catalog-1.0.0.xsd"/>
+<system systemId="http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" uri="file:///C:/Users/Dreyes/eclipse/java-2022-12/eclipse/configuration/org.eclipse.osgi/271/0/.cp/xsd/archetype-descriptor-1.0.0.xsd"/>
+</catalog>

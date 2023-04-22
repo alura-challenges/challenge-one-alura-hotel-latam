@@ -1,0 +1,5 @@
+package com.alurahotel.factory;
+
+public class ConnectionFactory {
+
+}
