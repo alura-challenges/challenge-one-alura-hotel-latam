@@ -1,22 +1,34 @@
 package Entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Huesped {
-	private int id;
+	private Integer id;
 	private String nombre;
 	private String apellido;
-	private Date fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private String nacionalidad;
-	private int telefono;
-	private int numeroReservas;
+	private Integer telefono;
+	private Integer numeroReservas;
 	
 	
 	public Huesped() {
 	}
 	
 	
-	public Huesped(int id, String nombre, String apellido, Date fechaNacimiento,  String nacionalidad, int telefono, int numeroReservas) {
+	
+	public Huesped(String nombre, String apellido, LocalDate fechaNacimiento, String nacionalidad, Integer telefono, Integer numeroReserva) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNacimiento = fechaNacimiento;
+		this.nacionalidad = nacionalidad;
+		this.telefono = telefono;
+		this.numeroReservas = numeroReserva;
+	}
+
+
+
+	public Huesped(Integer id, String nombre, String apellido, LocalDate fechaNacimiento,  String nacionalidad, Integer telefono, Integer numeroReservas) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -27,10 +39,10 @@ public class Huesped {
 	}
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -45,10 +57,10 @@ public class Huesped {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public Date getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getNacionalidad() {
@@ -57,16 +69,16 @@ public class Huesped {
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
 	}
-	public int getTelefono() {
+	public Integer getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
-	public int getNumeroReservas() {
+	public Integer getNumeroReservas() {
 		return numeroReservas;
 	}
-	public void setNumeroReservas(int numeroReservas) {
+	public void setNumeroReservas(Integer numeroReservas) {
 		this.numeroReservas = numeroReservas;
 	}
 

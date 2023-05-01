@@ -13,6 +13,14 @@ public class Reservas {
 	public Reservas() {
 	}
 
+	public Reservas(int id, LocalDate fechaEntrada, LocalDate fechaSalida, double valor, String formaDePago) {
+		super();
+		this.id = id;
+		this.fechaEntrada = fechaEntrada;
+		this.fechaSalida = fechaSalida;
+		this.valor = valor;
+		this.formaDePago = formaDePago;
+	}
 	
 
 	public int getId() {
@@ -62,6 +70,12 @@ public class Reservas {
 
 	public void setFormaDePago(String formaDePago) {
 		this.formaDePago = formaDePago;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservas [ ID: " + id + ", FECHA ENTRADA: " + fechaEntrada + ", FECHA SALIDA: " + fechaSalida + ", VALOR: "
+				+ valor + ", FORMA DE PAGO: " + formaDePago + " ]";
 	}
 	
 	
