@@ -1,7 +1,6 @@
 package DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,8 +8,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import Entities.Huesped;
 import Entities.Reservas;
 
 public class ReservasDAO {
@@ -44,7 +41,7 @@ public class ReservasDAO {
 						int id = rs.getInt("id_reservas");
 						LocalDate fechaEntrada = rs.getDate("fecha_entrada").toLocalDate();
 						LocalDate fechaSalida = rs.getDate("fecha_salida").toLocalDate();
-						double valor = rs.getInt("valor");
+						Double valor = rs.getDouble("valor");
 						String formaDePago = rs.getString("forma_de_pago");
 						
 						reserva = new Reservas(id, fechaEntrada, fechaSalida, valor, formaDePago);
@@ -75,8 +72,8 @@ public class ReservasDAO {
 			try (statement) {
 				
 				statement.setObject(1, reserva.getFechaEntrada());
-				statement.setObject(3, reserva.getFechaSalida());
-				statement.setDouble(2, reserva.getValor());
+				statement.setObject(2, reserva.getFechaSalida());
+				statement.setDouble(3, reserva.getValor());
 				statement.setString(4, reserva.getFormaDePago());
 
 				statement.execute();
@@ -94,7 +91,6 @@ public class ReservasDAO {
 			} catch(SQLException e) {
 				throw new RuntimeException(e);
 			}
-
 		} catch(SQLException e) {
 			throw new RuntimeException(e);
 		}

@@ -45,7 +45,7 @@ public class HuespedDAO {
 						String apellido = rs.getString("apellido");
 						LocalDate fechaNacimiento = rs.getDate("fecha_nacimiento").toLocalDate();
 						String nacionalidad = rs.getString("nacionalidad");
-						Integer telefono = rs.getInt("telefono");
+						Long telefono = rs.getLong("telefono");
 						Integer numeroReserva = rs.getInt("id_reservas");
 						
 						usuario = new Huesped(id, nombre, apellido, fechaNacimiento, nacionalidad, telefono, numeroReserva);
@@ -79,7 +79,7 @@ public class HuespedDAO {
 				statement.setString(2, usuario.getApellido());
 				statement.setObject(3, usuario.getFechaNacimiento());
 				statement.setString(4, usuario.getNacionalidad());
-				statement.setInt(5, usuario.getTelefono());
+				statement.setLong(5, usuario.getTelefono());
 				statement.setInt(6, usuario.getNumeroReservas());
 
 				statement.execute();
@@ -104,7 +104,7 @@ public class HuespedDAO {
 	}
 	
 	
-	public int modificar(Integer id, String nombre, String apellido, LocalDate fecha_nac, String nacionalidad, Integer telefono) {
+	public int modificar(Integer id, String nombre, String apellido, LocalDate fecha_nac, String nacionalidad, Long telefono) {
 
 		try {
 
@@ -123,7 +123,7 @@ public class HuespedDAO {
 				statement.setString(2, apellido);
 				statement.setObject(3, fecha_nac);
 				statement.setString(4, nacionalidad);
-				statement.setInt(5, telefono);
+				statement.setLong(5, telefono);
 				//statement.setInt(6, idReserva);
 				statement.setInt(6, id);
 
