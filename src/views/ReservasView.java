@@ -176,12 +176,13 @@ public class ReservasView extends JFrame {
 		});
 		btnexit.setLayout(null);
 		btnexit.setBackground(new Color(12, 138, 199));
-		btnexit.setBounds(429, 0, 53, 36);
+		btnexit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnexit.setBounds(429, 0, 53, 45);
 		panel_1.add(btnexit);
 		
 		labelExit = new JLabel("X");
 		labelExit.setForeground(Color.WHITE);
-		labelExit.setBounds(0, 0, 53, 36);
+		labelExit.setBounds(0, 0, 53, 45);
 		btnexit.add(labelExit);
 		labelExit.setHorizontalAlignment(SwingConstants.CENTER);
 		labelExit.setFont(new Font("Roboto", Font.PLAIN, 18));
@@ -226,6 +227,7 @@ public class ReservasView extends JFrame {
 		});
 		btnAtras.setLayout(null);
 		btnAtras.setBackground(Color.WHITE);
+		btnAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnAtras.setBounds(0, 0, 53, 36);
 		header.add(btnAtras);
 		
@@ -277,11 +279,11 @@ public class ReservasView extends JFrame {
 		txtValor.setHorizontalAlignment(SwingConstants.CENTER);
 		txtValor.setForeground(Color.BLACK);
 		txtValor.setBounds(78, 328, 43, 33);
-		txtValor.setEditable(false);
+		//txtValor.setEditable(false);
 		txtValor.setFont(new Font("Roboto Black", Font.BOLD, 17));
 		txtValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel.add(txtValor);
-		txtValor.setColumns(10);
+		//txtValor.setColumns(20);
 
 
 		txtFormaPago = new JComboBox();
@@ -310,8 +312,16 @@ public class ReservasView extends JFrame {
 		panel.add(btnsiguiente);
 		btnsiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+		JLabel labelSiguiente = new JLabel("SIGUIENTE");
+		labelSiguiente.setHorizontalAlignment(SwingConstants.CENTER);
+		labelSiguiente.setForeground(Color.WHITE);
+		labelSiguiente.setFont(new Font("Roboto", Font.PLAIN, 18));
+		labelSiguiente.setBounds(0, 0, 122, 35);
+		btnsiguiente.add(labelSiguiente);
 
 	}
+	
+	
 		
 	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"	
 	 private void headerMousePressed(java.awt.event.MouseEvent evt) {

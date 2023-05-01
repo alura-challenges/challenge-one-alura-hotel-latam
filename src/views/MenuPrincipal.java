@@ -57,6 +57,7 @@ public class MenuPrincipal extends JFrame {
 		
 		Panel panel = new Panel();
 		panel.setBackground(SystemColor.window);
+		//panel.setBackground(new Color(135,206,235));
 		panel.setBounds(0, 0, 910, 537);
 		contentPane.add(panel);
 		panel.setLayout(null);

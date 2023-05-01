@@ -53,7 +53,7 @@ public class MenuUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 944, 609);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(135,206,235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -76,7 +76,7 @@ public class MenuUsuario extends JFrame {
 		});
 		
 		JPanel panelMenu = new JPanel();
-		panelMenu.setBackground(new Color(12, 138, 199));
+		panelMenu.setBackground(new Color(8,8,8));
 		panelMenu.setBounds(0, 0, 257, 609);
 		contentPane.add(panelMenu);
 		panelMenu.setLayout(null);
@@ -105,6 +105,7 @@ public class MenuUsuario extends JFrame {
 		});
 		btnRegistro.setBounds(0, 255, 257, 56);
 		btnRegistro.setBackground(new Color(12, 138, 199));
+		btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		panelMenu.add(btnRegistro);
 		btnRegistro.setLayout(null);
 		
@@ -135,6 +136,7 @@ public class MenuUsuario extends JFrame {
 		});
 		btnBusqueda.setBounds(0, 312, 257, 56);
 		btnBusqueda.setBackground(new Color(12, 138, 199));
+		btnBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		panelMenu.add(btnBusqueda);
 		btnBusqueda.setLayout(null);
 		
@@ -174,6 +176,7 @@ public class MenuUsuario extends JFrame {
 		
 		btnexit.setLayout(null);
 		btnexit.setBackground(Color.WHITE);
+		btnexit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnexit.setBounds(891, 0, 53, 36);
 		header.add(btnexit);
 		
@@ -184,7 +187,7 @@ public class MenuUsuario extends JFrame {
 		labelExit.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
 	    JPanel panelFecha = new JPanel();
-	    panelFecha.setBackground(new Color(118, 187, 223));
+	    panelFecha.setBackground(new Color(28,28,28));
 	    panelFecha.setBounds(256, 84, 688, 121);
 	    contentPane.add(panelFecha);
 	    panelFecha.setLayout(null);
