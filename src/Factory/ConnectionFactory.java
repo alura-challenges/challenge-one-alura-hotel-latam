@@ -29,5 +29,15 @@ private final DataSource dataSource;
 		}
 
     }
+	
+	public static void main(String[] args) throws SQLException {
+		
+		Connection con = new ConnectionFactory().recuperateConnection();	
+
+        System.out.println("Cerrando la conexión");
+
+        con.close();
+		
+	}
 
 }
