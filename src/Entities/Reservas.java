@@ -6,15 +6,22 @@ public class Reservas {
 	private int id;
 	private LocalDate fechaEntrada;
 	private LocalDate fechaSalida;
-	private double valor;
+	private Double valor;
 	private String formaDePago;
 	
 	
 	public Reservas() {
 	}
 
-	public Reservas(int id, LocalDate fechaEntrada, LocalDate fechaSalida, double valor, String formaDePago) {
-		super();
+	public Reservas(LocalDate fechaEntrada, LocalDate fechaSalida, Double valor, String formaDePago) {
+		this.fechaEntrada = fechaEntrada;
+		this.fechaSalida = fechaSalida;
+		this.valor = valor;
+		this.formaDePago = formaDePago;
+	}
+	
+	
+	public Reservas(int id, LocalDate fechaEntrada, LocalDate fechaSalida, Double valor, String formaDePago) {
 		this.id = id;
 		this.fechaEntrada = fechaEntrada;
 		this.fechaSalida = fechaSalida;
@@ -53,12 +60,12 @@ public class Reservas {
 	}
 
 
-	public double getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
 
-	public void setValor(double valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
