@@ -25,7 +25,7 @@ public class HuespedController {
     	huesped.guardar(usuario);
 	}
 
-	public int modificar(Integer id, String nombre,  String apellido, LocalDate fecha_nac, String nacionalidad, Integer telefono)  {
+	public int modificar(Integer id, String nombre,  String apellido, LocalDate fecha_nac, String nacionalidad, Long telefono)  {
 		return huesped.modificar(id, nombre, apellido, fecha_nac,  nacionalidad, telefono);
 	}
 
