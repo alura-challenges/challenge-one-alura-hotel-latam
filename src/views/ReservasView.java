@@ -11,10 +11,12 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
+import Controllers.ReservasController;
+import Entities.Reservas;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import java.text.Format;
+import java.time.LocalDate;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -30,14 +32,15 @@ import javax.swing.border.LineBorder;
 public class ReservasView extends JFrame {
 
 	private JPanel contentPane;
-	public static JTextField txtValor;
+	public JTextField txtValor;
 	public static JDateChooser txtFechaEntrada;
 	public static JDateChooser txtFechaSalida;
-	public static JComboBox<String> txtFormaPago;
+	public JComboBox<String> txtFormaPago;
 	int xMouse, yMouse;
 	private JLabel labelExit;
 	private JLabel labelAtras;
-
+	private ReservasController reservasController;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -59,6 +62,9 @@ public class ReservasView extends JFrame {
 	 */
 	public ReservasView() {
 		super("Reserva");
+		
+		reservasController = new ReservasController();
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ReservasView.class.getResource("/imagenes/aH-40px.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 560);
@@ -278,20 +284,19 @@ public class ReservasView extends JFrame {
 		txtValor.setBackground(SystemColor.text);
 		txtValor.setHorizontalAlignment(SwingConstants.CENTER);
 		txtValor.setForeground(Color.BLACK);
-		txtValor.setBounds(78, 328, 43, 33);
-		//txtValor.setEditable(false);
+		txtValor.setBounds(78, 328, 289, 35);
 		txtValor.setFont(new Font("Roboto Black", Font.BOLD, 17));
 		txtValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel.add(txtValor);
 		//txtValor.setColumns(20);
 
 
-		txtFormaPago = new JComboBox();
+		txtFormaPago = new JComboBox<String>();
 		txtFormaPago.setBounds(68, 417, 289, 38);
 		txtFormaPago.setBackground(SystemColor.text);
 		txtFormaPago.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
 		txtFormaPago.setFont(new Font("Roboto", Font.PLAIN, 16));
-		txtFormaPago.setModel(new DefaultComboBoxModel(new String[] {"Tarjeta de Crédito", "Tarjeta de Débito", "Dinero en efectivo"}));
+		txtFormaPago.setModel(new DefaultComboBoxModel<String>(new String[] {"Tarjeta de Crédito", "Tarjeta de Débito", "Dinero en efectivo"}));
 		panel.add(txtFormaPago);
 
 		JPanel btnsiguiente = new JPanel();
@@ -300,6 +305,7 @@ public class ReservasView extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {		
 					RegistroHuesped registro = new RegistroHuesped();
+					agregarReserva();
 					registro.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
@@ -322,7 +328,44 @@ public class ReservasView extends JFrame {
 	}
 	
 	
-		
+	private void agregarReserva() {
+        if (txtFechaEntrada.getDateFormatString().equals("") || txtFechaSalida.getDateFormatString().equals("") || txtValor.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Hay campos que son requeridos y se encuentran vacíos!");
+            return;
+        }
+        
+        LocalDate fechaEntrada = LocalDate.parse(((JTextField)txtFechaEntrada.getDateEditor().getUiComponent()).getText().toString());
+        LocalDate FechaSalida = LocalDate.parse(((JTextField)txtFechaSalida.getDateEditor().getUiComponent()).getText().toString());
+        Double valor = (double) Integer.parseInt(txtValor.getText());
+        String formaDePago = txtFormaPago.getSelectedItem().toString();
+        
+        txtValor.setText("$" + valor);
+        
+        /*try {
+            valor = Integer.parseInt(txtValor.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, String
+                    .format("El campo cantidad debe ser numérico dentro del rango %d y %d.", 0, Integer.MAX_VALUE));
+            return;
+        }*/
+        
+        Reservas reserva = new Reservas(fechaEntrada, FechaSalida, valor, formaDePago);
+
+        this.reservasController.guardar(reserva);
+
+        JOptionPane.showMessageDialog(this, "La Reserva fue registrada con Éxito!");
+
+        this.limpiarFormulario();
+    }
+	
+	
+	private void limpiarFormulario() {
+        ReservasView.txtFechaEntrada.setDateFormatString("");
+        ReservasView.txtFechaSalida.setDateFormatString("");
+        this.txtValor.setText("");
+        this.txtFormaPago.setSelectedIndex(0);
+    }
+	
 	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"	
 	 private void headerMousePressed(java.awt.event.MouseEvent evt) {
 	        xMouse = evt.getX();

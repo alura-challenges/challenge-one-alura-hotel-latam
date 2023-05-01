@@ -22,9 +22,9 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.text.DecimalFormat;
 import java.text.Format;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
@@ -71,7 +71,7 @@ public class RegistroHuesped extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 634);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.text);
+		contentPane.setBackground(new Color(8, 8, 8));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
@@ -202,7 +202,7 @@ public class RegistroHuesped extends JFrame {
 		JLabel lblTitulo = new JLabel("REGISTRO HUÉSPED");
 		lblTitulo.setBounds(606, 55, 234, 42);
 		lblTitulo.setForeground(new Color(12, 138, 199));
-		lblTitulo.setFont(new Font("Roboto Black", Font.PLAIN, 23));
+		lblTitulo.setFont(new Font("", Font.PLAIN, 20));
 		contentPane.add(lblTitulo);
 		
 		JLabel lblNumeroReserva = new JLabel("NÚMERO DE RESERVA");
@@ -326,7 +326,7 @@ public class RegistroHuesped extends JFrame {
 	
 	
 	private void agregarHuesped() {
-        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtFechaN.getDateFormatString().equals("") || txtTelefono.getText().equals("") || txtNreserva.getText().equals("")) {
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtFechaN.getDateFormatString().equals("") || txtTelefono.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Hay campos que son requeridos y se encuentran vacíos!");
             return;
         }
@@ -335,15 +335,15 @@ public class RegistroHuesped extends JFrame {
         String apellido = txtApellido.getText();
         LocalDate fechaNac = LocalDate.parse(((JTextField)txtFechaN.getDateEditor().getUiComponent()).getText());
         String nacionalidad = txtNacionalidad.getSelectedItem().toString();
-        Integer telefono;
+        Long telefono;
         Integer numeroReserva;
         
         try {
-            telefono = Integer.parseInt(txtTelefono.getText());
+            telefono = Long.parseLong(txtTelefono.getText());
             numeroReserva = Integer.parseInt(txtNreserva.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, String
-                    .format("El campo cantidad debe ser numérico dentro del rango %d y %d.", 0, Integer.MAX_VALUE));
+                    .format("El campo cantidad debe ser numérico dentro del rango %d y %d.", 0, DecimalFormat.INTEGER_FIELD));
             return;
         }
         

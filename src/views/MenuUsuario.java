@@ -53,7 +53,7 @@ public class MenuUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 944, 609);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(135,206,235));
+		contentPane.setBackground(new Color(135,206,235)); // Sky Blue
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
