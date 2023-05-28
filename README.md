@@ -6,7 +6,6 @@
 
 ![image](https://github.com/rogergerberquirino93502/challenge-one-alura-hotel-latam/assets/42680508/f86f8b6d-a19b-4abc-987b-7aac6421e139)
 ![image](https://github.com/rogergerberquirino93502/challenge-one-alura-hotel-latam/assets/42680508/7f351625-2ba2-445f-bab1-ad35ebb95148)
-adminadminssaaa
 
 💙 <strong>Alura Latam</strong></br>
 <a href="https://www.linkedin.com/in/roger-gerber-quirino-tzep-tambriz-115729183/" target="_blank">
