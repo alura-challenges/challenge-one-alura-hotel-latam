@@ -7,6 +7,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import java.awt.Color;
 import com.toedter.calendar.JDateChooser;
+
+import controller.HuespedesController;
+import modelo.Huespedes;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -37,8 +41,10 @@ public class RegistroHuesped extends JFrame {
 	private JComboBox<Format> txtNacionalidad;
 	private JLabel labelExit;
 	private JLabel labelAtras;
-	int xMouse, yMouse;
+	static int xMouse;
+	int yMouse;
 
+	private HuespedesController huespedesControlle;
 	/**
 	 * Launch the application.
 	 */
@@ -46,7 +52,7 @@ public class RegistroHuesped extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroHuesped frame = new RegistroHuesped();
+					RegistroHuesped frame = new RegistroHuesped(xMouse);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,8 +63,9 @@ public class RegistroHuesped extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param integer 
 	 */
-	public RegistroHuesped() {
+	public RegistroHuesped(Integer integer) {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroHuesped.class.getResource("/imagenes/lOGO-50PX.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -327,5 +334,32 @@ public class RegistroHuesped extends JFrame {
 	        int y = evt.getYOnScreen();
 	        this.setLocation(x - xMouse, y - yMouse);
 }
+	    
+	    public void guardarHuesped() {
+			
+			if (txtFechaN.getDate() != null &&
+					!txtNombre.equals("") &&
+					!txtApellido.equals("") &&
+					!txtTelefono.equals("")
+					) {
+				String fechaNa = ((JTextField)txtFechaN.getDateEditor().getUiComponent()).getText();
+				int nreserva = Integer.parseInt(txtNreserva.getText());
+				Huespedes nuevoHuesped = new Huespedes(txtNombre.getText(), 
+														txtApellido.getText(),
+														java.sql.Date.valueOf(fechaNa), 
+														txtNacionalidad.getSelectedItem().toString(),
+														txtTelefono.getText(), 
+														nreserva);				
+				this.huespedesControlle.guardar(nuevoHuesped);				
+				Exito dialog = new Exito();
+				dialog.setVisible(true);
+				dispose();
+				
+			} else {JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+			} 
+		
+		
+	}
+
 											
 }

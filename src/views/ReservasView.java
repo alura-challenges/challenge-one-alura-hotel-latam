@@ -11,10 +11,15 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
+
+import controller.ReservasController;
+import modelo.Reservas;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.text.Format;
+import java.util.Calendar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -57,8 +62,13 @@ public class ReservasView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	private ReservasController reservasController;
+	
 	public ReservasView() {
-		super("Reserva");
+		
+		this.reservasController = new ReservasController();		
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ReservasView.class.getResource("/imagenes/aH-40px.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 560);
@@ -297,7 +307,7 @@ public class ReservasView extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {		
-					RegistroHuesped registro = new RegistroHuesped();
+					RegistroHuesped registro = new RegistroHuesped(xMouse);
 					registro.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
@@ -312,6 +322,7 @@ public class ReservasView extends JFrame {
 
 
 	}
+	
 		
 	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"	
 	 private void headerMousePressed(java.awt.event.MouseEvent evt) {
@@ -324,4 +335,44 @@ public class ReservasView extends JFrame {
 	        int y = evt.getYOnScreen();
 	        this.setLocation(x - xMouse, y - yMouse);
 }
+	    private void guardarReserva() {
+			 String FechaEntrada = ((JTextField)txtFechaEntrada.getDateEditor().getUiComponent()).getText();
+			 String FechaSalida = ((JTextField)txtFechaSalida.getDateEditor().getUiComponent()).getText();
+			 
+			 Reservas nuevaReserva = new Reservas(java.sql.Date.valueOf(FechaEntrada),
+					 							java.sql.Date.valueOf(FechaSalida),
+					 							txtValor.getText() ,
+					 							txtFormaPago.getSelectedItem().toString());
+			
+			 this.reservasController.guardar(nuevaReserva);
+						 
+			 RegistroHuesped registro = new RegistroHuesped(nuevaReserva.getId());
+			 registro.setVisible(true);
+			 dispose();
+		 }
+	    
+	    private void calularValor(JDateChooser fechaEntrada, JDateChooser fechaSalida) {
+			if(fechaEntrada.getDate() !=null && fechaSalida.getDate() !=null ) {
+				if(fechaEntrada.getDate().after(fechaSalida.getDate())) {
+					JOptionPane.showMessageDialog(null, "La fecha de CheckOut no puede ser posterior a la fecha de CheckIn",
+							"Erro en las fechas", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+							
+				Calendar inicio = fechaEntrada.getCalendar();
+				Calendar fin = fechaSalida.getCalendar();
+				int dias = -1;
+				int estadia = 7500;
+				int valor;
+				
+				while(inicio.before(fin)||inicio.equals(fin)) {
+					dias++;
+					inicio.add(Calendar.DATE, 1);
+				}
+				valor = dias * estadia;
+				String valorTotal = Integer.toString(valor);
+				txtValor.setText("$" +valorTotal);
+				
+			}
+		}
 }
