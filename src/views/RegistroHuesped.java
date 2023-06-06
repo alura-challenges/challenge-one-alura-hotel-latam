@@ -1,29 +1,30 @@
 package views;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import java.awt.Color;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.text.Format;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import javax.swing.SwingConstants;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
 
 @SuppressWarnings("serial")
 public class RegistroHuesped extends JFrame {
@@ -71,58 +72,6 @@ public class RegistroHuesped extends JFrame {
 		setUndecorated(true);
 		contentPane.setLayout(null);
 		
-		JPanel header = new JPanel();
-		header.setBounds(0, 0, 910, 36);
-		header.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				headerMouseDragged(e);
-			     
-			}
-		});
-		header.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				headerMousePressed(e);
-			}
-		});
-		header.setLayout(null);
-		header.setBackground(SystemColor.text);
-		header.setOpaque(false);
-		header.setBounds(0, 0, 910, 36);
-		contentPane.add(header);
-		
-		JPanel btnAtras = new JPanel();
-		btnAtras.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ReservasView reservas = new ReservasView();
-				reservas.setVisible(true);
-				dispose();				
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnAtras.setBackground(Color.white);
-				labelAtras.setForeground(Color.black);
-			}			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				 btnAtras.setBackground(new Color(12, 138, 199));
-			     labelAtras.setForeground(Color.white);
-			}
-		});
-		btnAtras.setLayout(null);
-		btnAtras.setBackground(new Color(12, 138, 199));
-		btnAtras.setBounds(0, 0, 53, 36);
-		header.add(btnAtras);
-		
-		labelAtras = new JLabel("<");
-		labelAtras.setHorizontalAlignment(SwingConstants.CENTER);
-		labelAtras.setForeground(Color.WHITE);
-		labelAtras.setFont(new Font("Roboto", Font.PLAIN, 23));
-		labelAtras.setBounds(0, 0, 53, 36);
-		btnAtras.add(labelAtras);
-		
 		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Roboto", Font.PLAIN, 16));
@@ -167,7 +116,7 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(lblApellido);
 		
 		JLabel lblFechaN = new JLabel("FECHA DE NACIMIENTO");
-		lblFechaN.setBounds(560, 256, 255, 14);
+		lblFechaN.setBounds(560, 247, 255, 14);
 		lblFechaN.setForeground(SystemColor.textInactiveText);
 		lblFechaN.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblFechaN);
@@ -193,7 +142,7 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(txtTelefono);
 		
 		JLabel lblTitulo = new JLabel("REGISTRO HUÉSPED");
-		lblTitulo.setBounds(606, 55, 234, 42);
+		lblTitulo.setBounds(606, 55, 265, 42);
 		lblTitulo.setForeground(new Color(12, 138, 199));
 		lblTitulo.setFont(new Font("Roboto Black", Font.PLAIN, 23));
 		contentPane.add(lblTitulo);
@@ -203,6 +152,9 @@ public class RegistroHuesped extends JFrame {
 		lblNumeroReserva.setForeground(SystemColor.textInactiveText);
 		lblNumeroReserva.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblNumeroReserva);
+		
+		
+		//Este valor debería ser autoincremetado
 		
 		txtNreserva = new JTextField();
 		txtNreserva.setFont(new Font("Roboto", Font.PLAIN, 16));
@@ -248,25 +200,6 @@ public class RegistroHuesped extends JFrame {
 		separator_1_2_5.setBackground(new Color(12, 138, 199));
 		contentPane.add(separator_1_2_5);
 		
-		JPanel btnguardar = new JPanel();
-		btnguardar.setBounds(723, 560, 122, 35);
-		btnguardar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		btnguardar.setLayout(null);
-		btnguardar.setBackground(new Color(12, 138, 199));
-		contentPane.add(btnguardar);
-		btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		
-		JLabel labelGuardar = new JLabel("GUARDAR");
-		labelGuardar.setHorizontalAlignment(SwingConstants.CENTER);
-		labelGuardar.setForeground(Color.WHITE);
-		labelGuardar.setFont(new Font("Roboto", Font.PLAIN, 18));
-		labelGuardar.setBounds(0, 0, 122, 35);
-		btnguardar.add(labelGuardar);
-		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 489, 634);
 		panel.setBackground(new Color(12, 138, 199));
@@ -283,15 +216,64 @@ public class RegistroHuesped extends JFrame {
 		panel.add(logo);
 		logo.setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/Ha-100px.png")));
 		
+		JPanel header = new JPanel();
+		header.setBounds(0, 0, 851, 36);
+		panel.add(header);
+		header.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				headerMouseDragged(e);
+			     
+			}
+		});
+		header.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				headerMousePressed(e);
+			}
+		});
+		header.setLayout(null);
+		header.setBackground(SystemColor.text);
+		header.setOpaque(false);
+		
+		JPanel btnAtras = new JPanel();
+		btnAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ReservasView reservas = new ReservasView();
+				reservas.setVisible(true);
+				dispose();				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnAtras.setBackground(Color.white);
+				labelAtras.setForeground(Color.black);
+			}			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				 btnAtras.setBackground(new Color(12, 138, 199));
+			     labelAtras.setForeground(Color.white);
+			}
+		});
+		btnAtras.setLayout(null);
+		btnAtras.setBackground(new Color(12, 138, 199));
+		btnAtras.setBounds(0, 0, 53, 36);
+		header.add(btnAtras);
+		
+		labelAtras = new JLabel("<");
+		labelAtras.setHorizontalAlignment(SwingConstants.CENTER);
+		labelAtras.setForeground(Color.WHITE);
+		labelAtras.setFont(new Font("Roboto", Font.PLAIN, 23));
+		labelAtras.setBounds(0, 0, 53, 36);
+		btnAtras.add(labelAtras);
+		
 		JPanel btnexit = new JPanel();
 		btnexit.setBounds(857, 0, 53, 36);
 		contentPane.add(btnexit);
 		btnexit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MenuPrincipal principal = new MenuPrincipal();
-				principal.setVisible(true);
-				dispose();
+				System.exit(0);
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -313,6 +295,23 @@ public class RegistroHuesped extends JFrame {
 		labelExit.setHorizontalAlignment(SwingConstants.CENTER);
 		labelExit.setForeground(SystemColor.black);
 		labelExit.setFont(new Font("Roboto", Font.PLAIN, 18));
+		
+		
+		//Agregar Validaciones
+		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnGuardar.setForeground(new Color(255, 255, 255));
+		btnGuardar.setBackground(new Color(0, 128, 255));
+		btnGuardar.setBounds(728, 556, 117, 42);
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Exito exito = new Exito();
+				exito.setVisible(true);
+				dispose();
+			}
+		});
+		
+		contentPane.add(btnGuardar);
 	}
 	
 	

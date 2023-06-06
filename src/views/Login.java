@@ -1,22 +1,23 @@
 package views;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JSeparator;
-import java.awt.SystemColor;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class Login extends JFrame {
 
@@ -138,7 +139,7 @@ public class Login extends JFrame {
 		JLabel labelTitulo = new JLabel("INICIAR SESIÓN");
 		labelTitulo.setForeground(SystemColor.textHighlight);
 		labelTitulo.setFont(new Font("Roboto Black", Font.PLAIN, 26));
-		labelTitulo.setBounds(65, 149, 202, 26);
+		labelTitulo.setBounds(65, 149, 296, 26);
 		panel.add(labelTitulo);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -192,7 +193,7 @@ public class Login extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Login();
+				autenticar();
 			}
 		});
 		btnLogin.setBackground(SystemColor.textHighlight);
@@ -234,7 +235,7 @@ public class Login extends JFrame {
 		header.setLayout(null);
 	}
 	
-	private void Login() {
+	private void autenticar() {
 		 String Usuario= "admin";
 	     String Contraseña="admin";
 
