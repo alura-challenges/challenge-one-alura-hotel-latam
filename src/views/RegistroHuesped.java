@@ -26,6 +26,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import controller.HuespedController;
+import controller.ReservaController;
+
 @SuppressWarnings("serial")
 public class RegistroHuesped extends JFrame {
 
@@ -38,12 +41,16 @@ public class RegistroHuesped extends JFrame {
 	private JComboBox<Format> txtNacionalidad;
 	private JLabel labelExit;
 	private JLabel labelAtras;
+	private static HuespedController huespedController;
+	private static ReservaController reservaController;
 	int xMouse, yMouse;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		huespedController = new HuespedController();
+		reservaController = new ReservaController();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -240,7 +247,7 @@ public class RegistroHuesped extends JFrame {
 		btnAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ReservasView reservas = new ReservasView();
+				RegistroReserva reservas = new RegistroReserva();
 				reservas.setVisible(true);
 				dispose();				
 			}
@@ -305,6 +312,10 @@ public class RegistroHuesped extends JFrame {
 		btnGuardar.setBounds(728, 556, 117, 42);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				//VALIDAR
+				
 				Exito exito = new Exito();
 				exito.setVisible(true);
 				dispose();
