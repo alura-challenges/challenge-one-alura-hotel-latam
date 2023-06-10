@@ -11,19 +11,28 @@ public class Huesped {
 	private Date fechaNacimiento;
 	private String nacionalidad;
 	private Long telefono;
-	private Integer idReserver;
+	private Integer idReserva;
 	public Huesped() {
 		
 	}
-	
-	public Huesped(String nombre, String apellido, Date fechaNacimiento, String nacionalidad, Long telefono,
-			Integer idReserver) {
+	public Huesped(Integer id, String nombre, String apellido, Date fechaNacimiento, String nacionalidad, Long telefono,
+			Integer idReserva) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaNacimiento = fechaNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.telefono = telefono;
-		this.idReserver = idReserver;
+		this.idReserva = idReserva;
+	}
+	public Huesped(String nombre, String apellido, Date fechaNacimiento, String nacionalidad, Long telefono,
+			Integer idReserva) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNacimiento = fechaNacimiento;
+		this.nacionalidad = nacionalidad;
+		this.telefono = telefono;
+		this.idReserva = idReserva;
 	}
 
 	public Integer getId() {
@@ -62,18 +71,18 @@ public class Huesped {
 	public void setTelefono(Long telefono) {
 		this.telefono = telefono;
 	}
-	public Integer getIdReserver() {
-		return idReserver;
+	public Integer getidReserva() {
+		return idReserva;
 	}
-	public void setIdReserver(Integer idReserver) {
-		this.idReserver = idReserver;
+	public void setidReserva(Integer idReserva) {
+		this.idReserva = idReserva;
 	}
 
 	@Override
 	public String toString() {
 		return "Huesped [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento="
-				+ fechaNacimiento + ", nacionalidad=" + nacionalidad + ", telefono=" + telefono + ", idReserver="
-				+ idReserver + "]";
+				+ fechaNacimiento + ", nacionalidad=" + nacionalidad + ", telefono=" + telefono + ", idReserva="
+				+ idReserva + "]";
 	}
 	public void formatoFechas() {
 		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
