@@ -46,13 +46,13 @@ public class RegistroReserva extends JFrame {
 	int xMouse, yMouse;
 	private JLabel labelExit;
 	private JLabel labelAtras;
-	private static ReservaController reservaController;
+	private static ReservaController reservaController= new ReservaController();;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		reservaController = new ReservaController();
+		//reservaController 
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
