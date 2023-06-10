@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import dao.HuespedDAO;
 import dbConnection.ConnectionFactory;
 import model.Huesped;
@@ -11,5 +13,8 @@ public class HuespedController {
 	}
 	public void guardar(Huesped huesped) {
 		this.huespedDAO.guardar(huesped);
+	}
+	public List<Huesped> listarHuespedes() {
+		return this.huespedDAO.listarHuespedes();
 	}
 }
