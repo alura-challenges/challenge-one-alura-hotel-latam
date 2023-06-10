@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import dao.ReservaDAO;
 import dbConnection.ConnectionFactory;
 import model.Reserva;
@@ -14,6 +16,9 @@ public class ReservaController {
 	}
 	public int buscarUltimaReserva() {
 		return this.reservaDAO.ultimaReserva();
+	}
+	public List<Reserva> listarReservas() {
+		return this.reservaDAO.listasReservas();
 	}
 	
 }
