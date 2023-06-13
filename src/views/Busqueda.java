@@ -121,14 +121,112 @@ public class Busqueda extends JFrame {
 		tbReservas = new JTable();
 		tbReservas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbReservas.setFont(new Font("Roboto", Font.PLAIN, 16));
-		modelo = (DefaultTableModel) tbReservas.getModel();
+		modelo = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return column != 0 && column != 3; // Columna 0 y 3 no es editable
+			}
+		};
+		tbReservas.setModel(modelo);
 		modelo.addColumn("Numero de Reserva");
 		modelo.addColumn("Fecha Check In");
 		modelo.addColumn("Fecha Check Out");
 		modelo.addColumn("Valor");
 		modelo.addColumn("Forma de Pago");
+		TableCellEditor dateEditor = new JDateChooserCellEditor();
+		tbReservas.getColumnModel().getColumn(1).setCellEditor(dateEditor);
+		tbReservas.getColumnModel().getColumn(2).setCellEditor(dateEditor);
+
+		String[] formasPago = { "Tarjeta de Crédito", "Tarjeta de Débito", "Dinero en efectivo" };
+		JComboBox<String> comboBoxEditor = new JComboBox<>(formasPago);
+		DefaultCellEditor cellEditor = new DefaultCellEditor(comboBoxEditor);
+		TableColumn formaPagoColumn = tbReservas.getColumnModel().getColumn(4);
+		formaPagoColumn.setCellEditor(cellEditor);
+
 		añadirReservas();
-		
+
+		tbReservas.getModel().addTableModelListener(new TableModelListener() {
+			public void tableChanged(TableModelEvent e) {
+				if (e.getType() == TableModelEvent.UPDATE) {
+					// Fila y columna
+					int row = e.getFirstRow();
+					int column = e.getColumn();
+
+					if (column != 4) {
+						// Deshabilitar el listener temporalmente
+						tbReservas.getModel().removeTableModelListener(this);
+						// Establecer la hora, los minutos, los segundos y los milisegundos a cero
+						Calendar calActual = Calendar.getInstance();
+						calActual.set(Calendar.HOUR_OF_DAY, 0);
+						calActual.set(Calendar.MINUTE, 0);
+						calActual.set(Calendar.SECOND, 0);
+						calActual.set(Calendar.MILLISECOND, 0);
+						// Obtengo las fechas
+						Object checkIn = tbReservas.getValueAt(row, 1);
+						java.util.Date fechaEntrada = (java.util.Date) checkIn;
+						Object checkOut = tbReservas.getValueAt(row, 2);
+						java.util.Date fechaSalida = (java.util.Date) checkOut;
+						// Formato de fechas
+						SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+						try {
+							switch (column) {
+							case 1:
+								if (fechaEntrada == null) {
+									throw new RuntimeException("Por favor registre la fecha de entrana correctamente");
+								}
+								Calendar calEntrada = Calendar.getInstance();
+								calEntrada.setTime(fechaEntrada);
+								if (calEntrada.before(calActual)) {
+									throw new RuntimeException(
+											"La fecha de entrada no puede ser anterior a la fecha actual, si es anterior a hoy no se puede editar");
+								}
+								if (fechaEntrada.compareTo(fechaSalida) > 0) {
+									throw new RuntimeException("El Checkin no puede ser después del checkout");
+								}
+								modelo.setValueAt(calcularPrecio(fechaEntrada, fechaSalida), row, 3);
+								String fechaEntradaStr = dateFormat.format(fechaEntrada);
+								modelo.setValueAt(fechaEntradaStr, row, 1);
+								break;
+							case 2:
+								Calendar calSalida = Calendar.getInstance();
+								calSalida.setTime(fechaSalida);
+								if (calSalida.before(calActual)) {
+									throw new RuntimeException(
+											"La fecha de salida no puede ser anterior a la fecha actua");
+								}
+								if (fechaEntrada.compareTo(fechaSalida) > 0) {
+									throw new RuntimeException("El Checkin no puede ser después del checkout");
+								}
+								modelo.setValueAt(calcularPrecio(fechaEntrada, fechaSalida), row, 3);
+								String fechaSalidaStr = dateFormat.format(fechaSalida);
+								modelo.setValueAt(fechaSalidaStr, row, 2);
+								break;
+							default:
+								break;
+							}
+						} catch (Exception ex) {
+							JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+							Busqueda busqueda = new Busqueda();
+							busqueda.setVisible(true);
+							dispose();
+						}
+						tbReservas.getModel().addTableModelListener(this);
+					}
+				}
+			}
+
+			private double calcularPrecio(Date fechaEntrada, Date fechaSalida) {
+				long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
+				long diferenciaDias = TimeUnit.MILLISECONDS.toDays(diferenciaMillis);
+				int dias = (int) diferenciaDias;
+				if (dias != 0) {
+					return dias * 30000;
+				} else {
+					return 30000;
+				}
+			}
+		});
+
 		JScrollPane scroll_table = new JScrollPane(tbReservas);
 		panel.addTab("Reservas", new ImageIcon(Busqueda.class.getResource("/imagenes/reservado.png")), scroll_table,
 				null);
@@ -286,6 +384,17 @@ public class Busqueda extends JFrame {
 		lblEditar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		lblEditar.setBounds(0, 0, 122, 35);
 		btnEditar.add(lblEditar);
+		btnEditar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (editarDatos(panel, tbHuespedes, tbReservas) == 1) {
+					JOptionPane.showMessageDialog(null, "Modificacion exitosa", "", JOptionPane.INFORMATION_MESSAGE);
+					Busqueda busqueda = new Busqueda();
+					busqueda.setVisible(true);
+					dispose();
+				}
+			}
+		});
 
 		JPanel btnEliminar = new JPanel();
 		btnEliminar.setLayout(null);
@@ -303,50 +412,87 @@ public class Busqueda extends JFrame {
 		setResizable(false);
 	}
 
+	protected int editarDatos(JTabbedPane panel, JTable tbHuespedes, JTable tbReservas) {
+		if (panel.getSelectedIndex() == 0) {
+			int filaSeleccionada = tbReservas.getSelectedRow();
+
+			if (tbReservas.isEditing()) {
+			    tbReservas.getCellEditor().stopCellEditing(); // Finaliza la edición de la celda activa
+			}
+			tbReservas.changeSelection(filaSeleccionada, 3, false, false); // Selecciona la celda específica
+			Rectangle cellRect = tbReservas.getCellRect(filaSeleccionada, 3, false); // Obtiene el rectángulo de la celda
+			MouseEvent doubleClick = new MouseEvent(tbReservas, MouseEvent.MOUSE_CLICKED, System.currentTimeMillis(),
+			        MouseEvent.BUTTON1, cellRect.x, cellRect.y, 2, false, MouseEvent.BUTTON1); // Crea un evento de doble clic
+			tbReservas.dispatchEvent(doubleClick);
+
+			if (filaSeleccionada >= 0) {
+
+				Object idReserva = modelo.getValueAt(filaSeleccionada, 0);
+				Object fechaCheckIn = modelo.getValueAt(filaSeleccionada, 1);
+				Object fechaCheckOut = modelo.getValueAt(filaSeleccionada, 2);
+				Object valor = modelo.getValueAt(filaSeleccionada, 3);
+				Object formaPago = modelo.getValueAt(filaSeleccionada, 4);
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				Date fechaCheckInDate = null;
+				Date fechaCheckOutDate = null;
+
+				try {
+					fechaCheckInDate = dateFormat.parse(fechaCheckIn.toString());
+					fechaCheckOutDate = dateFormat.parse(fechaCheckOut.toString());
+				} catch (java.text.ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				Reserva reserva = new Reserva((Integer) idReserva, fechaCheckInDate, fechaCheckOutDate,
+						(String) formaPago, (Double) valor);
+				return reservaController.modificar(reserva);
+			} else {
+				return 0;
+			}
+		} else {
+			System.out.println("huespedes");
+			int filaSeleccionada = tbHuespedes.getSelectedRow();
+			if (filaSeleccionada != -1) {
+				// Obtener los datos de la fila seleccionada
+				Object idHuesped = modeloHuesped.getValueAt(filaSeleccionada, 0);
+				Object nombre = modeloHuesped.getValueAt(filaSeleccionada, 1);
+				Object apellido = modeloHuesped.getValueAt(filaSeleccionada, 2);
+				Object fechaNacimiento = modeloHuesped.getValueAt(filaSeleccionada, 3);
+				Object nacionalidad = modeloHuesped.getValueAt(filaSeleccionada, 4);
+				Object telefono = modeloHuesped.getValueAt(filaSeleccionada, 5);
+				Object idReserva = modeloHuesped.getValueAt(filaSeleccionada, 6);
+				Huesped huesped = new Huesped((Integer) idHuesped, (String) nombre, (String) apellido,
+						(Date) fechaNacimiento, (String) nacionalidad, (Long) telefono, (Integer) idReserva);
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+
+	}
+
 	private void añadirHuespedes() {
 		DefaultTableModel modelo = (DefaultTableModel) tbHuespedes.getModel();
 		List<Huesped> listaHuespedes = huespedController.listarHuespedes();
 		for (Huesped huesped : listaHuespedes) {
-			Object[] rowData = {
-//					modeloHuesped.addColumn("Número de Huesped");
-//					modeloHuesped.addColumn("Nombre");
-//					modeloHuesped.addColumn("Apellido");
-//					modeloHuesped.addColumn("Fecha de Nacimiento");
-//					modeloHuesped.addColumn("Nacionalidad");
-//					modeloHuesped.addColumn("Telefono");
-//					modeloHuesped.addColumn("Número de Reserva");
-					huesped.getId(),
-					huesped.getNombre(),
-					huesped.getApellido(),
-					huesped.getFechaNacimiento(),
-					huesped.getNacionalidad(),
-					huesped.getTelefono(),
-					huesped.getidReserva()
-			    };
+			Object[] rowData = { huesped.getId(), huesped.getNombre(), huesped.getApellido(),
+					huesped.getFechaNacimiento(), huesped.getNacionalidad(), huesped.getTelefono(),
+					huesped.getidReserva() };
 			modelo.addRow(rowData);
 		}
-		
 	}
 
 	private void añadirReservas() {
 		DefaultTableModel modelo = (DefaultTableModel) tbReservas.getModel();
-		System.out.println("buscando");
 		List<Reserva> listarReservas = reservaController.listarReservas();
 		for (Reserva reserva : listarReservas) {
-			Object[] rowData = {
-			        reserva.getId(),
-			        reserva.getFechaEntrada(),
-			        reserva.getFechaSalida(),
-			        reserva.getValor(),
-			        reserva.getFormaPago()
-			    };
+			Object[] rowData = { reserva.getId(), reserva.getFechaEntrada(), reserva.getFechaSalida(),
+					reserva.getValor(), reserva.getFormaPago() };
 			modelo.addRow(rowData);
 		}
-
 	}
 
-	// Código que permite mover la ventana por la pantalla según la posición de "x"
-	// y "y"
 	private void headerMousePressed(java.awt.event.MouseEvent evt) {
 		xMouse = evt.getX();
 		yMouse = evt.getY();
