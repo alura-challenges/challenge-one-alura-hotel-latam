@@ -38,7 +38,7 @@ public class ReservaDAO {
 			statement.setString(4, reserva.getFormaPago());
 			statement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		final ResultSet resultSet = statement.getGeneratedKeys();
 		try (resultSet) {
@@ -82,5 +82,33 @@ public class ReservaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	public int modificar(Reserva reserva) {
+		try {
+			final PreparedStatement statement = this.connection.prepareStatement(""
+					+ "UPDATE reservas "
+					+ "SET fechaEntrada = ?, "
+					+ "fechaSalida = ?, "
+					+ "valor = ?, "
+					+ "formaPago = ? "
+					+ "WHERE id = ?;"
+					);
+			try(statement){
+				java.sql.Date fechaEntradaSQL = new java.sql.Date(reserva.getFechaEntrada().getTime());
+				java.sql.Date fechaSalidaSQL = new java.sql.Date(reserva.getFechaSalida().getTime());
+
+				statement.setDate(1, fechaEntradaSQL);
+				statement.setDate(2, fechaSalidaSQL);
+				statement.setDouble(3, reserva.getValor());
+				statement.setString(4, reserva.getFormaPago());
+				statement.setInt(5, reserva.getId());
+				statement.execute();
+				return statement.getUpdateCount();
+			}
+		} catch (SQLException e) {
+			return 0;
+			//throw new RuntimeException(e);
+		}
+	}
+
 	
 }

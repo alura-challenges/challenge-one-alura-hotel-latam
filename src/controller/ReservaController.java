@@ -20,5 +20,8 @@ public class ReservaController {
 	public List<Reserva> listarReservas() {
 		return this.reservaDAO.listasReservas();
 	}
+	public int modificar(Reserva reserva) {
+		return this.reservaDAO.modificar(reserva);
+	}
 	
 }
