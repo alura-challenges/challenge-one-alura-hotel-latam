@@ -12,6 +12,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -304,8 +306,14 @@ public class RegistroReserva extends JFrame {
 					long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
 					long diferenciaDias = TimeUnit.MILLISECONDS.toDays(diferenciaMillis);
 					int dias = (int) diferenciaDias;
-					double valor = dias*30000;
+					double valor = 0;
+					if(dias != 0) {
+						valor = dias*30000;
+					}else {
+						valor = 30000;
+					}
 					txtValor.setText(Double.toString(valor));
+					
 		        }
 			}
 		});
@@ -343,6 +351,12 @@ public class RegistroReserva extends JFrame {
 			}
 			if (fechaEntrada.compareTo(fechaSalida) > 0) {
 				throw new RuntimeException("El Checkin no puede ser después del checkout");
+			}
+			LocalDate fechaEntradaSinHora = txtFechaEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate fechaSalidaSinHora = txtFechaSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate fechaActual = LocalDate.now();
+			if (fechaEntradaSinHora.isBefore(fechaActual) || fechaSalidaSinHora.isBefore(fechaActual)) {
+			    throw new RuntimeException("Las fechas no pueden ser anteriores a la fecha actual");
 			}
 			String formaPago = (String) txtFormaPago.getSelectedItem();
 			double valor = Double.parseDouble(txtValor.getText());

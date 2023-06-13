@@ -364,6 +364,9 @@ public class RegistroHuesped extends JFrame {
 			if (edad < 18) {
 				throw new RuntimeException("Solo pueden hacer reserva los mayores de edad");
 			}
+			if (edad > 150) {
+				throw new RuntimeException("Edad incongruente");
+			}
 			//Telefono
 			String telefonoString = txtTelefono.getText();
 			if (telefonoString.matches("\\d+")) {
