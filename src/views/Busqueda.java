@@ -3,15 +3,23 @@ package views;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -21,7 +29,13 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
+
+import com.toedter.calendar.JDateChooserCellEditor;
 
 import controller.HuespedController;
 import controller.ReservaController;
@@ -51,7 +65,7 @@ public class Busqueda extends JFrame {
 	private DefaultTableModel modeloHuesped;
 	private JLabel labelAtras;
 	private JLabel labelExit;
-	private static HuespedController huespedController= new HuespedController();
+	private static HuespedController huespedController = new HuespedController();
 	private static ReservaController reservaController = new ReservaController();
 	int xMouse, yMouse;
 
@@ -123,7 +137,12 @@ public class Busqueda extends JFrame {
 		tbHuespedes = new JTable();
 		tbHuespedes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbHuespedes.setFont(new Font("Roboto", Font.PLAIN, 16));
-		modeloHuesped = (DefaultTableModel) tbHuespedes.getModel();
+		modeloHuesped = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return column != 0 && column != 6; // Columnas 0 y 6 no son editables
+			}
+		};
 		modeloHuesped.addColumn("Número de Huesped");
 		modeloHuesped.addColumn("Nombre");
 		modeloHuesped.addColumn("Apellido");
@@ -131,11 +150,12 @@ public class Busqueda extends JFrame {
 		modeloHuesped.addColumn("Nacionalidad");
 		modeloHuesped.addColumn("Telefono");
 		modeloHuesped.addColumn("Número de Reserva");
+		tbHuespedes.setModel(modeloHuesped);
 		añadirHuespedes();
 		JScrollPane scroll_tableHuespedes = new JScrollPane(tbHuespedes);
 		panel.addTab("Huéspedes", new ImageIcon(Busqueda.class.getResource("/imagenes/pessoas.png")),
 				scroll_tableHuespedes, null);
-		
+
 		scroll_tableHuespedes.setVisible(true);
 
 		JLabel lblNewLabel_2 = new JLabel("");
@@ -148,7 +168,6 @@ public class Busqueda extends JFrame {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				headerMouseDragged(e);
-
 			}
 		});
 		header.addMouseListener(new MouseAdapter() {
