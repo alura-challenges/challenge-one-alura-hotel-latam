@@ -3,6 +3,7 @@ use hotel;
 
 DROP TABLE guest;
 DROP TABLE booking;
+DROP TABLE user_data;
 
 
 
@@ -28,4 +29,13 @@ CREATE TABLE guest (
 	FOREIGN KEY(id_booking)REFERENCES booking(id),
 	PRIMARY KEY(id)
 )Engine=InnoDB;
+
+CREATE TABLE user_data (
+
+	id INT AUTO_INCREMENT,
+	login VARCHAR(50),
+	password VARCHAR(50)
+	PRIMARY KEY(id)
+)Engine=InnoDB;
+
 
