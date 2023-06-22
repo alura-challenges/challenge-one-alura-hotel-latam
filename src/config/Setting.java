@@ -5,8 +5,8 @@ import java.util.Properties;
 
 public class Setting {
 	
-	private final Properties properties;
 	private static final String CONFIG_PROPERTIES = "config.properties";
+	private final Properties properties;
 	
 	public Setting() {
 		properties=new Properties();
