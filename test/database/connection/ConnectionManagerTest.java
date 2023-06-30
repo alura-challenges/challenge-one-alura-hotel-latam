@@ -1,10 +1,14 @@
-package database;
+package database.connection;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.junit.Test;
+import org.junit.runners.JUnit4;
+import database.ConnectionManager;
 import junit.framework.Assert;
 
+@RunWith(JUnit4.class)
 public class ConnectionManagerTest {
 	
 	private ConnectionManager connectionManager = new ConnectionManager();
@@ -16,5 +20,4 @@ public class ConnectionManagerTest {
 		connection.close();
 		Assert.assertTrue("Connection should be closed", connection.isClosed());
 	}
-
 }

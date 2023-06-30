@@ -18,8 +18,7 @@ public class ConnectionManager  {
 		pooledDataSource.setJdbcUrl(setting.getProperty("db_url"));
 		pooledDataSource.setUser(System.getenv("USERNAME"));
 		pooledDataSource.setPassword(System.getenv("PASSWORD"));
-		pooledDataSource.setMaxPoolSize(MAX_POOL_SIZE);
-		
+		pooledDataSource.setMaxPoolSize(MAX_POOL_SIZE);		
 		this.datasource=pooledDataSource;
 	}
 	

@@ -34,8 +34,19 @@ CREATE TABLE user_data (
 
 	id INT AUTO_INCREMENT,
 	login VARCHAR(50),
-	password VARCHAR(50)
+	password VARCHAR(50),
 	PRIMARY KEY(id)
 )Engine=InnoDB;
 
+INSERT INTO user_data(login,password) 
+VALUES('abeltran','1234'),
+	  ('bbeltran','5678'),
+	  ('cbeltran','9876'),
+	  ('dbeltran','5432'),
+	  ('ebeltran','1234'),
+	  ('fbeltran','5678'),
+	  ('gbeltran','9876'),
+	  ('hbeltran','5432'),
+	  ('ibeltran','1234'),
+	  ('jbeltran','5678');
 
