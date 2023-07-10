@@ -1,25 +1,24 @@
 package views;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import database.DbLogin;
-
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import javax.swing.JSeparator;
-import java.awt.SystemColor;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import database.DbLogin;
+import service.UserService;
 
 public class Login extends JFrame {
 
@@ -33,6 +32,7 @@ public class Login extends JFrame {
 	int xMouse, yMouse;
 	private JLabel labelExit;
 	final DbLogin dbLogin;
+	private final UserService userService;
 
 	/**
 	 * Launch the application.
@@ -56,6 +56,7 @@ public class Login extends JFrame {
 	public Login() {
 		
 		dbLogin = new DbLogin();
+		userService = new UserService();
 		
 		setResizable(false);
 		setUndecorated(true);
@@ -243,8 +244,9 @@ public class Login extends JFrame {
 	
 	private void executeLogin() {
 	    String passw=new String(txtContrasena.getPassword());
-	
-	    if(dbLogin.loginUser(txtUsuario.getText(), passw)){
+	    String login = txtUsuario.getText();
+	    
+	    if(userService.loginUser(login, passw)) {
 	        MenuUsuario menu = new MenuUsuario();
 	        menu.setVisible(true);
 	        dispose();	 
