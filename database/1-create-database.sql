@@ -10,7 +10,7 @@ DROP TABLE user_data;
 CREATE TABLE booking (
 
 	id INT AUTO_INCREMENT,
-	entry_date DATE,
+	entry_date TIMESTAMP,
 	departure_date TIMESTAMP,
 	price DOUBLE,
 	method_payment VARCHAR(20),

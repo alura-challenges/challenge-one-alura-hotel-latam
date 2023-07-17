@@ -5,33 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import database.ConnectionManager;
+import database.dto.BookingDataDTO;
 import database.dto.UserDataDTO;
 
-public class UserDataDAO {
+public class UserDataDAO extends MainDAO{
 	
 	private Connection con;
 	private static final String SELECT_USER_BY_LOGIN="SELECT id, login, password FROM user_data WHERE login=?";
 	
-	private synchronized Connection getConnection() {
-		if (con == null) {
-			con = new ConnectionManager().getConnection();
-		} else {
-			try {
-				if (con.isClosed()) {
-					con = new ConnectionManager().getConnection();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-				con = new ConnectionManager().getConnection();
-			}
-		}
-		return con;
-	}
-	
+
 	public UserDataDTO getUserByLogin(String login){
 		
 		UserDataDTO userDataDTO = null;
-		Connection con= getConnection();
+		con= super.getConnection();
 		
 		try {
 			final PreparedStatement statement=con.prepareStatement(SELECT_USER_BY_LOGIN);
@@ -55,9 +41,10 @@ public class UserDataDAO {
 				throw new RuntimeException(e);
 			}
 		}
+
+
+	
 }
-	
-	
 	
 
 
