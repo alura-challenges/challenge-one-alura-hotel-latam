@@ -12,33 +12,23 @@ import database.dto.BookingDataDTO;
 
 public class BookingDataDAO extends MainDAO {
 	
-	private Connection con;
 	private static final String SAVE_IN_BOOKING="INSERT INTO booking(entry_date,departure_date,method_payment,price)"+
 			"VALUES(?,?,?,?)";
 	
-	public BookingDataDAO() {
-	}
-	
-	public BookingDataDAO(Connection con) {
-		this.con = con;
-	}
-	
 	public BookingDataDTO save(BookingDataDTO bookingData) {
-		con= super.getConnection();
+		Connection con= super.getConnection();
 		
 		try {
 			final PreparedStatement statement = con.prepareStatement(SAVE_IN_BOOKING, Statement.RETURN_GENERATED_KEYS);
-			Integer id = runRecord(bookingData, statement);
+			Integer id = saveRecord(bookingData, statement);
 			bookingData.setId(id);
-			System.out.println(String.format(
-					"Fue insertado el producto de ID %s",bookingData));
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 		return bookingData;	
 	}
 
-	public Integer runRecord(BookingDataDTO bookingData, PreparedStatement statement) throws SQLException {
+	Integer saveRecord(BookingDataDTO bookingData, PreparedStatement statement) throws SQLException {
 		LocalDateTime entryDatebyUser=bookingData.getEntryDate();
 		Timestamp entryTimestampUser=Timestamp.valueOf(entryDatebyUser);
 		
@@ -57,7 +47,7 @@ public class BookingDataDAO extends MainDAO {
 		 
 		final ResultSet resultSet=statement.getGeneratedKeys();
 		try(resultSet){
-			while(resultSet.next()) {
+			if(resultSet.next()) {
 				return resultSet.getInt(1);
 			}
 		}

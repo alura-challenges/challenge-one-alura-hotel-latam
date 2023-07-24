@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import database.ConnectionManager;
-import database.dto.BookingDataDTO;
 import database.dto.UserDataDTO;
 
 public class UserDataDAO extends MainDAO{

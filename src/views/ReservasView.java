@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -23,12 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import com.toedter.calendar.JDateChooser;
-
-import database.dao.BookingDataDAO;
-import database.dto.BookingDataDTO;
-
 
 @SuppressWarnings("serial")
 public class ReservasView extends JFrame {
@@ -41,8 +35,6 @@ public class ReservasView extends JFrame {
 	int xMouse, yMouse;
 	private JLabel labelExit;
 	private JLabel labelAtras;
-	private BookingDataDAO bookingDataDAO;
-	private BookingDataDTO bookingDataDTO;
 
 	/**
 	 * Launch the application.
@@ -305,7 +297,6 @@ public class ReservasView extends JFrame {
 				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {		
 					RegistroHuesped registro = new RegistroHuesped();
 					registro.setVisible(true);
-					//executeBooking();//
 				} else {
 					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
 				}
@@ -331,15 +322,5 @@ public class ReservasView extends JFrame {
 	        int y = evt.getYOnScreen();
 	        this.setLocation(x - xMouse, y - yMouse);
 }
-
-	/*	private void executeBooking() {
-		    String entryDate=txtFechaEntrada.getDateFormatString();
-		    String departureDate = txtFechaSalida.getDateFormatString();
-		    
-		    BookingDataDTO bookingDataDTO=new BookingDataDTO(entryDate,departureDate);
-		    bookingDataDAO.save(bookingDataDTO);
-		}*/
-	    
-	    
-	    
 }
+

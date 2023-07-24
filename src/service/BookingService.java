@@ -12,7 +12,6 @@ public class BookingService {
 	
 	private final BookingDataDAO bookingDataDAO;
 	private final BigDecimal pricePerNight=new BigDecimal("5000");
-	private BigDecimal finalPrice = null;
 	
 	public BookingService() {
 		bookingDataDAO=new BookingDataDAO();
@@ -31,7 +30,7 @@ public class BookingService {
 		return saveBooking.getId();
 	}
 
-	private final BigDecimal bookingPrice(BigDecimal days) {
-		return  finalPrice=pricePerNight.multiply(days);
+	private  BigDecimal bookingPrice(BigDecimal days) {
+		return  pricePerNight.multiply(days);
 	}
 }
