@@ -20,8 +20,10 @@ public class BookingDataDAO extends MainDAO {
 		
 		try {
 			final PreparedStatement statement = con.prepareStatement(SAVE_IN_BOOKING, Statement.RETURN_GENERATED_KEYS);
-			Integer id = saveRecord(bookingData, statement);
-			bookingData.setId(id);
+			try (statement){
+				Integer id = saveRecord(bookingData, statement);
+				bookingData.setId(id);
+			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

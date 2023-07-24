@@ -2,10 +2,9 @@ package database.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import database.ConnectionManager;
 
-public class MainDAO {
+public class MainDAO implements AutoCloseable{
 
 	private Connection con;
 	
@@ -13,7 +12,7 @@ public class MainDAO {
 		if (con == null) {
 			con = new ConnectionManager().getConnection();
 		} else {
-			try {
+			try{
 				if (con.isClosed()) {
 					con = new ConnectionManager().getConnection();
 				}
@@ -23,6 +22,12 @@ public class MainDAO {
 			}
 		}
 		return con;
+	}
+
+	@Override
+	public void close() throws Exception {
+		con.close();
+		
 	}
 
 }

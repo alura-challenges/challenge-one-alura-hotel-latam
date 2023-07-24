@@ -1,7 +1,5 @@
 package database.dto;
 
-import java.util.Set;
-
 public enum PaymentMethodDTO {
 
 	CREDIT ("CREDIT","Credito"),

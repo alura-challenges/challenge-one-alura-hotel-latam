@@ -63,7 +63,7 @@ public class BookingDataDTO {
 	
 	@Override
 	public String toString() {
-		String formattedDateTime=String.format("%tY-%tm-%td %tH:%tM:%tS",entryDate,entryDate,entryDate,entryDate,entryDate,entryDate);
-		return String.format("id: %s y fecha: ", this.id)+formattedDateTime;
+		String formattedDateTime=entryDate.toString();
+		return String.format("id: %s and date: %s", this.id+formattedDateTime);
 	}
 }

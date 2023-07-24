@@ -38,10 +38,7 @@ public class UserDataDAO extends MainDAO{
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
 			}
-		}
-
-
-	
+		}	
 }
 	
 

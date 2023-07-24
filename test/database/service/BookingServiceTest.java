@@ -37,7 +37,7 @@ public class BookingServiceTest {
 		bookingDataDTO.setId(123);
 		Mockito.doReturn(bookingDataDTO).when(bookingDataDAO).save(any(BookingDataDTO.class));
 		
-		Integer id = bookingService.saveBooking(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH);
+		Integer id = bookingService.savedBooking(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH);
 		assertEquals((Integer) 123, id);
 	}
 }

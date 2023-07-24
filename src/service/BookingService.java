@@ -3,7 +3,7 @@ package service;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
-
+import config.Setting;
 import database.dao.BookingDataDAO;
 import database.dto.BookingDataDTO;
 import database.dto.PaymentMethodDTO;
@@ -11,17 +11,20 @@ import database.dto.PaymentMethodDTO;
 public class BookingService {
 	
 	private final BookingDataDAO bookingDataDAO;
-	private final BigDecimal pricePerNight=new BigDecimal("5000");
+	private final Setting setting;
+	
 	
 	public BookingService() {
-		bookingDataDAO=new BookingDataDAO();
+		this.bookingDataDAO=new BookingDataDAO();
+		this.setting = new Setting();
 	}
 
 	public BookingService(BookingDataDAO bookingDataDAO) {
 		this.bookingDataDAO=bookingDataDAO;
+		this.setting = new Setting();
 	}
 	
-	public Integer saveBooking(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethodDTO methodPayment)  {
+	public Integer savedBooking(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethodDTO methodPayment)  {
 		Duration duration=Duration.between(entryDate, departureDate);
 		BigDecimal days=new BigDecimal(duration.toDays());
 		
@@ -31,6 +34,7 @@ public class BookingService {
 	}
 
 	private  BigDecimal bookingPrice(BigDecimal days) {
+		final BigDecimal pricePerNight=new BigDecimal(setting.getProperty("price_per_night"));
 		return  pricePerNight.multiply(days);
 	}
 }
