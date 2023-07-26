@@ -6,7 +6,7 @@ import javax.sql.DataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import config.Setting;
 
-public class ConnectionManager  {
+public class ConnectionManager {
 	
 	private final DataSource datasource;
 	private final Setting setting;
