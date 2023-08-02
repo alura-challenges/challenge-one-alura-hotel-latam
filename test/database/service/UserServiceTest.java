@@ -1,5 +1,7 @@
 package database.service;
 
+import static org.mockito.ArgumentMatchers.eq;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +30,7 @@ public class UserServiceTest {
 	@Test
 	public void testLoginUser() {
 		UserDataDTO mockedUser = new UserDataDTO(1, "cbeltran", "goodpassword");
-		Mockito.doReturn(mockedUser).when(userDataDAO).getUserByLogin("cbeltran");
+		Mockito.doReturn(mockedUser).when(userDataDAO).getUserByLogin(eq("cbeltran"));
 		
 		boolean loginUser = userService.loginUser("cbeltran", "goodpassword");
 		Assert.assertTrue("Couln't login user", loginUser);
