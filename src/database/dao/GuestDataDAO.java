@@ -10,9 +10,9 @@ import database.dto.GuestDataDTO;
 
 public class GuestDataDAO extends MainDAO {
 	
-	private static final String SAVE_IN_GUEST="INSERT INTO guest(name,lastname,birthdate,nationality,telephone,id_booking)"+
+	private static final String SAVE_IN_GUEST="INSERT INTO guest(name, lastname, birthdate, nationality, telephone, id_booking)"+
 			"VALUES(?,?,?,?,?,?)";
-
+	
 	public GuestDataDTO save(GuestDataDTO guestData) {
 		Connection con= super.getConnection();	
 		

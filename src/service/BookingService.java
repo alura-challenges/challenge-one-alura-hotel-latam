@@ -3,6 +3,7 @@ package service;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 import config.Setting;
 import database.dao.BookingDataDAO;
 import database.dao.GuestDataDAO;
@@ -30,6 +31,25 @@ public class BookingService {
 	}
 
 	public Integer saveBooking(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethodDTO methodPayment)  {
+		if (entryDate == null) {
+			throw new IllegalArgumentException("Entry date was null");
+		}
+		if (departureDate == null) {
+			throw new IllegalArgumentException("Departure date was null");
+		}
+		if (methodPayment == null) {
+			throw new IllegalArgumentException("Method payment was null");
+		}		
+		if (departureDate.toLocalDate().isBefore(entryDate.toLocalDate())){
+			throw new IllegalArgumentException("Departure date can't be before entry date ");
+		}
+		if (departureDate.toLocalDate().isEqual(entryDate.toLocalDate())){
+			throw new IllegalArgumentException("Entry date can't be equal to departure date");
+		}
+		if (entryDate.isBefore(LocalDateTime.now())) {
+			throw new IllegalArgumentException("Entry date can't be before today");
+		}
+		
 		Duration duration=Duration.between(entryDate, departureDate);
 		BigDecimal days=new BigDecimal(duration.toDays());
 		
@@ -45,7 +65,22 @@ public class BookingService {
 	
 	public void saveGuest(String name, String lastName,LocalDateTime birthDate, NationalityDTO nationality, String phoneNumber, Integer idBooking) {
 		GuestDataDTO guestDataDTO=new GuestDataDTO(name,lastName,birthDate,nationality,phoneNumber,idBooking);	
-		GuestDataDTO guestData = guestDataDAO.save(guestDataDTO);
+		guestDataDAO.save(guestDataDTO);
+	}
 
+	public List<BookingDataDTO> loadBookingList() {
+		return bookingDataDAO.searchBookingList();
+	}
+	
+	public BookingDataDTO loadBookingListById(int idSearch) {
+		return bookingDataDAO.searchByIdBooking(idSearch);
+	}
+
+	public int modifyBooking (BookingDataDTO bookingDataDTO) {
+		return bookingDataDAO.modify(bookingDataDTO);
+	}
+	
+	public int deleteBooking (int id){
+		return bookingDataDAO.delete(id);
 	}
 }

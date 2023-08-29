@@ -7,10 +7,10 @@ use hotel;
 CREATE TABLE booking (
 
 	id INT AUTO_INCREMENT,
-	entry_date TIMESTAMP,
-	departure_date TIMESTAMP,
+	entry_date TIMESTAMP NOT NULL,
+	departure_date TIMESTAMP NOT NULL,
 	price DOUBLE,
-	method_payment VARCHAR(20),
+	payment_method VARCHAR(20) NOT NULL,
 	PRIMARY KEY(id)
 )Engine=InnoDB;
 
@@ -30,8 +30,8 @@ CREATE TABLE guest (
 CREATE TABLE user_data (
 
 	id INT AUTO_INCREMENT,
-	login VARCHAR(50),
-	password VARCHAR(50),
+	login VARCHAR(50) NOT NULL,
+	password VARCHAR(50)NOT NULL,
 	PRIMARY KEY(id)
 )Engine=InnoDB;
 

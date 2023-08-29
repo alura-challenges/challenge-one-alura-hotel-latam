@@ -20,22 +20,22 @@ public enum PaymentMethodDTO {
 	
 }
 
-//public class MethodPaymentDTO {
+//public class PaymentMethodDTO {
 //
-//	private static final MethodPaymentDTO CREDIT = new MethodPaymentDTO("CREDITO");
-//	private static final MethodPaymentDTO DEBIT = new MethodPaymentDTO("DEBITO");
-//	private static final MethodPaymentDTO CASH = new MethodPaymentDTO("EFECTIVO");
+//	private static final PaymentMethodDTO CREDIT = new PaymentMethodDTO("CREDITO");
+//	private static final PaymentMethodDTO DEBIT = new PaymentMethodDTO("DEBITO");
+//	private static final PaymentMethodDTO CASH = new PaymentMethodDTO("EFECTIVO");
 //	
-//	private static final Set<MethodPaymentDTO> VALUES = Set.of(CREDIT, DEBIT, CASH);
+//	private static final Set<PaymentMethodDTO> VALUES = Set.of(CREDIT, DEBIT, CASH);
 //	
 //	private final String name;
 //	
-//	private MethodPaymentDTO(String name) {
+//	private PaymentMethodDTO(String name) {
 //		this.name=name;
 //	}
 //	
-//	public MethodPaymentDTO getByName(String name) {
-//		for (MethodPaymentDTO mp: VALUES) {
+//	public PaymentMethodDTO getByName(String name) {
+//		for (PaymentMethodDTO mp: VALUES) {
 //			if (mp.name.equals(name)) {
 //				return mp;
 //			}
@@ -46,7 +46,7 @@ public enum PaymentMethodDTO {
 
 
 
-//public enum MethodPaymentDTO {
+//public enum PaymentMethodDTO {
 //	
 //	CREDIT("Credito"),
 //	DEBIT("Debito"),
@@ -54,11 +54,11 @@ public enum PaymentMethodDTO {
 //
 //	String name;
 //	
-//	private MethodPaymentDTO(String name) {
+//	private PaymentMethodDTO(String name) {
 //		this.name=name;
 //	}
-//	private static String getMethodPayment(String name) {
-//		for (MethodPaymentDTO message:MethodPaymentDTO.values()) {
+//	private static String getPaymentMethod(String name) {
+//		for (PaymentMethodDTO message:PaymentMethodDTO.values()) {
 //			if(message.name.equals(name)) {
 //				return message.name;
 //			}
