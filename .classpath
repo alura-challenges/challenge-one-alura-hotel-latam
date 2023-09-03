@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
 		<attributes>
-			<attribute name="module" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/c3p0-0.9.5.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/mchange-commons-java-0.2.16.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/mysql-connector-java-8.0.17.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/santi/Documents/jc/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/Documents/jc/lib/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/Documents/jc/lib/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/Documents/jc/lib/junit-4.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/Hotel/Hotel/JARS/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/Hotel/Hotel/JARS/c3p0-0.9.5.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/Hotel/Hotel/JARS/mchange-commons-java-0.2.16.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
