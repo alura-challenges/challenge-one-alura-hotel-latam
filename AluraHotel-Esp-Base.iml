@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="file://C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/c3p0-0.9.5.4.jar" />
+    <libelement value="file://C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/jcalendar-1.4.jar" />
+    <libelement value="file://C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/mchange-commons-java-0.2.16.jar" />
+    <libelement value="file://C:/Users/Genesys/Documents/BackEnd-Java/LivePT/Jars/mysql-connector-java-8.0.17.jar" />
+    <src_description expected_position="0">
+      <src_folder value="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base/bin" />
+    <output-test url="file://$MODULE_DIR$/out/test/AluraHotel-Esp-Base" />
+    <exclude-output />
+    <content url="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base">
+      <sourceFolder url="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library name="c3p0-0.9.5.4.jar">
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base/JARS/c3p0-0.9.5.4" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="jcalendar-1.4.jar">
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base/JARS/jcalendar-1.4" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="mchange-commons-java-0.2.16.jar">
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/challenge-one-alura-hotel-latam-repositorio-base/JARS/mchange-commons-java-0.2.16" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="mariadb-java-client-3.1" level="project" />
+  </component>
+</module>
