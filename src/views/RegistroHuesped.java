@@ -7,20 +7,26 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import java.awt.Color;
 import com.toedter.calendar.JDateChooser;
+
+import controlador.RegistroControlador;
+import controlador.ReservasControlador;
+import modelo.Huespedes;
+
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.SystemColor;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.text.Format;
-import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
@@ -38,7 +44,82 @@ public class RegistroHuesped extends JFrame {
 	private JLabel labelExit;
 	private JLabel labelAtras;
 	int xMouse, yMouse;
-
+	RegistroControlador registroControlador;
+	ReservasControlador reservasControlador;
+	private final String[] nacionalidad = new String[] {
+            "afgano-afgana",
+            "alemán-",
+            "alemana",
+            "árabe-árabe",
+            "argentino-argentina",
+            "australiano-australiana",
+            "belga-belga",
+            "boliviano-boliviana",
+            "brasileño-brasileña",
+            "camboyano-camboyana",
+            "canadiense-canadiense",
+            "chileno-chilena",
+            "chino-china",
+            "colombiano-colombiana",
+            "coreano-coreana",
+            "costarricense-costarricense",
+            "cubano-cubana",
+            "danés-danesa",
+            "ecuatoriano-ecuatoriana",
+            "egipcio-egipcia",
+            "salvadoreño-salvadoreña",
+            "escocés-escocesa",
+            "español-española",
+            "estadounidense-estadounidense",
+            "estonio-estonia",
+            "etiope-etiope",
+            "filipino-filipina",
+            "finlandés-finlandesa",
+            "francés-francesa",
+            "galés-galesa",
+            "griego-griega",
+            "guatemalteco-guatemalteca",
+            "haitiano-haitiana",
+            "holandés-holandesa",
+            "hondureño-hondureña",
+            "indonés-indonesa",
+            "inglés-inglesa",
+            "iraquí-iraquí",
+            "iraní-iraní",
+            "irlandés-irlandesa",
+            "israelí-israelí",
+            "italiano-italiana",
+            "japonés-japonesa",
+            "jordano-jordana",
+            "laosiano-laosiana",
+            "letón-letona",
+            "letonés-letonesa",
+            "malayo-malaya",
+            "marroquí-marroquí",
+            "mexicano-mexicana",
+            "nicaragüense-nicaragüense",
+            "noruego-noruega",
+            "neozelandés-neozelandesa",
+            "panameño-panameña",
+            "paraguayo-paraguaya",
+            "peruano-peruana",
+            "polaco-polaca",
+            "portugués-portuguesa",
+            "puertorriqueño-puertorriqueño",
+            "dominicano-dominicana",
+            "rumano-rumana",
+            "ruso-rusa",
+            "sueco-sueca",
+            "suizo-suiza",
+            "tailandés-tailandesa",
+            "taiwanes-taiwanesa",
+            "turco-turca",
+            "ucraniano-ucraniana",
+            "uruguayo-uruguaya",
+            "venezolano-venezolana",
+            "vietnamita-vietnamita"
+    };
+	
 	/**
 	 * Launch the application.
 	 */
@@ -46,7 +127,7 @@ public class RegistroHuesped extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroHuesped frame = new RegistroHuesped();
+					RegistroHuesped frame = new RegistroHuesped(0);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,9 +138,23 @@ public class RegistroHuesped extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param Reserva_id 
+	 * @param integer 
 	 */
-	public RegistroHuesped() {
+	public RegistroHuesped(Integer id_reseva) {
 		
+		try {
+			registroControlador = new RegistroControlador();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			reservasControlador = new ReservasControlador();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setIconImage(Toolkit.getDefaultToolkit().getImage(RegistroHuesped.class.getResource("/imagenes/lOGO-50PX.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 634);
@@ -151,7 +246,7 @@ public class RegistroHuesped extends JFrame {
 		txtNacionalidad.setBounds(560, 350, 289, 36);
 		txtNacionalidad.setBackground(SystemColor.text);
 		txtNacionalidad.setFont(new Font("Roboto", Font.PLAIN, 16));
-		txtNacionalidad.setModel(new DefaultComboBoxModel(new String[] {"afgano-afgana", "alemán-", "alemana", "árabe-árabe", "argentino-argentina", "australiano-australiana", "belga-belga", "boliviano-boliviana", "brasileño-brasileña", "camboyano-camboyana", "canadiense-canadiense", "chileno-chilena", "chino-china", "colombiano-colombiana", "coreano-coreana", "costarricense-costarricense", "cubano-cubana", "danés-danesa", "ecuatoriano-ecuatoriana", "egipcio-egipcia", "salvadoreño-salvadoreña", "escocés-escocesa", "español-española", "estadounidense-estadounidense", "estonio-estonia", "etiope-etiope", "filipino-filipina", "finlandés-finlandesa", "francés-francesa", "galés-galesa", "griego-griega", "guatemalteco-guatemalteca", "haitiano-haitiana", "holandés-holandesa", "hondureño-hondureña", "indonés-indonesa", "inglés-inglesa", "iraquí-iraquí", "iraní-iraní", "irlandés-irlandesa", "israelí-israelí", "italiano-italiana", "japonés-japonesa", "jordano-jordana", "laosiano-laosiana", "letón-letona", "letonés-letonesa", "malayo-malaya", "marroquí-marroquí", "mexicano-mexicana", "nicaragüense-nicaragüense", "noruego-noruega", "neozelandés-neozelandesa", "panameño-panameña", "paraguayo-paraguaya", "peruano-peruana", "polaco-polaca", "portugués-portuguesa", "puertorriqueño-puertorriqueño", "dominicano-dominicana", "rumano-rumana", "ruso-rusa", "sueco-sueca", "suizo-suiza", "tailandés-tailandesa", "taiwanes-taiwanesa", "turco-turca", "ucraniano-ucraniana", "uruguayo-uruguaya", "venezolano-venezolana", "vietnamita-vietnamita"}));
+		txtNacionalidad.setModel(new DefaultComboBoxModel(nacionalidad));
 		contentPane.add(txtNacionalidad);
 		
 		JLabel lblNombre = new JLabel("NOMBRE");
@@ -210,7 +305,11 @@ public class RegistroHuesped extends JFrame {
 		txtNreserva.setColumns(10);
 		txtNreserva.setBackground(Color.WHITE);
 		txtNreserva.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		txtNreserva.setEditable(false);
+		String id = String.valueOf(id_reseva);
+		txtNreserva.setText(id);
 		contentPane.add(txtNreserva);
+		
 		
 		JSeparator separator_1_2 = new JSeparator();
 		separator_1_2.setBounds(560, 170, 289, 2);
@@ -253,6 +352,8 @@ public class RegistroHuesped extends JFrame {
 		btnguardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				guardarHuesped();
+				System.out.println("guardado");
 			}
 		});
 		btnguardar.setLayout(null);
@@ -313,6 +414,44 @@ public class RegistroHuesped extends JFrame {
 		labelExit.setHorizontalAlignment(SwingConstants.CENTER);
 		labelExit.setForeground(SystemColor.black);
 		labelExit.setFont(new Font("Roboto", Font.PLAIN, 18));
+	}
+	
+
+	public void guardarHuesped() {
+		
+		String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String nacionalidad = String.valueOf(txtNacionalidad.getItemAt(txtNacionalidad.getSelectedIndex()));
+        String telefono = txtTelefono.getText();
+        Date nacimiento = null;
+        int numReserva = Integer.parseInt(txtNreserva.getText());
+        
+        
+        if (nombre.isEmpty() || apellido.isEmpty() || nacionalidad.isEmpty() || telefono.isEmpty()) {
+			JOptionPane.showInternalMessageDialog(new JFrame(), "Llene todos los campos");
+			return;
+		}
+        
+        
+        if(txtFechaN.getDate() != null) {
+        	 nacimiento = new Date(txtFechaN.getDate().getTime());
+        	
+        	nacimiento = Date.valueOf(nacimiento.toLocalDate());
+        }
+        
+        Huespedes huespedes = new Huespedes(nombre, apellido, nacimiento, nacionalidad, telefono, numReserva);
+        JOptionPane.showMessageDialog(new JFrame(), "guardado" );
+        try {
+			registroControlador.guardar(huespedes);
+			
+			JOptionPane.showMessageDialog(new JFrame(), "listo" );
+			Exito exito = new Exito();
+			exito.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			exito.setVisible(true);
+			dispose();
+		} catch (RuntimeException e) {
+			JOptionPane.showMessageDialog(new JFrame(), "no se pudo realizar la transaccion" );
+		}
 	}
 	
 	
