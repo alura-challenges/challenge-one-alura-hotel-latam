@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class BookingDataDTO {
 	
-	private int id; 
+	private Integer id; 
 	private LocalDateTime entryDate;
 	private LocalDateTime departureDate;
 	private BigDecimal price;
@@ -25,7 +25,7 @@ public class BookingDataDTO {
 		this.price=bookingPrice;
 	}
 
-	public BookingDataDTO(int id, LocalDateTime entryDate, LocalDateTime departureDate, BigDecimal price,
+	public BookingDataDTO(Integer id, LocalDateTime entryDate, LocalDateTime departureDate, BigDecimal price,
 			PaymentMethodDTO paymentMethod) {
 		this.id=id;
 		this.entryDate=entryDate;
@@ -59,11 +59,11 @@ public class BookingDataDTO {
 		this.paymentMethod = paymentMethod;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

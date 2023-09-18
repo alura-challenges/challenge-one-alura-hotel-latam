@@ -3,11 +3,14 @@ package database.service;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +19,7 @@ import org.junit.runners.JUnit4;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
 import database.dao.BookingDataDAO;
 import database.dao.GuestDataDAO;
 import database.dto.BookingDataDTO;
@@ -79,7 +83,6 @@ public class BookingServiceTest {
 		
 		verify(bookingDataDAO).searchBookingList();
 		Assert.assertEquals(listBookingDataDTO,loadBookingList);
-		
 	}
 	
 	@Test
@@ -121,7 +124,6 @@ public class BookingServiceTest {
 		verify(bookingDataDAO).modify(bookingDataDTO1Modified);
 		
 		assertEquals(1,modifyBooking);
-	
 	}
 	
 	@Test
@@ -133,7 +135,6 @@ public class BookingServiceTest {
 		verify(bookingDataDAO).delete(3);
 		
 		assertEquals(1,deleteBooking);
-
 	}
 	@Test
 	public void testIncorrectTimeEntryDate() {	
@@ -160,5 +161,136 @@ public class BookingServiceTest {
 			Assert.assertEquals(error,e.getMessage());
 		}
 	}
+	
+	@Test
+	public void testLoadGuestList() {
+		GuestDataDTO guestDataDTO=new GuestDataDTO(2,"andrea","salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+		GuestDataDTO guestDataDTO2=new GuestDataDTO(3,"juan","cruz",LocalDateTime.of(1993,12,12,10,30),NationalityDTO.ARGENTIN,"2345778",13);
+		GuestDataDTO guestDataDTO3=new GuestDataDTO(4,"harry","cruz",LocalDateTime.of(2019,12,12,10,30),NationalityDTO.ARGENTIN,"2345779",12);
+
+		List<GuestDataDTO>listGuestDataDTO=new ArrayList<>();
+		
+		listGuestDataDTO.add(guestDataDTO);
+		listGuestDataDTO.add(guestDataDTO2);
+		listGuestDataDTO.add(guestDataDTO3);
+		
+		Mockito.doReturn(listGuestDataDTO).when(guestDataDAO).searchGuestList();
+		
+		List<GuestDataDTO> loadGuestList = bookingService.loadGuestList();
+		
+		verify(guestDataDAO).searchGuestList();
+		Assert.assertEquals(listGuestDataDTO,loadGuestList);
+	}
+	
+	@Test
+	public void testLoadGuestById() {
+		GuestDataDTO guestDataDTO=new GuestDataDTO(2,"andrea","salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+		guestDataDTO.setId(1);
+		GuestDataDTO guestDataDTO1=new GuestDataDTO(3,"juan","cruz",LocalDateTime.of(1993,12,12,10,30),NationalityDTO.ARGENTIN,"2345778",13);
+		guestDataDTO.setId(2);
+		GuestDataDTO guestDataDTO2=new GuestDataDTO(4,"harry","cruz",LocalDateTime.of(2019,12,12,10,30),NationalityDTO.ARGENTIN,"2345779",12);
+		guestDataDTO.setId(3);
+		
+		List<GuestDataDTO>listGuestDataDTO=new ArrayList<>();
+		
+		listGuestDataDTO.add(guestDataDTO);
+		listGuestDataDTO.add(guestDataDTO1);
+		listGuestDataDTO.add(guestDataDTO2);
+		
+		Mockito.doReturn(listGuestDataDTO.get(0)).when(guestDataDAO).searchByIdGuest(1);
+		Mockito.doReturn(listGuestDataDTO.get(1)).when(guestDataDAO).searchByIdGuest(2);
+		Mockito.doReturn(listGuestDataDTO.get(2)).when(guestDataDAO).searchByIdGuest(3);
+		
+		GuestDataDTO loadedGuest = bookingService.loadGuestById(1);
+		GuestDataDTO loadedGuest1 = bookingService.loadGuestById(2);
+		GuestDataDTO loadedGuest2 = bookingService.loadGuestById(3);
+		
+		assertEquals(guestDataDTO, loadedGuest);
+		assertEquals(guestDataDTO1, loadedGuest1);
+		assertEquals(guestDataDTO2, loadedGuest2);
+	}
+
+	@Test
+	public void testModifyGuest() {
+	Mockito.doReturn(1).when(guestDataDAO).modify(any(GuestDataDTO.class));
+
+	int modifyGuest= bookingService.modifyGuest("andrea","salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+
+	verify(guestDataDAO).modify(any(GuestDataDTO.class));
+
+	assertEquals(1,modifyGuest);
+	}
+	
+	@Test
+	public void testDeleteGuest() {
+		Mockito.doReturn(1).when(guestDataDAO).delete(3);
+		
+		int deleteGuest = bookingService.deleteGuest(3);
+				
+		verify(guestDataDAO).delete(3);
+		
+		assertEquals(1,deleteGuest);
+	}
+	
+	@Test	
+	public void testNullNameGuest() {	
+		try {
+			bookingService.saveGuest(null,"salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+		}catch(RuntimeException e) {
+			Assert.assertNotNull(e);
+			String error="Name was null";
+			Assert.assertEquals(error,e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testNullLastNameGuest() {	
+		try {
+			bookingService.saveGuest("andrea",null,LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+		}catch(RuntimeException e) {
+			Assert.assertNotNull(e);
+			String error="Lastname was null";
+			Assert.assertEquals(error,e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testBirthdateIncorrect() {	
+		try {
+			bookingService.saveGuest("andrea","salinas",LocalDateTime.of(2023,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+		}catch(RuntimeException e) {
+			Assert.assertNotNull(e);
+			String error="Birthdate can't be before today";
+			Assert.assertEquals(error,e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testIdSearchLessThanZero() {	
+		try {
+			Random rand=new Random();	
+			int number=rand.nextInt(1000)-1000;
+			bookingService.loadGuestById(number);
+			System.out.println(number);
+			
+		}catch(RuntimeException e) {
+			Assert.assertNotNull(e);
+			String error="id can't be less than 0";
+			Assert.assertEquals(error,e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testIdDeleteLessThanZero() {	
+		try {
+			Random rand=new Random();	
+			int number=rand.nextInt(1000)-1000;
+			bookingService.deleteGuest(number);
+		}catch(RuntimeException e) {
+			Assert.assertNotNull(e);
+			String error="id can't be less than 0";
+			Assert.assertEquals(error,e.getMessage());
+		}
+	}	
 }
 
