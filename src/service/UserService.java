@@ -1,7 +1,7 @@
 package service;
 
 import database.dao.UserDataDAO;
-import database.dto.UserDataDTO;
+import model.UserData;
 
 public class UserService {
 	
@@ -16,7 +16,7 @@ public class UserService {
 	}
 	
 	public boolean loginUser(String login, String password) {
-		UserDataDTO userByLogin = userDataDAO.getUserByLogin(login);
+		UserData userByLogin = userDataDAO.getUserByLogin(login);
 		
 		if(userByLogin!= null){
 			if(userByLogin.getPassword().equals(password)){

@@ -8,10 +8,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import database.dto.BookingDataDTO;
-import database.dto.GuestDataDTO;
-import database.dto.NationalityDTO;
-import database.dto.PaymentMethodDTO;
+
+import model.BookingData;
+import model.GuestData;
+import model.Nationality;
+import model.PaymentMethod;
 
 @RunWith(JUnit4.class)
 public class GuestDataDAOTest {
@@ -24,36 +25,36 @@ public class GuestDataDAOTest {
 		LocalDateTime entryDate = LocalDateTime.now();
 		LocalDateTime departureDate = LocalDateTime.of(2023,12,12,10,30);
 		BigDecimal price = new BigDecimal("6000");
-		PaymentMethodDTO paymentMethod = PaymentMethodDTO.CASH;
+		PaymentMethod paymentMethod = PaymentMethod.CASH;
 		
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(entryDate,departureDate,paymentMethod,price);
-		BookingDataDTO bookingSaved = bookingDataDAO.save(bookingDataDTO);
+		BookingData bookingData=new BookingData(entryDate,departureDate,paymentMethod,price);
+		BookingData bookingSaved = bookingDataDAO.save(bookingData);
 
-		GuestDataDTO guest=new GuestDataDTO("Juliana","Salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"1234567",bookingSaved.getId());	
+		GuestData guest=new GuestData("Juliana","Salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"1234567",bookingSaved.getId());	
 		
-		GuestDataDTO guestSaved = guestDataDAO.save(guest);
+		GuestData guestSaved = guestDataDAO.save(guest);
 		Assert.assertNotNull(guestSaved);
 		Assert.assertNotNull(guestSaved.getId());
-		assertEqualsGuestDataDTO(guest,guestSaved);
+		assertEqualsGuestData(guest,guestSaved);
 	
-		GuestDataDTO guestSearched = guestDataDAO.searchByIdGuest(guestSaved.getIdBooking());
+		GuestData guestSearched = guestDataDAO.searchByIdGuest(guestSaved.getIdBooking());
 		Assert.assertNotNull(guestSearched);
-		assertEqualsGuestDataDTO(guestSaved,guestSearched);
+		assertEqualsGuestData(guestSaved,guestSearched);
 		
-		GuestDataDTO guestToModify=new GuestDataDTO(guestSearched.getId(),"Juan","Cruz",LocalDateTime.of(1993,12,12,10,30),NationalityDTO.ARGENTIN,"1234568",guestSaved.getIdBooking());
+		GuestData guestToModify=new GuestData(guestSearched.getId(),"Juan","Cruz",LocalDateTime.of(1993,12,12,10,30),Nationality.ARGENTIN,"1234568",guestSaved.getIdBooking());
 		
 		int guestModified = guestDataDAO.modify(guestToModify);
 		Assert.assertNotNull(guestSearched);
 		Assert.assertTrue(1 == guestModified);
 		
-		GuestDataDTO guestSearchedModified = guestDataDAO.searchByIdGuest(guestToModify.getIdBooking());
+		GuestData guestSearchedModified = guestDataDAO.searchByIdGuest(guestToModify.getIdBooking());
 		Assert.assertNotNull(guestSearchedModified);
-		assertEqualsGuestDataDTO(guestToModify,guestSearchedModified);
+		assertEqualsGuestData(guestToModify,guestSearchedModified);
 		
 		int deletedRecords = guestDataDAO.delete(guestToModify.getId());
 		Assert.assertTrue(1 == deletedRecords);
 		
-		GuestDataDTO guestDeleted = guestDataDAO.searchByIdGuest(guestToModify.getId());
+		GuestData guestDeleted = guestDataDAO.searchByIdGuest(guestToModify.getId());
 		Assert.assertNull(guestDeleted);
 		
 		bookingDataDAO.delete(bookingSaved.getId());	
@@ -63,26 +64,26 @@ public class GuestDataDAOTest {
 	@Test
 	public void testSearchGuestList() {
 		LocalDateTime entryDate=LocalDateTime.now().withNano(0);
-		BookingDataDTO booking=new BookingDataDTO(entryDate,LocalDateTime.of(2023,12,12,11,30),PaymentMethodDTO.CASH,new BigDecimal("6000.0"));
-		BookingDataDTO booking2=new BookingDataDTO(entryDate,LocalDateTime.of(2023,10,12,8,30),PaymentMethodDTO.CASH,new BigDecimal("7000.0"));
-		BookingDataDTO booking3=new BookingDataDTO(entryDate,LocalDateTime.of(2023,8,12,07,30),PaymentMethodDTO.CASH,new BigDecimal("8000.0"));
+		BookingData booking=new BookingData(entryDate,LocalDateTime.of(2023,12,12,11,30),PaymentMethod.CASH,new BigDecimal("6000.0"));
+		BookingData booking2=new BookingData(entryDate,LocalDateTime.of(2023,10,12,8,30),PaymentMethod.CASH,new BigDecimal("7000.0"));
+		BookingData booking3=new BookingData(entryDate,LocalDateTime.of(2023,8,12,07,30),PaymentMethod.CASH,new BigDecimal("8000.0"));
 		
-		BookingDataDTO bookingSaved = bookingDataDAO.save(booking);
-		BookingDataDTO bookingSaved2 = bookingDataDAO.save(booking2);
-		BookingDataDTO bookingSaved3 = bookingDataDAO.save(booking3);
+		BookingData bookingSaved = bookingDataDAO.save(booking);
+		BookingData bookingSaved2 = bookingDataDAO.save(booking2);
+		BookingData bookingSaved3 = bookingDataDAO.save(booking3);
 		
-		GuestDataDTO guest=new GuestDataDTO("Juliana","Salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"1234567",bookingSaved.getId());	
-		GuestDataDTO guest2=new GuestDataDTO("Pablo","Salinas",LocalDateTime.of(1993,12,12,10,30),NationalityDTO.ARGENTIN,"1234569",bookingSaved2.getId());	
-		GuestDataDTO guest3=new GuestDataDTO("Sebastian","Cruz",LocalDateTime.of(1993,10,13,10,30),NationalityDTO.ARGENTIN,"1234568",bookingSaved3.getId());	
+		GuestData guest=new GuestData("Juliana","Salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"1234567",bookingSaved.getId());	
+		GuestData guest2=new GuestData("Pablo","Salinas",LocalDateTime.of(1993,12,12,10,30),Nationality.ARGENTIN,"1234569",bookingSaved2.getId());	
+		GuestData guest3=new GuestData("Sebastian","Cruz",LocalDateTime.of(1993,10,13,10,30),Nationality.ARGENTIN,"1234568",bookingSaved3.getId());	
 	
-		GuestDataDTO guestSaved = guestDataDAO.save(guest);
-		GuestDataDTO guestSaved2 = guestDataDAO.save(guest2);
-		GuestDataDTO guestSaved3 = guestDataDAO.save(guest3);
+		GuestData guestSaved = guestDataDAO.save(guest);
+		GuestData guestSaved2 = guestDataDAO.save(guest2);
+		GuestData guestSaved3 = guestDataDAO.save(guest3);
 		
-		List<GuestDataDTO> searchGuestList = guestDataDAO.searchGuestList();
-		assertEqualsGuestDataDTO(guestSaved,searchGuestList.get(0));
-		assertEqualsGuestDataDTO(guestSaved2,searchGuestList.get(1));
-		assertEqualsGuestDataDTO(guestSaved3,searchGuestList.get(2));
+		List<GuestData> searchGuestList = guestDataDAO.searchGuestList();
+		assertEqualsGuestData(guestSaved,searchGuestList.get(0));
+		assertEqualsGuestData(guestSaved2,searchGuestList.get(1));
+		assertEqualsGuestData(guestSaved3,searchGuestList.get(2));
 		
 		int deletedRecords = guestDataDAO.delete(guestSaved.getId());	
 		int deletedRecords2 = guestDataDAO.delete(guestSaved2.getId());
@@ -98,11 +99,11 @@ public class GuestDataDAOTest {
 	
 	@Test
 	public void testGetGuestAttributes() {
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-		BookingDataDTO bookingSaved = bookingDataDAO.save(bookingDataDTO);
+		BookingData bookingData=new BookingData(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethod.CASH,new BigDecimal("6000"));
+		BookingData bookingSaved = bookingDataDAO.save(bookingData);
 		
 		try {
-			GuestDataDTO guest=new GuestDataDTO(null,null,LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"1234567",bookingSaved.getId());
+			GuestData guest=new GuestData(null,null,LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"1234567",bookingSaved.getId());
 			
 			guestDataDAO.save(guest);
 			Assert.fail("This test should have failed");
@@ -116,15 +117,15 @@ public class GuestDataDAOTest {
 	
 	@Test
 	public void testSaveBirthdateNull() {
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-		BookingDataDTO bookingSaved = bookingDataDAO.save(bookingDataDTO);
+		BookingData bookingData=new BookingData(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethod.CASH,new BigDecimal("6000"));
+		BookingData bookingSaved = bookingDataDAO.save(bookingData);
 		
-		GuestDataDTO guest=new GuestDataDTO("Juliana","Salinas",null,NationalityDTO.ARGENTIN,"1234567",bookingSaved.getId());
+		GuestData guest=new GuestData("Juliana","Salinas",null,Nationality.ARGENTIN,"1234567",bookingSaved.getId());
 		guestDataDAO.save(guest);
 		
-		GuestDataDTO guestSearched = guestDataDAO.searchByIdGuest(guest.getIdBooking());
+		GuestData guestSearched = guestDataDAO.searchByIdGuest(guest.getIdBooking());
 		Assert.assertNotNull(guestSearched);
-		assertEqualsGuestDataDTO(guest,guestSearched);
+		assertEqualsGuestData(guest,guestSearched);
 		
 		Assert.assertEquals(1,guestDataDAO.delete(guest.getId()));
 		Assert.assertEquals(1,bookingDataDAO.delete(bookingSaved.getId()));
@@ -132,21 +133,21 @@ public class GuestDataDAOTest {
 	
 	@Test
 	public void testSaveNationalityNull() {
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-		BookingDataDTO bookingSaved = bookingDataDAO.save(bookingDataDTO);
+		BookingData bookingData=new BookingData(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethod.CASH,new BigDecimal("6000"));
+		BookingData bookingSaved = bookingDataDAO.save(bookingData);
 		
-		GuestDataDTO guest=new GuestDataDTO("Juliana","Salinas",LocalDateTime.of(1990,12,12,10,30),null,"1234567",bookingSaved.getId());
+		GuestData guest=new GuestData("Juliana","Salinas",LocalDateTime.of(1990,12,12,10,30),null,"1234567",bookingSaved.getId());
 		guestDataDAO.save(guest);
 		
-		GuestDataDTO guestSearched = guestDataDAO.searchByIdGuest(guest.getIdBooking());
+		GuestData guestSearched = guestDataDAO.searchByIdGuest(guest.getIdBooking());
 		Assert.assertNotNull(guestSearched);
-		assertEqualsGuestDataDTO(guest,guestSearched);
+		assertEqualsGuestData(guest,guestSearched);
 		
 		Assert.assertEquals(1,guestDataDAO.delete(guest.getId()));
 		Assert.assertEquals(1,bookingDataDAO.delete(bookingSaved.getId()));
 	}
 	
-	private void assertEqualsGuestDataDTO(GuestDataDTO guestToBeCompared, GuestDataDTO guestWhoComparesTo) {
+	private void assertEqualsGuestData(GuestData guestToBeCompared, GuestData guestWhoComparesTo) {
 		Assert.assertEquals(guestToBeCompared.getId(), guestWhoComparesTo.getId());
 		Assert.assertEquals(guestToBeCompared.getName(), guestWhoComparesTo.getName());
 		Assert.assertEquals(guestToBeCompared.getLastName(), guestWhoComparesTo.getLastName());

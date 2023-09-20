@@ -1,6 +1,6 @@
-package database.dto;
+package model;
 
-public enum NationalityDTO {
+public enum Nationality {
 
 	AFGAN ("AFGAN","afgano-afgana"),
 	GERMAN ("GERMAN","alem\u00e1n-alemana"),
@@ -9,7 +9,7 @@ public enum NationalityDTO {
 	private final String name;
 	private final String spanishNationality;
 	
-	private NationalityDTO(String name, String spanishNationality) {
+	private Nationality(String name, String spanishNationality) {
 		this.name=name;
 		this.spanishNationality=spanishNationality;
 	}

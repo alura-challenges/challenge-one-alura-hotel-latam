@@ -11,7 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import database.dao.UserDataDAO;
-import database.dto.UserDataDTO;
+import model.UserData;
 import service.UserService;
 
 @RunWith(JUnit4.class)
@@ -29,7 +29,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void testLoginUser() {
-		UserDataDTO mockedUser = new UserDataDTO(1, "cbeltran", "goodpassword");
+		UserData mockedUser = new UserData(1, "cbeltran", "goodpassword");
 		Mockito.doReturn(mockedUser).when(userDataDAO).getUserByLogin(eq("cbeltran"));
 		
 		boolean loginUser = userService.loginUser("cbeltran", "goodpassword");
@@ -38,7 +38,7 @@ public class UserServiceTest {
 	
 	@Test
 	public void testNoLoginUser() {
-		UserDataDTO mockedUser = new UserDataDTO(1, "cbeltran", "goodpassword");
+		UserData mockedUser = new UserData(1, "cbeltran", "goodpassword");
 		Mockito.doReturn(mockedUser).when(userDataDAO).getUserByLogin("cbeltran");
 		
 		boolean loginUser = userService.loginUser("dbeltran", "goodpassword");

@@ -22,10 +22,10 @@ import org.mockito.MockitoAnnotations;
 
 import database.dao.BookingDataDAO;
 import database.dao.GuestDataDAO;
-import database.dto.BookingDataDTO;
-import database.dto.GuestDataDTO;
-import database.dto.NationalityDTO;
-import database.dto.PaymentMethodDTO;
+import model.BookingData;
+import model.GuestData;
+import model.Nationality;
+import model.PaymentMethod;
 import service.BookingService;
 
 @RunWith(JUnit4.class)
@@ -47,81 +47,81 @@ public class BookingServiceTest {
 	
 	@Test
 	public void testSaveBooking() {
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-		bookingDataDTO.setId(123);
-		Mockito.doReturn(bookingDataDTO).when(bookingDataDAO).save(any(BookingDataDTO.class));
+		BookingData bookingData=new BookingData(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethod.CASH,new BigDecimal("6000"));
+		bookingData.setId(123);
+		Mockito.doReturn(bookingData).when(bookingDataDAO).save(any(BookingData.class));
 		
-		Integer id = bookingService.saveBooking(LocalDateTime.of(2023,12,29,10,30),LocalDateTime.of(2023,12,30,10,30),PaymentMethodDTO.CREDIT);
+		Integer id = bookingService.saveBooking(LocalDateTime.of(2023,12,29,10,30),LocalDateTime.of(2023,12,30,10,30),PaymentMethod.CREDIT);
 		assertEquals((Integer) 123, id);
 	}
 	
 	@Test
 	public void testSaveGuest() {
-		GuestDataDTO guestDataDTO=new GuestDataDTO("Gabriel","Salinas",LocalDateTime.now(),NationalityDTO.ARGENTIN,"2345777",1);
-		Mockito.doReturn(guestDataDTO).when(guestDataDAO).save(any(GuestDataDTO.class));
+		GuestData guestData=new GuestData("Gabriel","Salinas",LocalDateTime.now(),Nationality.ARGENTIN,"2345777",1);
+		Mockito.doReturn(guestData).when(guestDataDAO).save(any(GuestData.class));
 		
-		bookingService.saveGuest("Gabriel","Salinas",LocalDateTime.now(),NationalityDTO.ARGENTIN,"2345777",1);
+		bookingService.saveGuest("Gabriel","Salinas",LocalDateTime.now(),Nationality.ARGENTIN,"2345777",1);
 
-		verify(guestDataDAO).save(any(GuestDataDTO.class));
+		verify(guestDataDAO).save(any(GuestData.class));
 	}
 	
 	@Test
 	public void testLoadBookingList() {
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-		BookingDataDTO bookingDataDTO1=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2024,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("7000"));
-		BookingDataDTO bookingDataDTO2=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2025,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("8000"));
+		BookingData bookingData=new BookingData(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethod.CASH,new BigDecimal("6000"));
+		BookingData bookingData1=new BookingData(LocalDateTime.now(),LocalDateTime.of(2024,12,12,10,30),PaymentMethod.CASH,new BigDecimal("7000"));
+		BookingData bookingData2=new BookingData(LocalDateTime.now(),LocalDateTime.of(2025,12,12,10,30),PaymentMethod.CASH,new BigDecimal("8000"));
 		
-		List<BookingDataDTO>listBookingDataDTO=new ArrayList<>();
+		List<BookingData>listBookingData=new ArrayList<>();
 		
-		listBookingDataDTO.add(bookingDataDTO);
-		listBookingDataDTO.add(bookingDataDTO1);
-		listBookingDataDTO.add(bookingDataDTO2);
+		listBookingData.add(bookingData);
+		listBookingData.add(bookingData1);
+		listBookingData.add(bookingData2);
 		
-		Mockito.doReturn(listBookingDataDTO).when(bookingDataDAO).searchBookingList();
+		Mockito.doReturn(listBookingData).when(bookingDataDAO).searchBookingList();
 		
-		List<BookingDataDTO> loadBookingList = bookingService.loadBookingList();
+		List<BookingData> loadBookingList = bookingService.loadBookingList();
 		
 		verify(bookingDataDAO).searchBookingList();
-		Assert.assertEquals(listBookingDataDTO,loadBookingList);
+		Assert.assertEquals(listBookingData,loadBookingList);
 	}
 	
 	@Test
 	public void testLoadBookingById() {
-		BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-		bookingDataDTO.setId(1);
-		BookingDataDTO bookingDataDTO1=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2024,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("7000"));
-		bookingDataDTO1.setId(2);
-		BookingDataDTO bookingDataDTO2=new BookingDataDTO(LocalDateTime.now(),LocalDateTime.of(2025,12,12,10,30),PaymentMethodDTO.CASH,new BigDecimal("8000"));
-		bookingDataDTO2.setId(3);
+		BookingData bookingData=new BookingData(LocalDateTime.now(),LocalDateTime.of(2023,12,12,10,30),PaymentMethod.CASH,new BigDecimal("6000"));
+		bookingData.setId(1);
+		BookingData bookingData1=new BookingData(LocalDateTime.now(),LocalDateTime.of(2024,12,12,10,30),PaymentMethod.CASH,new BigDecimal("7000"));
+		bookingData1.setId(2);
+		BookingData bookingData2=new BookingData(LocalDateTime.now(),LocalDateTime.of(2025,12,12,10,30),PaymentMethod.CASH,new BigDecimal("8000"));
+		bookingData2.setId(3);
 		
-		List<BookingDataDTO>listBookingDataDTO=new ArrayList<>();
+		List<BookingData>listBookingData=new ArrayList<>();
 		
-		listBookingDataDTO.add(bookingDataDTO);
-		listBookingDataDTO.add(bookingDataDTO1);
-		listBookingDataDTO.add(bookingDataDTO2);
+		listBookingData.add(bookingData);
+		listBookingData.add(bookingData1);
+		listBookingData.add(bookingData2);
 		
-		Mockito.doReturn(listBookingDataDTO.get(0)).when(bookingDataDAO).searchByIdBooking(1);
-		Mockito.doReturn(listBookingDataDTO.get(1)).when(bookingDataDAO).searchByIdBooking(2);
-		Mockito.doReturn(listBookingDataDTO.get(2)).when(bookingDataDAO).searchByIdBooking(3);
+		Mockito.doReturn(listBookingData.get(0)).when(bookingDataDAO).searchByIdBooking(1);
+		Mockito.doReturn(listBookingData.get(1)).when(bookingDataDAO).searchByIdBooking(2);
+		Mockito.doReturn(listBookingData.get(2)).when(bookingDataDAO).searchByIdBooking(3);
 		
-		BookingDataDTO loadedBooking = bookingService.loadBookingListById(1);
-		BookingDataDTO loadedBooking1 = bookingService.loadBookingListById(2);
-		BookingDataDTO loadedBooking2 = bookingService.loadBookingListById(3);
+		BookingData loadedBooking = bookingService.loadBookingListById(1);
+		BookingData loadedBooking1 = bookingService.loadBookingListById(2);
+		BookingData loadedBooking2 = bookingService.loadBookingListById(3);
 		
-		assertEquals(bookingDataDTO, loadedBooking);
-		assertEquals(bookingDataDTO1, loadedBooking1);
-		assertEquals(bookingDataDTO2, loadedBooking2);
+		assertEquals(bookingData, loadedBooking);
+		assertEquals(bookingData1, loadedBooking1);
+		assertEquals(bookingData2, loadedBooking2);
 	}
 	
 	@Test
 	public void testModifiyBooking() {
 
-		BookingDataDTO bookingDataDTO1Modified=new BookingDataDTO(2,LocalDateTime.now(),LocalDateTime.of(2011,11,11,11,11),new BigDecimal("90000"),PaymentMethodDTO.CASH);
-		Mockito.doReturn(1).when(bookingDataDAO).modify(bookingDataDTO1Modified);
+		BookingData bookingData1Modified=new BookingData(2,LocalDateTime.now(),LocalDateTime.of(2011,11,11,11,11),new BigDecimal("90000"),PaymentMethod.CASH);
+		Mockito.doReturn(1).when(bookingDataDAO).modify(bookingData1Modified);
 		
-		int modifyBooking = bookingService.modifyBooking(bookingDataDTO1Modified);
+		int modifyBooking = bookingService.modifyBooking(bookingData1Modified);
 		
-		verify(bookingDataDAO).modify(bookingDataDTO1Modified);
+		verify(bookingDataDAO).modify(bookingData1Modified);
 		
 		assertEquals(1,modifyBooking);
 	}
@@ -139,11 +139,11 @@ public class BookingServiceTest {
 	@Test
 	public void testIncorrectTimeEntryDate() {	
 		try {
-			BookingDataDTO bookingDataDTO=new BookingDataDTO(LocalDateTime.of(2023,12,30,10,30),LocalDateTime.of(2023,12,31,11,30),PaymentMethodDTO.CASH,new BigDecimal("6000"));
-			bookingDataDTO.setId(123);
-			Mockito.doReturn(bookingDataDTO).when(bookingDataDAO).save(any(BookingDataDTO.class));
+			BookingData bookingData=new BookingData(LocalDateTime.of(2023,12,30,10,30),LocalDateTime.of(2023,12,31,11,30),PaymentMethod.CASH,new BigDecimal("6000"));
+			bookingData.setId(123);
+			Mockito.doReturn(bookingData).when(bookingDataDAO).save(any(BookingData.class));
 			
-			bookingService.saveBooking(LocalDateTime.of(2023,12,30,10,30),LocalDateTime.of(2023,12,30,11,30),PaymentMethodDTO.CREDIT);
+			bookingService.saveBooking(LocalDateTime.of(2023,12,30,10,30),LocalDateTime.of(2023,12,30,11,30),PaymentMethod.CREDIT);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Entry date can't be equal to departure date";
@@ -153,7 +153,7 @@ public class BookingServiceTest {
 	@Test
 	public void testIncorrectDepartureTime() {
 		try {			
-			bookingService.saveBooking(LocalDateTime.of(2023,10,12,12,0,0),LocalDateTime.of(2023,10,12,12,0,1),PaymentMethodDTO.CASH);
+			bookingService.saveBooking(LocalDateTime.of(2023,10,12,12,0,0),LocalDateTime.of(2023,10,12,12,0,1),PaymentMethod.CASH);
 			Assert.fail("This test should have failed");
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
@@ -164,59 +164,59 @@ public class BookingServiceTest {
 	
 	@Test
 	public void testLoadGuestList() {
-		GuestDataDTO guestDataDTO=new GuestDataDTO(2,"andrea","salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
-		GuestDataDTO guestDataDTO2=new GuestDataDTO(3,"juan","cruz",LocalDateTime.of(1993,12,12,10,30),NationalityDTO.ARGENTIN,"2345778",13);
-		GuestDataDTO guestDataDTO3=new GuestDataDTO(4,"harry","cruz",LocalDateTime.of(2019,12,12,10,30),NationalityDTO.ARGENTIN,"2345779",12);
+		GuestData guestData=new GuestData(2,"andrea","salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+		GuestData guestData2=new GuestData(3,"juan","cruz",LocalDateTime.of(1993,12,12,10,30),Nationality.ARGENTIN,"2345778",13);
+		GuestData guestData3=new GuestData(4,"harry","cruz",LocalDateTime.of(2019,12,12,10,30),Nationality.ARGENTIN,"2345779",12);
 
-		List<GuestDataDTO>listGuestDataDTO=new ArrayList<>();
+		List<GuestData>listGuestData=new ArrayList<>();
 		
-		listGuestDataDTO.add(guestDataDTO);
-		listGuestDataDTO.add(guestDataDTO2);
-		listGuestDataDTO.add(guestDataDTO3);
+		listGuestData.add(guestData);
+		listGuestData.add(guestData2);
+		listGuestData.add(guestData3);
 		
-		Mockito.doReturn(listGuestDataDTO).when(guestDataDAO).searchGuestList();
+		Mockito.doReturn(listGuestData).when(guestDataDAO).searchGuestList();
 		
-		List<GuestDataDTO> loadGuestList = bookingService.loadGuestList();
+		List<GuestData> loadGuestList = bookingService.loadGuestList();
 		
 		verify(guestDataDAO).searchGuestList();
-		Assert.assertEquals(listGuestDataDTO,loadGuestList);
+		Assert.assertEquals(listGuestData,loadGuestList);
 	}
 	
 	@Test
 	public void testLoadGuestById() {
-		GuestDataDTO guestDataDTO=new GuestDataDTO(2,"andrea","salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
-		guestDataDTO.setId(1);
-		GuestDataDTO guestDataDTO1=new GuestDataDTO(3,"juan","cruz",LocalDateTime.of(1993,12,12,10,30),NationalityDTO.ARGENTIN,"2345778",13);
-		guestDataDTO.setId(2);
-		GuestDataDTO guestDataDTO2=new GuestDataDTO(4,"harry","cruz",LocalDateTime.of(2019,12,12,10,30),NationalityDTO.ARGENTIN,"2345779",12);
-		guestDataDTO.setId(3);
+		GuestData guestData=new GuestData(2,"andrea","salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+		guestData.setId(1);
+		GuestData guestData1=new GuestData(3,"juan","cruz",LocalDateTime.of(1993,12,12,10,30),Nationality.ARGENTIN,"2345778",13);
+		guestData.setId(2);
+		GuestData guestData2=new GuestData(4,"harry","cruz",LocalDateTime.of(2019,12,12,10,30),Nationality.ARGENTIN,"2345779",12);
+		guestData.setId(3);
 		
-		List<GuestDataDTO>listGuestDataDTO=new ArrayList<>();
+		List<GuestData>listGuestData=new ArrayList<>();
 		
-		listGuestDataDTO.add(guestDataDTO);
-		listGuestDataDTO.add(guestDataDTO1);
-		listGuestDataDTO.add(guestDataDTO2);
+		listGuestData.add(guestData);
+		listGuestData.add(guestData1);
+		listGuestData.add(guestData2);
 		
-		Mockito.doReturn(listGuestDataDTO.get(0)).when(guestDataDAO).searchByIdGuest(1);
-		Mockito.doReturn(listGuestDataDTO.get(1)).when(guestDataDAO).searchByIdGuest(2);
-		Mockito.doReturn(listGuestDataDTO.get(2)).when(guestDataDAO).searchByIdGuest(3);
+		Mockito.doReturn(listGuestData.get(0)).when(guestDataDAO).searchByIdGuest(1);
+		Mockito.doReturn(listGuestData.get(1)).when(guestDataDAO).searchByIdGuest(2);
+		Mockito.doReturn(listGuestData.get(2)).when(guestDataDAO).searchByIdGuest(3);
 		
-		GuestDataDTO loadedGuest = bookingService.loadGuestById(1);
-		GuestDataDTO loadedGuest1 = bookingService.loadGuestById(2);
-		GuestDataDTO loadedGuest2 = bookingService.loadGuestById(3);
+		GuestData loadedGuest = bookingService.loadGuestById(1);
+		GuestData loadedGuest1 = bookingService.loadGuestById(2);
+		GuestData loadedGuest2 = bookingService.loadGuestById(3);
 		
-		assertEquals(guestDataDTO, loadedGuest);
-		assertEquals(guestDataDTO1, loadedGuest1);
-		assertEquals(guestDataDTO2, loadedGuest2);
+		assertEquals(guestData, loadedGuest);
+		assertEquals(guestData1, loadedGuest1);
+		assertEquals(guestData2, loadedGuest2);
 	}
 
 	@Test
 	public void testModifyGuest() {
-	Mockito.doReturn(1).when(guestDataDAO).modify(any(GuestDataDTO.class));
+	Mockito.doReturn(1).when(guestDataDAO).modify(any(GuestData.class));
 
-	int modifyGuest= bookingService.modifyGuest("andrea","salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+	int modifyGuest= bookingService.modifyGuest("andrea","salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
 
-	verify(guestDataDAO).modify(any(GuestDataDTO.class));
+	verify(guestDataDAO).modify(any(GuestData.class));
 
 	assertEquals(1,modifyGuest);
 	}
@@ -235,7 +235,7 @@ public class BookingServiceTest {
 	@Test	
 	public void testNullNameGuest() {	
 		try {
-			bookingService.saveGuest(null,"salinas",LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+			bookingService.saveGuest(null,"salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Name was null";
@@ -246,7 +246,7 @@ public class BookingServiceTest {
 	@Test
 	public void testNullLastNameGuest() {	
 		try {
-			bookingService.saveGuest("andrea",null,LocalDateTime.of(1990,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+			bookingService.saveGuest("andrea",null,LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Lastname was null";
@@ -257,7 +257,7 @@ public class BookingServiceTest {
 	@Test
 	public void testBirthdateIncorrect() {	
 		try {
-			bookingService.saveGuest("andrea","salinas",LocalDateTime.of(2023,12,12,10,30),NationalityDTO.ARGENTIN,"2345777",1);
+			bookingService.saveGuest("andrea","salinas",LocalDateTime.of(2023,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Birthdate can't be before today";

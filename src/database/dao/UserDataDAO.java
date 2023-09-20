@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import database.dto.UserDataDTO;
+
+import model.UserData;
 
 public class UserDataDAO extends MainDAO{
 	
@@ -12,9 +13,9 @@ public class UserDataDAO extends MainDAO{
 	private static final String SELECT_USER_BY_LOGIN="SELECT id, login, password FROM user_data WHERE login=?";
 	
 
-	public UserDataDTO getUserByLogin(String login){
+	public UserData getUserByLogin(String login){
 		
-		UserDataDTO userDataDTO = null;
+		UserData userData = null;
 		con= super.getConnection();
 		
 		try {
@@ -27,14 +28,14 @@ public class UserDataDAO extends MainDAO{
 					
 					try(resultSet){
 						if(resultSet.next()) {
-								userDataDTO=new UserDataDTO(
+								userData=new UserData(
 								resultSet.getInt("id"),
 								resultSet.getString("login"),
 								resultSet.getString("password"));
 						}
 					}
 				}
-				return userDataDTO;
+				return userData;
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
 			}

@@ -1,12 +1,12 @@
-package database.dto;
+package model;
 
-public class UserDataDTO {
+public class UserData {
 	
 	private Integer id;
 	private String login;
 	private String password;
 	
-	public UserDataDTO(int id,String login, String password) {
+	public UserData(int id,String login, String password) {
 		this.id=id;
 		this.login=login;
 		this.password=password;

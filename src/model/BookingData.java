@@ -1,23 +1,23 @@
-package database.dto;
+package model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class BookingDataDTO {
+public class BookingData {
 	
 	private Integer id; 
 	private LocalDateTime entryDate;
 	private LocalDateTime departureDate;
 	private BigDecimal price;
-	private PaymentMethodDTO paymentMethod;
+	private PaymentMethod paymentMethod;
 	
-	public BookingDataDTO(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethodDTO paymentMethod) {
+	public BookingData(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethod paymentMethod) {
 		this.entryDate=entryDate;
 		this.departureDate=departureDate;
 		this.paymentMethod=paymentMethod;
 	}
 	
-	public BookingDataDTO(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethodDTO paymentMethod,
+	public BookingData(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethod paymentMethod,
 			BigDecimal bookingPrice) {
 		this.entryDate=entryDate;
 		this.departureDate=departureDate;
@@ -25,8 +25,8 @@ public class BookingDataDTO {
 		this.price=bookingPrice;
 	}
 
-	public BookingDataDTO(Integer id, LocalDateTime entryDate, LocalDateTime departureDate, BigDecimal price,
-			PaymentMethodDTO paymentMethod) {
+	public BookingData(Integer id, LocalDateTime entryDate, LocalDateTime departureDate, BigDecimal price,
+			PaymentMethod paymentMethod) {
 		this.id=id;
 		this.entryDate=entryDate;
 		this.departureDate=departureDate;
@@ -51,11 +51,11 @@ public class BookingDataDTO {
 		this.departureDate = departureDate;
 	}
 	
-	public PaymentMethodDTO getPaymentMethod() {
+	public PaymentMethod getPaymentMethod() {
 		return paymentMethod;
 	}
 	
-	public void setMethodPayment(PaymentMethodDTO paymentMethod) {
+	public void setMethodPayment(PaymentMethod paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 	
@@ -79,6 +79,6 @@ public class BookingDataDTO {
 	
 	@Override
 	public String toString() {
-		return "BookingDataDTO"+"Id="+this.id+"entrydate="+this.entryDate +"departuredate="+this.departureDate+"price="+this.price+"paymentMethod="+this.paymentMethod;
+		return "BookingData"+"Id="+this.id+"entrydate="+this.entryDate +"departuredate="+this.departureDate+"price="+this.price+"paymentMethod="+this.paymentMethod;
 	}
 }

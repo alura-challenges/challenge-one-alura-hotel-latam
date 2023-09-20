@@ -1,6 +1,6 @@
-package database.dto;
+package model;
 
-public enum PaymentMethodDTO {
+public enum PaymentMethod {
 
 	CREDIT ("CREDIT","Credito"),
 	DEBIT ("DEBIT","Debito"),
@@ -9,7 +9,7 @@ public enum PaymentMethodDTO {
 	private final String name;
 	private final String spanishName;
 	
-	private PaymentMethodDTO(String name, String spanishName) {
+	private PaymentMethod(String name, String spanishName) {
 		this.name=name;
 		this.spanishName=spanishName;
 	}

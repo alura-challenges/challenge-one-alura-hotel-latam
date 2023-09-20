@@ -9,8 +9,9 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import database.dto.GuestDataDTO;
-import database.dto.NationalityDTO;
+
+import model.GuestData;
+import model.Nationality;
 
 public class GuestDataDAO extends MainDAO {
 	
@@ -24,7 +25,7 @@ public class GuestDataDAO extends MainDAO {
 	
 	private static final String MODIFY_GUEST="UPDATE guest SET name=?, lastname=?, birthdate=?, nationality=?, telephone=? WHERE id=?";
 	
-	public GuestDataDTO save(GuestDataDTO guestData) {
+	public GuestData save(GuestData guestData) {
 		Connection con= super.getConnection();	
 		
 		try {
@@ -39,7 +40,7 @@ public class GuestDataDAO extends MainDAO {
 		return guestData;	
 	}
 	
-	Integer saveRecordGuest(GuestDataDTO guestData, PreparedStatement statement) throws SQLException {
+	Integer saveRecordGuest(GuestData guestData, PreparedStatement statement) throws SQLException {
 		String name = guestData.getName();
 		String lastName = guestData.getLastName();
 		
@@ -49,7 +50,7 @@ public class GuestDataDAO extends MainDAO {
 			brithDateTimestamp=Timestamp.valueOf(birthDate);
 		}
 		
-		NationalityDTO nationalityMethodUser=guestData.getNationality();
+		Nationality nationalityMethodUser=guestData.getNationality();
 		String nationality=null;
 		if(nationalityMethodUser!=null) {
 			nationality=nationalityMethodUser.getName();
@@ -76,8 +77,8 @@ public class GuestDataDAO extends MainDAO {
 		return null;
 	}
 	
-	public List<GuestDataDTO> searchGuestList(){
-		List<GuestDataDTO> guestdataList=new ArrayList<>();
+	public List<GuestData> searchGuestList(){
+		List<GuestData> guestdataList=new ArrayList<>();
 		Connection con= super.getConnection();
 
 		try {
@@ -94,9 +95,9 @@ public class GuestDataDAO extends MainDAO {
 		return guestdataList;
 	}
 	
-	public GuestDataDTO searchByIdGuest(int idSearch) {
+	public GuestData searchByIdGuest(int idSearch) {
 		Connection con= super.getConnection();
-		GuestDataDTO guestdata=null;
+		GuestData guestdata=null;
 		
 		try {
 			final PreparedStatement statement=con.prepareStatement(SELECT_GUEST_TABLE_BY_ID);
@@ -105,7 +106,7 @@ public class GuestDataDAO extends MainDAO {
 				statement.setInt(1, idSearch);
 				statement.execute();
 				final ResultSet resultSet=statement.getResultSet();
-				List<GuestDataDTO> guestdataList = parseGuestAttributes(resultSet);
+				List<GuestData> guestdataList = parseGuestAttributes(resultSet);
 				if (!guestdataList.isEmpty()) {
 					guestdata = guestdataList.get(0);
 				}
@@ -116,8 +117,8 @@ public class GuestDataDAO extends MainDAO {
 		return guestdata;
 	}
 	
-	public List<GuestDataDTO> parseGuestAttributes(ResultSet resultSet) {					
-		List<GuestDataDTO> guestdataList=new ArrayList<>();
+	public List<GuestData> parseGuestAttributes(ResultSet resultSet) {					
+		List<GuestData> guestdataList=new ArrayList<>();
 		
 		try(resultSet){
 			while(resultSet.next()) {
@@ -132,15 +133,15 @@ public class GuestDataDAO extends MainDAO {
 				}
 			
 				String nationalityMethod=resultSet.getString("nationality");
-				NationalityDTO nationality=null;	
+				Nationality nationality=null;	
 				if(nationalityMethod!=null) {
-					nationality=NationalityDTO.valueOf(nationalityMethod);
+					nationality=Nationality.valueOf(nationalityMethod);
 				}
 					
 				String telephone=resultSet.getString("telephone");			
 				int idBooking = resultSet.getInt("id_booking");
 				
-				GuestDataDTO guestRow=new GuestDataDTO(
+				GuestData guestRow=new GuestData(
 						id,
 						name,
 						lastname,
@@ -170,19 +171,19 @@ public class GuestDataDAO extends MainDAO {
 		}
 	}
 	
-	public int modify(GuestDataDTO guestDataDTO) {
+	public int modify(GuestData guestData) {
 		Connection con= super.getConnection();
 		try {
 			final PreparedStatement statement=con.prepareStatement(MODIFY_GUEST);
 			
 			try(statement){
 				
-				String name=guestDataDTO.getName();
-				String lastname=guestDataDTO.getLastName();
-				Timestamp birthdateTimestamp=Timestamp.valueOf(guestDataDTO.getBirthDate());
-				String nationality=guestDataDTO.getNationality().getName();
-				String telephone=guestDataDTO.getPhoneNumber();
-				int id=guestDataDTO.getId();
+				String name=guestData.getName();
+				String lastname=guestData.getLastName();
+				Timestamp birthdateTimestamp=Timestamp.valueOf(guestData.getBirthDate());
+				String nationality=guestData.getNationality().getName();
+				String telephone=guestData.getPhoneNumber();
+				int id=guestData.getId();
 				
 				statement.setString(1, name);
 				statement.setString(2, lastname);

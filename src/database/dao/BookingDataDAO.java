@@ -10,8 +10,9 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import database.dto.BookingDataDTO;
-import database.dto.PaymentMethodDTO;
+
+import model.BookingData;
+import model.PaymentMethod;
 
 public class BookingDataDAO extends MainDAO {
 	
@@ -25,7 +26,7 @@ public class BookingDataDAO extends MainDAO {
 	
 	private static final String MODIFY_BOOKING="UPDATE booking SET entry_date=?, departure_date=?, price=?, payment_method=? WHERE id=?";
 	
-	public BookingDataDTO save(BookingDataDTO bookingData) {
+	public BookingData save(BookingData bookingData) {
 		Connection con= super.getConnection();
 		
 		try {
@@ -40,7 +41,7 @@ public class BookingDataDAO extends MainDAO {
 		return bookingData;	
 	}
 
-	Integer saveRecord(BookingDataDTO bookingData, PreparedStatement statement) throws SQLException {
+	Integer saveRecord(BookingData bookingData, PreparedStatement statement) throws SQLException {
 		LocalDateTime entryDatebyUser=bookingData.getEntryDate();
 		Timestamp entryTimestampUser = null;
 		if (entryDatebyUser != null) {
@@ -53,7 +54,7 @@ public class BookingDataDAO extends MainDAO {
 			departureTimestampUser=Timestamp.valueOf(departureDatebyUser);
 		}
 			
-		PaymentMethodDTO paymentMethodUser = bookingData.getPaymentMethod();
+		PaymentMethod paymentMethodUser = bookingData.getPaymentMethod();
 		String methodPayment=null;
 		if(paymentMethodUser!=null) {
 			methodPayment= paymentMethodUser.getName();
@@ -76,8 +77,8 @@ public class BookingDataDAO extends MainDAO {
 		return null;
 	}
 	
-	public List<BookingDataDTO> searchBookingList(){
-		List<BookingDataDTO> bookingdataList=new ArrayList<>();
+	public List<BookingData> searchBookingList(){
+		List<BookingData> bookingdataList=new ArrayList<>();
 		Connection con= super.getConnection();
 
 		try {
@@ -94,9 +95,9 @@ public class BookingDataDAO extends MainDAO {
 		return bookingdataList;
 	}
 	
-	public BookingDataDTO searchByIdBooking(int idSearch) {
+	public BookingData searchByIdBooking(int idSearch) {
 		Connection con= super.getConnection();
-		BookingDataDTO bookingdata=null;
+		BookingData bookingdata=null;
 		
 		try {
 			final PreparedStatement statement=con.prepareStatement(SELECT_BOOKING_TABLE_BY_ID);
@@ -105,7 +106,7 @@ public class BookingDataDAO extends MainDAO {
 				statement.setInt(1, idSearch);
 				statement.execute();
 				final ResultSet resultSet=statement.getResultSet();
-				List<BookingDataDTO> bookingdataList = getBookingAttributes(resultSet);
+				List<BookingData> bookingdataList = getBookingAttributes(resultSet);
 				if (!bookingdataList.isEmpty()) {
 					bookingdata = bookingdataList.get(0);
 				}
@@ -116,8 +117,8 @@ public class BookingDataDAO extends MainDAO {
 		return bookingdata;
 	}
 					
-	public List<BookingDataDTO> getBookingAttributes(ResultSet resultSet) {					
-		List<BookingDataDTO> bookingdataList=new ArrayList<>();
+	public List<BookingData> getBookingAttributes(ResultSet resultSet) {					
+		List<BookingData> bookingdataList=new ArrayList<>();
 		
 		try(resultSet){
 			while(resultSet.next()) {
@@ -131,9 +132,9 @@ public class BookingDataDAO extends MainDAO {
 				
 				String databasePaymentMethod=resultSet.getString("payment_method");
 				
-				PaymentMethodDTO paymentMethod=PaymentMethodDTO.valueOf(databasePaymentMethod);
+				PaymentMethod paymentMethod=PaymentMethod.valueOf(databasePaymentMethod);
 				
-				BookingDataDTO bookingRow=new BookingDataDTO(
+				BookingData bookingRow=new BookingData(
 						id,
 						entryDate,
 						departureDate,
@@ -161,18 +162,18 @@ public class BookingDataDAO extends MainDAO {
 		}
 	}
 	
-	public int modify(BookingDataDTO bookingDataDTO) {
+	public int modify(BookingData bookingData) {
 		Connection con= super.getConnection();
 		try {
 			final PreparedStatement statement=con.prepareStatement(MODIFY_BOOKING);
 			
 			try(statement){
 				
-				Timestamp entryDateTimestamp=Timestamp.valueOf(bookingDataDTO.getEntryDate());
-				Timestamp departureDateTimestamp=Timestamp.valueOf(bookingDataDTO.getDepartureDate());
-				BigDecimal price=bookingDataDTO.getPrice();
-				String paymentMethodData=bookingDataDTO.getPaymentMethod().getName();
-				int id=bookingDataDTO.getId();
+				Timestamp entryDateTimestamp=Timestamp.valueOf(bookingData.getEntryDate());
+				Timestamp departureDateTimestamp=Timestamp.valueOf(bookingData.getDepartureDate());
+				BigDecimal price=bookingData.getPrice();
+				String paymentMethodData=bookingData.getPaymentMethod().getName();
+				int id=bookingData.getId();
 				
 				statement.setTimestamp(1, entryDateTimestamp);
 				statement.setTimestamp(2, departureDateTimestamp);

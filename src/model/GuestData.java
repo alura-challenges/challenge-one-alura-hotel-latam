@@ -1,18 +1,18 @@
-package database.dto;
+package model;
 
 import java.time.LocalDateTime;
 
-public class GuestDataDTO {
+public class GuestData {
 	
 	private Integer id;
 	private String name;
 	private String lastName;
 	private LocalDateTime birthDate;
-	private NationalityDTO nationality;
+	private Nationality nationality;
 	private String phoneNumber;
 	private Integer idBooking;
 		
-	public GuestDataDTO(String name, String lastName, LocalDateTime birthDate, NationalityDTO nationality,
+	public GuestData(String name, String lastName, LocalDateTime birthDate, Nationality nationality,
 			String phoneNumber, Integer idBooking) {
 		this.name=name;
 		this.lastName=lastName;
@@ -22,7 +22,7 @@ public class GuestDataDTO {
 		this.idBooking=idBooking;
 	}
 
-	public GuestDataDTO(Integer id, String name, String lastName, LocalDateTime birthDate, NationalityDTO nationality,
+	public GuestData(Integer id, String name, String lastName, LocalDateTime birthDate, Nationality nationality,
 			String phoneNumber, Integer idBooking) {
 		this.id=id;
 		this.name=name;
@@ -65,11 +65,11 @@ public class GuestDataDTO {
 		this.birthDate = birthDate;
 	}
 
-	public NationalityDTO getNationality() {
+	public Nationality getNationality() {
 		return nationality;
 	}
 
-	public void setNationality(NationalityDTO nationality) {
+	public void setNationality(Nationality nationality) {
 		this.nationality = nationality;
 	}
 
