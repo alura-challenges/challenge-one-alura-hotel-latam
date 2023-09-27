@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
+import jdbc.controller.ReservasController;
+import jdbc.modelo.Reserva;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -21,9 +24,12 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.Toolkit;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.util.Calendar;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+
+import static javax.swing.JOptionPane.*;
 
 
 @SuppressWarnings("serial")
@@ -37,6 +43,9 @@ public class ReservasView extends JFrame {
 	int xMouse, yMouse;
 	private JLabel labelExit;
 	private JLabel labelAtras;
+
+	private ReservasController reservasController;
+
 
 	/**
 	 * Launch the application.
@@ -58,7 +67,11 @@ public class ReservasView extends JFrame {
 	 * Create the frame.
 	 */
 	public ReservasView() {
-		super("Reserva");
+		// Instanciando la clase Reservas controller
+		this.reservasController = new ReservasController();
+
+	//	super("Reserva");
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ReservasView.class.getResource("/imagenes/aH-40px.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 910, 560);
@@ -68,9 +81,9 @@ public class ReservasView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setResizable(false);
-		setLocationRelativeTo(null);
-		setUndecorated(true);
+		setResizable(false);  //Evita que la ventana sea redimensionada
+		setLocationRelativeTo(null); // hace que la ventana siempre este en el centro de la pantalla
+		setUndecorated(true); //retira la barra superior de la ventaba
 		
 
 		
@@ -100,7 +113,13 @@ public class ReservasView extends JFrame {
 		separator_1_1.setBounds(68, 281, 289, 11);
 		separator_1_1.setBackground(SystemColor.textHighlight);
 		panel.add(separator_1_1);
-		
+
+		JLabel lblValorSimbolo = new JLabel("$/.");
+		lblValorSimbolo.setVisible(true);
+		lblValorSimbolo.setBounds(121, 332, 17, 25);
+		lblValorSimbolo.setForeground (SystemColor.textHighlight);
+		lblValorSimbolo.setFont(new Font("Roboto Black", Font.PLAIN,17));
+
 		JLabel lblCheckIn = new JLabel("FECHA DE CHECK IN");
 		lblCheckIn.setForeground(SystemColor.textInactiveText);
 		lblCheckIn.setBounds(68, 136, 169, 14);
@@ -244,6 +263,16 @@ public class ReservasView extends JFrame {
 		
 		//Campos que guardaremos en la base de datos
 		txtFechaEntrada = new JDateChooser();
+
+		txtFechaEntrada.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				calcularValor(txtFechaEntrada, txtFechaSalida);
+
+			}
+
+		});
+
 		txtFechaEntrada.getCalendarButton().setBackground(SystemColor.textHighlight);
 		txtFechaEntrada.getCalendarButton().setIcon(new ImageIcon(ReservasView.class.getResource("/imagenes/icon-reservas.png")));
 		txtFechaEntrada.getCalendarButton().setFont(new Font("Roboto", Font.PLAIN, 12));
@@ -256,6 +285,14 @@ public class ReservasView extends JFrame {
 		panel.add(txtFechaEntrada);
 
 		txtFechaSalida = new JDateChooser();
+
+		txtFechaSalida.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				calcularValor(txtFechaEntrada, txtFechaSalida);
+			}
+		});
+
 		txtFechaSalida.getCalendarButton().setIcon(new ImageIcon(ReservasView.class.getResource("/imagenes/icon-reservas.png")));
 		txtFechaSalida.getCalendarButton().setFont(new Font("Roboto", Font.PLAIN, 11));
 		txtFechaSalida.setBounds(68, 246, 289, 35);
@@ -296,21 +333,60 @@ public class ReservasView extends JFrame {
 		btnsiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {		
-					RegistroHuesped registro = new RegistroHuesped();
-					registro.setVisible(true);
+				guardarReserva();
+
+				if (ReservasView.txtFechaEntrada.getDate() != null && ReservasView.txtFechaSalida.getDate() != null) {
+						guardarReserva();
 				} else {
-					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
+					showMessageDialog(null, "Debes llenar todos los campos.");
 				}
 			}						
 		});
+		// Botón Siguiente
 		btnsiguiente.setLayout(null);
 		btnsiguiente.setBackground(SystemColor.textHighlight);
 		btnsiguiente.setBounds(238, 493, 122, 35);
 		panel.add(btnsiguiente);
 		btnsiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnsiguiente.add(lblSiguiente);
+
+	}
+
+	private void calcularValor(JDateChooser txtFechaEntrada, JDateChooser txtFechaSalida) {
+		if(txtFechaEntrada.getDate() !=null && txtFechaSalida.getDate() !=null){
+			if(txtFechaEntrada.getDate().after(txtFechaSalida.getDate())) {
+				showMessageDialog(null, "La fecha de entrada no puede ser porterior a la de salida",
+				"error de fechas", ERROR_MESSAGE);
+				return;
+			}
+			Calendar inicio = txtFechaEntrada.getCalendar();
+			Calendar fin = txtFechaSalida.getCalendar();
+			int dias= -1;
+			int noche = 20;
+			int valor;
+			while(inicio.before(fin) || inicio.equals(fin)) {
+				dias++;
+				inicio.add(Calendar.DATE, 1);
+			}
+			valor = dias * noche;
+			System.out.println(valor);
+			txtValor.setText("" + valor);
+		}
+	}
 
 
+	private void guardarReserva(){
+		String fecha_entrada = ((JTextField)txtFechaEntrada.getDateEditor().getUiComponent()).getText();
+		String fecha_salida = ((JTextField)txtFechaSalida.getDateEditor().getUiComponent()).getText();
+		Reserva nuevaReserva = new Reserva(java.sql.Date.valueOf(fecha_entrada), java.sql.Date.valueOf(fecha_salida),
+				txtValor.getText() ,txtFormaPago.getSelectedItem().toString());
+		reservasController.guardar(nuevaReserva);
+
+		showMessageDialog(contentPane, "Reserva guardada con éxito, id:" + nuevaReserva.getId());
+
+		RegistroHuesped huesped = new RegistroHuesped(nuevaReserva.getId());
+		huesped.setVisible(true);
+		dispose();
 	}
 		
 	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"	
