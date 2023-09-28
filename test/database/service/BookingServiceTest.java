@@ -51,7 +51,8 @@ public class BookingServiceTest {
 		bookingData.setId(123);
 		Mockito.doReturn(bookingData).when(bookingDataDAO).save(any(BookingData.class));
 		
-		Integer id = bookingService.saveBooking(LocalDateTime.of(2023,12,29,10,30),LocalDateTime.of(2023,12,30,10,30),PaymentMethod.CREDIT);
+		BookingData bookingData2=new BookingData(LocalDateTime.of(2023,12,29,10,30),LocalDateTime.of(2023,12,30,10,30),PaymentMethod.CREDIT);
+		Integer id = bookingService.saveBooking(bookingData2);
 		assertEquals((Integer) 123, id);
 	}
 	
@@ -60,7 +61,7 @@ public class BookingServiceTest {
 		GuestData guestData=new GuestData("Gabriel","Salinas",LocalDateTime.now(),Nationality.ARGENTIN,"2345777",1);
 		Mockito.doReturn(guestData).when(guestDataDAO).save(any(GuestData.class));
 		
-		bookingService.saveGuest("Gabriel","Salinas",LocalDateTime.now(),Nationality.ARGENTIN,"2345777",1);
+		bookingService.saveGuest(guestData);
 
 		verify(guestDataDAO).save(any(GuestData.class));
 	}
@@ -143,7 +144,8 @@ public class BookingServiceTest {
 			bookingData.setId(123);
 			Mockito.doReturn(bookingData).when(bookingDataDAO).save(any(BookingData.class));
 			
-			bookingService.saveBooking(LocalDateTime.of(2023,12,30,10,30),LocalDateTime.of(2023,12,30,11,30),PaymentMethod.CREDIT);
+			BookingData bookingData2=new BookingData(LocalDateTime.of(2023,12,30,10,30),LocalDateTime.of(2023,12,30,11,30),PaymentMethod.CREDIT);
+			bookingService.saveBooking(bookingData2);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Entry date can't be equal to departure date";
@@ -152,8 +154,9 @@ public class BookingServiceTest {
 	}
 	@Test
 	public void testIncorrectDepartureTime() {
-		try {			
-			bookingService.saveBooking(LocalDateTime.of(2023,10,12,12,0,0),LocalDateTime.of(2023,10,12,12,0,1),PaymentMethod.CASH);
+		try {
+			BookingData bookingData=new BookingData(LocalDateTime.of(2023,10,12,12,0,0),LocalDateTime.of(2023,10,12,12,0,1),PaymentMethod.CASH);
+			bookingService.saveBooking(bookingData);
 			Assert.fail("This test should have failed");
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
@@ -213,8 +216,9 @@ public class BookingServiceTest {
 	@Test
 	public void testModifyGuest() {
 	Mockito.doReturn(1).when(guestDataDAO).modify(any(GuestData.class));
+	GuestData guestData=new GuestData("andrea","salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
 
-	int modifyGuest= bookingService.modifyGuest("andrea","salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+	int modifyGuest= bookingService.modifyGuest(guestData);
 
 	verify(guestDataDAO).modify(any(GuestData.class));
 
@@ -235,7 +239,8 @@ public class BookingServiceTest {
 	@Test	
 	public void testNullNameGuest() {	
 		try {
-			bookingService.saveGuest(null,"salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+			GuestData guestData=new GuestData(null,"salinas",LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+			bookingService.saveGuest(guestData);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Name was null";
@@ -246,7 +251,8 @@ public class BookingServiceTest {
 	@Test
 	public void testNullLastNameGuest() {	
 		try {
-			bookingService.saveGuest("andrea",null,LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+			GuestData guestData=new GuestData ("andrea",null,LocalDateTime.of(1990,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+			bookingService.saveGuest(guestData);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Lastname was null";
@@ -257,7 +263,8 @@ public class BookingServiceTest {
 	@Test
 	public void testBirthdateIncorrect() {	
 		try {
-			bookingService.saveGuest("andrea","salinas",LocalDateTime.of(2023,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+			GuestData guestData=new GuestData ("andrea","salinas",LocalDateTime.of(2023,12,12,10,30),Nationality.ARGENTIN,"2345777",1);
+			bookingService.saveGuest(guestData);
 		}catch(RuntimeException e) {
 			Assert.assertNotNull(e);
 			String error="Birthdate can't be before today";

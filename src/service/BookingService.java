@@ -9,7 +9,6 @@ import database.dao.BookingDataDAO;
 import database.dao.GuestDataDAO;
 import model.BookingData;
 import model.GuestData;
-import model.Nationality;
 import model.PaymentMethod;
 
 public class BookingService {
@@ -30,14 +29,19 @@ public class BookingService {
 		this.setting = new Setting();
 	}
 
-	public Integer saveBooking(LocalDateTime entryDate, LocalDateTime departureDate, PaymentMethod methodPayment)  {
+	public Integer saveBooking(BookingData bookingData )  {
+		 
+		LocalDateTime entryDate=bookingData.getEntryDate();
+		LocalDateTime departureDate=bookingData.getDepartureDate();
+		PaymentMethod paymentMethod=bookingData.getPaymentMethod();
+		
 		if (entryDate == null) {
 			throw new IllegalArgumentException("Entry date was null");
 		}
 		if (departureDate == null) {
 			throw new IllegalArgumentException("Departure date was null");
 		}
-		if (methodPayment == null) {
+		if (paymentMethod == null) {
 			throw new IllegalArgumentException("Method payment was null");
 		}		
 		if (departureDate.toLocalDate().isBefore(entryDate.toLocalDate())){
@@ -53,8 +57,8 @@ public class BookingService {
 		Duration duration=Duration.between(entryDate, departureDate);
 		BigDecimal days=new BigDecimal(duration.toDays());
 		
-		BookingData bookingData=new BookingData(entryDate,departureDate,methodPayment,bookingPrice(days));
-		BookingData saveBooking = bookingDataDAO.save(bookingData);
+		BookingData bookingDataWithPrice=new BookingData(entryDate,departureDate,paymentMethod,bookingPrice(days));
+		BookingData saveBooking = bookingDataDAO.save(bookingDataWithPrice);
 		return saveBooking.getId();
 	}
 
@@ -63,7 +67,12 @@ public class BookingService {
 		return  pricePerNight.multiply(days);
 	}
 	
-	public void saveGuest(String name, String lastname,LocalDateTime birthDate, Nationality nationality, String phoneNumber, Integer idBooking) {
+	public void saveGuest(GuestData guestData) {
+		
+		String name=guestData.getName();
+		String lastname=guestData.getLastName();
+		LocalDateTime birthDate=guestData.getBirthDate();
+		
 		if(name==null) {
 			throw new IllegalArgumentException("Name was null");
 		}
@@ -75,7 +84,6 @@ public class BookingService {
 			throw new IllegalArgumentException("Birthdate can't be before today");
 		}
 		
-		GuestData guestData=new GuestData(name,lastname,birthDate,nationality,phoneNumber,idBooking);	
 		guestDataDAO.save(guestData);
 	}
 
@@ -107,7 +115,12 @@ public class BookingService {
 		}
 	}
 
-	public int modifyGuest (String name, String lastname,LocalDateTime birthDate, Nationality nationality, String phoneNumber, Integer idBooking) {
+	public int modifyGuest (GuestData guestData) {
+
+		String name=guestData.getName();
+		String lastname=guestData.getLastName();
+		LocalDateTime birthDate=guestData.getBirthDate();
+		
 		if(name==null) {
 			throw new IllegalArgumentException("Name was null");
 		}
@@ -119,8 +132,6 @@ public class BookingService {
 				throw new IllegalArgumentException("Birthdate can't be after today");
 			}
 		}
-
-		GuestData guestData=new GuestData(name,lastname,birthDate,nationality,phoneNumber,idBooking);	
 		return guestDataDAO.modify(guestData);
 	}
 	
